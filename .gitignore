@@ -5,5 +5,15 @@
 *.war
 *.ear
 
+# Eclipse projects
 .project
 !*/.project
+*/.settings/*
+
+# Generated sources are not included
+*/src-gen/*
+*/xtend-gen/*
+*_gen
+
+# Ignore anything in a bin folder
+*/bin/*
