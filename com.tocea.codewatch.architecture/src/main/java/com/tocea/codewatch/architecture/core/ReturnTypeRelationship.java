@@ -1,0 +1,30 @@
+package com.tocea.codewatch.architecture.core;
+
+import com.tocea.codewatch.architecture.core.api.IArchitectureVisitor;
+import com.tocea.codewatch.architecture.core.api.IReturnTypeRelationship;
+
+
+public class ReturnTypeRelationship extends AbstractRelationship implements IReturnTypeRelationship	
+{	
+	
+	
+	public ReturnTypeRelationship(){
+		super();
+	}
+		
+	
+
+	
+	
+	
+	
+	/**
+	 * This method call the visitor behavior.
+	 * 
+	 * @param _visitor
+	 *            the visitor to accept
+	 */	
+	public void accept(IArchitectureVisitor _visitor){
+		_visitor.visitReturnTypeRelationship(this);
+	}
+}

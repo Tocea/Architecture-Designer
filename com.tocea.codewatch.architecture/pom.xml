@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<artifactId>ArchitectureModelisation</artifactId>
+
+	<name>TOCEA Scertify Architecture modelisation</name>
+	<description>Scertify Architecture modelisation</description>
+	<inceptionYear>2012</inceptionYear>
+
+	<scm>
+		<connection>scm:svn:file:///olympus/svn/p-cplatform/trunk//CodeWatchPlatform/Plugins/Extensions/ArchitectureExtension/ArchitectureModelisation
+		</connection>
+		<developerConnection>scm:svn:file:///olympus/svn/p-cplatform/trunk//CodeWatchPlatform/Plugins/Extensions/ArchitectureExtension/ArchitectureModelisation
+		</developerConnection>
+		<url>scm:svn:file:///olympus/svn/p-cplatform/trunk//CodeWatchPlatform/Plugins/Extensions/ArchitectureExtension/ArchitectureModelisation
+		</url>
+	</scm>
+
+
+	<groupId>com.tocea.codewatch.architecture</groupId>
+	<version>1.0.0</version>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+			<version>4.10</version>
+		</dependency>
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>1.4.3</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+</project>
+
+
