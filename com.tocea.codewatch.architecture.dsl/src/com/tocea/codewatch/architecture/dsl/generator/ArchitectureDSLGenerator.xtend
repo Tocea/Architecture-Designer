@@ -1,6 +1,7 @@
 package com.tocea.codewatch.architecture.dsl.generator
 
 import com.google.inject.Inject
+import com.tocea.codewatch.architecture.dsl.ArchitectureDslFileSystemAccess
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureExtension
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Datatype
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionEntity
@@ -14,14 +15,16 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.naming.IQualifiedNameProvider
-import org.eclipse.xtext.generator.AbstractFileSystemAccess
 
 class ArchitectureDSLGenerator implements IGenerator {
 
 	@Inject extension IQualifiedNameProvider
 
+
+	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		(fsa as AbstractFileSystemAccess).setOutputPath("src")
+		val cfsa = fsa as ArchitectureDslFileSystemAccess
+		cfsa.setOutputPath(cfsa.extensionOutput);
 		for(architectureExtension : resource.allContents.toIterable.filter(typeof(ArchitectureExtension))) {
 			if(!architectureExtension.entities.filter([e| e instanceof ParametrizedType || e instanceof Relationship]).empty) {
 				fsa.generateFile(architectureExtension.fullyQualifiedName.toString("/")+"/"+architectureExtension.simpleName+"Factory.java", compile(architectureExtension))
@@ -30,6 +33,8 @@ class ArchitectureDSLGenerator implements IGenerator {
 			}
 		}
 	}
+	
+
 
 	def dispatch compile(ArchitectureExtension architectureExtension)
 	'''
@@ -78,7 +83,7 @@ class ArchitectureDSLGenerator implements IGenerator {
 			«helper.printImports»
 
 			«helper.getDocumentation(role)»
-			public «IF role.isAbstract»abstract «ENDIF»class «helper.printDeclaration(role)» extends «IF role.superRole==null»«helper.print(GeneratorHelper::ABSTRACT_ROLE)»«ELSE»«helper.print(role.superRole)»«ENDIF»<«IF role.element==null»«helper.print(GeneratorHelper::ANALYSED_ELEMENT)»«ELSE»«helper.print(role.element)»«ENDIF»> {
+			public «IF role.isAbstract»abstract «ENDIF»class «helper.printDeclaration(role)» extends «IF role.superRole==null»«helper.print(GeneratorHelper::ABSTRACT_ROLE)»<«IF role.element==null»«helper.print(GeneratorHelper::ANALYSED_ELEMENT)»«ELSE»«helper.print(role.element)»«ENDIF»>«ELSE»«helper.print(role.superRole)»«ENDIF» {
 
 				«FOR field : role.fields»
 					«helper.print(field)»

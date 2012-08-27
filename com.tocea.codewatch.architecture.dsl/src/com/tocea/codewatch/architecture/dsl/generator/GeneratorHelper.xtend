@@ -23,28 +23,32 @@ import org.eclipse.xtext.documentation.impl.MultiLineCommentDocumentationProvide
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 import com.tocea.codewatch.architecture.dsl.architectureDSL.PrimitiveRole
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Arity
+import com.tocea.codewatch.architecture.dsl.architectureDSL.Type
+import com.tocea.codewatch.architecture.dsl.architectureDSL.ReferencedType
+
 
 class GeneratorHelper {
 
 	public static val LIST = "java.util.List"
 	public static val ARRAY_LIST = "java.util.ArrayList"
-	public static val BOUNDLIST = "com.tocea.codewatch.architecture.mm.extension.util.BoundList"
+	public static val BOUNDLIST = "com.tocea.codewatch.architecture.extension.util.BoundList"
 
-	public static val ABSTRACT_PATTERN = "com.tocea.codewatch.architecture.mm.extension.AbstractPattern"
-	public static val ABSTRACT_ROLE = "com.tocea.codewatch.architecture.mm.extension.AbstractRole"
-	public static val ABSTRACT_EXTENSION_RELATIONSHIP = "com.tocea.codewatch.architecture.mm.extension.AbstractExtensionRelationship"
-	public static val DISJUNCTION_CONSTRAINT = "com.tocea.codewatch.architecture.mm.extension.DisjunctionConstraint"
-	public static val CONJUNCTION_CONSTRAINT = "com.tocea.codewatch.architecture.mm.extension.ConjunctionConstraint"
-	public static val TYPE_CONSTRAINT = "com.tocea.codewatch.architecture.mm.extension.TypeConstraint"
-	public static val IRELATIONSHIP_CONSTRAINT = "com.tocea.codewatch.architecture.mm.extension.api.IRelationshipConstraint"
+	public static val ABSTRACT_PATTERN = "com.tocea.codewatch.architecture.extension.AbstractPattern"
+	public static val ABSTRACT_ROLE = "com.tocea.codewatch.architecture.extension.AbstractRole"
+	public static val ABSTRACT_EXTENSION_RELATIONSHIP = "com.tocea.codewatch.architecture.extension.AbstractExtensionRelationship"
+	public static val DISJUNCTION_CONSTRAINT = "com.tocea.codewatch.architecture.extension.DisjunctionConstraint"
+	public static val CONJUNCTION_CONSTRAINT = "com.tocea.codewatch.architecture.extension.ConjunctionConstraint"
+	public static val TYPE_CONSTRAINT = "com.tocea.codewatch.architecture.extension.TypeConstraint"
+	public static val IRELATIONSHIP_CONSTRAINT = "com.tocea.codewatch.architecture.extension.api.IRelationshipConstraint"
 
-	public static val ANALYSED_ELEMENT = "com.tocea.codewatch.architecture.mm.core.api.IAnalysedElement"
-	public static val TYPE = "com.tocea.codewatch.architecture.mm.core.api.IType"
-	public static val ARCHITECTURE_FILE = "com.tocea.codewatch.architecture.mm.core.api.IArchitectureFile"
-	public static val LIBRARY = "com.tocea.codewatch.architecture.mm.core.api.ILibrary"
-	public static val PROJECT = "com.tocea.codewatch.architecture.mm.core.api.IProject"
-	public static val METHOD = "com.tocea.codewatch.architecture.mm.core.api.IMethod"
-	public static val FIELD = "com.tocea.codewatch.architecture.mm.core.api.IField"
+	public static val ANALYSED_ELEMENT = "com.tocea.codewatch.architecture.core.api.IAnalysedElement"
+	public static val TYPE = "com.tocea.codewatch.architecture.core.api.IType"
+	public static val ARCHITECTURE_FILE = "com.tocea.codewatch.architecture.core.api.IArchitectureFile"
+	public static val LIBRARY = "com.tocea.codewatch.architecture.core.api.ILibrary"
+	public static val PROJECT = "com.tocea.codewatch.architecture.core.api.IProject"
+	public static val METHOD = "com.tocea.codewatch.architecture.core.api.IMethod"
+	public static val FIELD = "com.tocea.codewatch.architecture.core.api.IField"
+	
 
 	static val documentationProvider = new MultiLineCommentDocumentationProvider
 
@@ -58,9 +62,11 @@ class GeneratorHelper {
 		entity.parseReferences
 	}
 
+	
 	def private addName(String qualifiedName) {
 		addName(qualifiedName, true)
 	}
+	
 
 	def private addName(String qualifiedName, boolean addImport) {
 		val simpleName = qualifiedName.split("\\.").last
@@ -78,8 +84,38 @@ class GeneratorHelper {
 	def private dispatch void parseReferences(ExtensionEntity entity) {}
 
 	def private dispatch void parseReferences(Datatype datatype) {
-		addName(datatype.reference.qualifiedName)
+		if(!datatype.primitive)
+			addName(datatype.reference.qualifiedName)
 	}
+	
+	def private dispatch isPrimitive(Type t){
+		return false
+	}
+	
+	def private dispatch isPrimitive(ReferencedType t){
+		return false
+	}
+	
+	def private dispatch isPrimitive (Datatype t){
+		switch( t.reference.type.qualifiedName){
+			case "boolean":
+				return true
+			case "int":
+				return true
+			case "long":
+				return true
+			case "double":
+				return true
+			case "float":
+				return true
+			case "byte":
+				return true
+			case "char":
+				return true
+		}
+		return false
+	}
+	
 
 	def private dispatch void parseReferences(PrimitiveRole primitiveRole) {
 		addName(primitiveRole.type.qualifiedName)
@@ -104,7 +140,7 @@ class GeneratorHelper {
 			addName(ABSTRACT_ROLE)
 		if(role.element!=null)
 			addName(role.element.qualifiedName)
-		else
+		else if (role.superRole==null)
 			addName(ANALYSED_ELEMENT)
 		if(role.superRole!=null)
 			role.superRole.parseReferences
@@ -122,13 +158,15 @@ class GeneratorHelper {
 	}
 
 	def private dispatch void parseReferences(TypeReference reference) {
-		addName(reference.reference.qualifiedName, !(reference.reference instanceof Parameter))
+		val add = !reference.reference.primitive
+		addName(reference.reference.qualifiedName, add)
 		for(parameter : reference.parameters)
 			parameter.parseReferences
 	}
 
 	def private parseFields(Collection<Field> fields) {
 		for(field : fields) {
+		
 			if(field.many) {
 				addName(LIST)
 				addName(ARRAY_LIST)
@@ -138,6 +176,10 @@ class GeneratorHelper {
 			field.type.parseReferences
 		}			
 	}
+	
+
+	
+	
 
 	def private parseConstraints(Collection<RelationshipConstraint> constraints) {
 		if(constraints!=null) {
@@ -184,30 +226,34 @@ class GeneratorHelper {
 		primitiveRole.type.qualifiedName
 	}
 
+	def varname(Field f){
+		'''_'''+ f.name
+	}
+	
 	def print(Field field)
 	'''
 		«field.documentation»
 		«IF field.many»
-		private final «LIST.print»<«field.type.print»> «field.name» = new «ARRAY_LIST.print»<«field.type.print»>();
+		private final «LIST.print»<«field.type.print»> «field.varname» = new «ARRAY_LIST.print»<«field.type.print»>();
 		«ELSE»
 			«IF field.lb!=null»
-				private final «BOUNDLIST.print»<«field.type.print»> «field.name» = new «BOUNDLIST.print»<«field.type.print»>(«field.lb.print», «IF field.ub==null»-1«ELSE»«field.ub.print»«ENDIF»);
+				private final «BOUNDLIST.print»<«field.type.print»> «field.varname» = new «BOUNDLIST.print»<«field.type.print»>(«field.lb.print», «IF field.ub==null»-1«ELSE»«field.ub.print»«ENDIF»);
 			«ELSE»
-			private «field.printType» «field.name»;
+			private «field.printType» «field.varname»;
 			«ENDIF»
 		«ENDIF»
 	'''
-
+	
 	def printAccessor(Field field)
 	'''
 
 		public «field.printType» get«field.name.toFirstUpper»() {
-			return «field.name»;
+			return this.«field.varname»;
 		}
 
 		«IF !field.many && field.lb==null»
-			public void set«field.name.toFirstUpper»(«field.printType» «field.name») {
-				this.«field.name» = «field.name»;
+			public void set«field.name.toFirstUpper»(«field.printType» _«field.name») {
+				this.«field.varname» = _«field.name»;
 			}
 		«ENDIF»
 	'''
