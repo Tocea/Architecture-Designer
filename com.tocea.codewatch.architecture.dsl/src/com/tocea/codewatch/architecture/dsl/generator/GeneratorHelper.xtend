@@ -1,6 +1,5 @@
 package com.tocea.codewatch.architecture.dsl.generator
 
-import com.google.inject.Inject
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Datatype
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Field
 import com.tocea.codewatch.architecture.dsl.architectureDSL.NamedEntity
@@ -18,7 +17,7 @@ import java.util.HashMap
 import java.util.List
 import java.util.Map
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.documentation.IEObjectDocumentationProvider
+import org.eclipse.xtext.documentation.impl.MultiLineCommentDocumentationProvider
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 
 import static com.tocea.codewatch.architecture.dsl.generator.GeneratorHelper.*
@@ -45,12 +44,16 @@ class GeneratorHelper {
 	public static val METHOD = "com.tocea.codewatch.architecture.core.api.IMethod"
 	public static val FIELD = "com.tocea.codewatch.architecture.core.api.IField"
 	
+	extension IQualifiedNameProvider
 
-	@Inject extension IEObjectDocumentationProvider
-	@Inject extension IQualifiedNameProvider
+	val documentationProvider = new MultiLineCommentDocumentationProvider
 
 	val List<String> imports = new ArrayList
 	val Map<String, String> names = new HashMap // Qualified Name => Name to use
+
+	new(IQualifiedNameProvider qualifiedNameProvider) {
+		this._iQualifiedNameProvider = qualifiedNameProvider
+	}
 
 	def private printNoImport(String qualifiedName) {
 		print(qualifiedName, false)
@@ -151,7 +154,7 @@ class GeneratorHelper {
 	'''
 	
 	def printDocumentation(EObject object) {
-		val doc = object.documentation
+		val doc = documentationProvider.getDocumentation(object)
 		if(doc!=null)  {
 			'''
 				/**

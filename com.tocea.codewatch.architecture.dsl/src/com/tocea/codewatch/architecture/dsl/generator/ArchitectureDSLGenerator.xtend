@@ -1,8 +1,6 @@
 package com.tocea.codewatch.architecture.dsl.generator
 
-import com.google.inject.Guice
 import com.google.inject.Inject
-import com.tocea.codewatch.architecture.dsl.ArchitectureDSLRuntimeModule
 import com.tocea.codewatch.architecture.dsl.ArchitectureDslFileSystemAccess
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureExtension
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionEntity
@@ -12,7 +10,6 @@ import com.tocea.codewatch.architecture.dsl.architectureDSL.Pattern
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Relationship
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Role
 import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.xtext.generator.AbstractFileSystemAccess
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.naming.IQualifiedNameProvider
@@ -20,8 +17,6 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider
 class ArchitectureDSLGenerator implements IGenerator {
 
 	@Inject extension IQualifiedNameProvider
-
-	val injector = Guice::createInjector(new ArchitectureDSLRuntimeModule)
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		val cfsa = fsa as ArchitectureDslFileSystemAccess
@@ -38,7 +33,7 @@ class ArchitectureDSLGenerator implements IGenerator {
 
 
 	def dispatch compile(ArchitectureExtension architectureExtension) {
-		val helper = injector.getInstance(typeof(GeneratorHelper))
+		val helper = new GeneratorHelper(this._iQualifiedNameProvider)
 		
 		var res =
 		'''
@@ -63,7 +58,7 @@ class ArchitectureDSLGenerator implements IGenerator {
 	}
 
 	def dispatch compile(Pattern pattern) {
-		val helper = injector.getInstance(typeof(GeneratorHelper))
+		val helper = new GeneratorHelper(this._iQualifiedNameProvider)
 		
 		var res =
 		'''
@@ -84,7 +79,7 @@ class ArchitectureDSLGenerator implements IGenerator {
 	}
 
 	def dispatch compile(Role role) {
-		val helper = injector.getInstance(typeof(GeneratorHelper))
+		val helper = new GeneratorHelper(this._iQualifiedNameProvider)
 		
 		var res=
 		'''
@@ -105,7 +100,7 @@ class ArchitectureDSLGenerator implements IGenerator {
 	}
 
 	def dispatch compile(Relationship relationship) {
-		val helper = injector.getInstance(typeof(GeneratorHelper))
+		val helper = new GeneratorHelper(this._iQualifiedNameProvider)
 
 		var res =
 		'''
