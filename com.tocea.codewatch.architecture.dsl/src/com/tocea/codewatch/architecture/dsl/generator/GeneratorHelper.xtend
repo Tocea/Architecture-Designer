@@ -7,41 +7,44 @@ import com.tocea.codewatch.architecture.dsl.architectureDSL.NamedEntity
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Parameter
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ParametrizedType
 import com.tocea.codewatch.architecture.dsl.architectureDSL.PrimitiveRole
+import com.tocea.codewatch.architecture.dsl.architectureDSL.Relationship
+import com.tocea.codewatch.architecture.dsl.architectureDSL.RelationshipConjunctionConstraint
+import com.tocea.codewatch.architecture.dsl.architectureDSL.RelationshipConstraint
+import com.tocea.codewatch.architecture.dsl.architectureDSL.TypeConstraint
 import com.tocea.codewatch.architecture.dsl.architectureDSL.TypeReference
 import java.util.ArrayList
+import java.util.Collections
 import java.util.HashMap
 import java.util.List
 import java.util.Map
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider
 import org.eclipse.xtext.naming.IQualifiedNameProvider
-import com.tocea.codewatch.architecture.dsl.architectureDSL.RelationshipConstraint
-import com.tocea.codewatch.architecture.dsl.architectureDSL.RelationshipConjunctionConstraint
-import com.tocea.codewatch.architecture.dsl.architectureDSL.TypeConstraint
-import java.util.Collections
-import com.tocea.codewatch.architecture.dsl.architectureDSL.Relationship
+
+import static com.tocea.codewatch.architecture.dsl.generator.GeneratorHelper.*
 
 class GeneratorHelper {
 
 	public static val LIST = "java.util.List"
 	public static val ARRAY_LIST = "java.util.ArrayList"
-	public static val BOUNDLIST = "com.tocea.codewatch.architecture.mm.extension.util.BoundList"
+	public static val BOUNDLIST = "com.tocea.codewatch.architecture.extension.util.BoundList"
 
-	public static val ABSTRACT_PATTERN = "com.tocea.codewatch.architecture.mm.extension.AbstractPattern"
-	public static val ABSTRACT_ROLE = "com.tocea.codewatch.architecture.mm.extension.AbstractRole"
-	public static val ABSTRACT_EXTENSION_RELATIONSHIP = "com.tocea.codewatch.architecture.mm.extension.AbstractExtensionRelationship"
-	public static val DISJUNCTION_CONSTRAINT = "com.tocea.codewatch.architecture.mm.extension.DisjunctionConstraint"
-	public static val CONJUNCTION_CONSTRAINT = "com.tocea.codewatch.architecture.mm.extension.ConjunctionConstraint"
-	public static val TYPE_CONSTRAINT = "com.tocea.codewatch.architecture.mm.extension.TypeConstraint"
-	public static val IRELATIONSHIP_CONSTRAINT = "com.tocea.codewatch.architecture.mm.extension.api.IRelationshipConstraint"
+	public static val ABSTRACT_PATTERN = "com.tocea.codewatch.architecture.extension.AbstractPattern"
+	public static val ABSTRACT_ROLE = "com.tocea.codewatch.architecture.extension.AbstractRole"
+	public static val ABSTRACT_EXTENSION_RELATIONSHIP = "com.tocea.codewatch.architecture.extension.AbstractExtensionRelationship"
+	public static val DISJUNCTION_CONSTRAINT = "com.tocea.codewatch.architecture.extension.DisjunctionConstraint"
+	public static val CONJUNCTION_CONSTRAINT = "com.tocea.codewatch.architecture.extension.ConjunctionConstraint"
+	public static val TYPE_CONSTRAINT = "com.tocea.codewatch.architecture.extension.TypeConstraint"
+	public static val IRELATIONSHIP_CONSTRAINT = "com.tocea.codewatch.architecture.extension.api.IRelationshipConstraint"
 
-	public static val ANALYSED_ELEMENT = "com.tocea.codewatch.architecture.mm.core.api.IAnalysedElement"
-	public static val TYPE = "com.tocea.codewatch.architecture.mm.core.api.IType"
-	public static val ARCHITECTURE_FILE = "com.tocea.codewatch.architecture.mm.core.api.IArchitectureFile"
-	public static val LIBRARY = "com.tocea.codewatch.architecture.mm.core.api.ILibrary"
-	public static val PROJECT = "com.tocea.codewatch.architecture.mm.core.api.IProject"
-	public static val METHOD = "com.tocea.codewatch.architecture.mm.core.api.IMethod"
-	public static val FIELD = "com.tocea.codewatch.architecture.mm.core.api.IField"
+	public static val ANALYSED_ELEMENT = "com.tocea.codewatch.architecture.core.api.IAnalysedElement"
+	public static val TYPE = "com.tocea.codewatch.architecture.core.api.IType"
+	public static val ARCHITECTURE_FILE = "com.tocea.codewatch.architecture.core.api.IArchitectureFile"
+	public static val LIBRARY = "com.tocea.codewatch.architecture.core.api.ILibrary"
+	public static val PROJECT = "com.tocea.codewatch.architecture.core.api.IProject"
+	public static val METHOD = "com.tocea.codewatch.architecture.core.api.IMethod"
+	public static val FIELD = "com.tocea.codewatch.architecture.core.api.IField"
+	
 
 	@Inject extension IEObjectDocumentationProvider
 	@Inject extension IQualifiedNameProvider
@@ -97,6 +100,13 @@ class GeneratorHelper {
 		entity.qualifiedName.print
 	}
 
+	def dispatch print(Datatype datatype) {
+		if(datatype.primitive)
+			datatype.qualifiedName.printNoImport
+		else
+			datatype.qualifiedName.print
+	}
+
 	def dispatch print(List<RelationshipConstraint> constraints) {
 		switch constraints {
 			case constraints.size==1 :
@@ -139,7 +149,7 @@ class GeneratorHelper {
 			}
 		«ENDIF»
 	'''
-
+	
 	def printDocumentation(EObject object) {
 		val doc = object.documentation
 		if(doc!=null)  {
@@ -191,6 +201,26 @@ class GeneratorHelper {
 
 	def private dispatch getQualifiedName(PrimitiveRole role) {
 		role.type.qualifiedName
+	}
+
+	def private isPrimitive(Datatype t){
+		switch( t.reference.type.qualifiedName){
+			case "boolean":
+				return true
+			case "int":
+				return true
+			case "long":
+				return true
+			case "double":
+				return true
+			case "float":
+				return true
+			case "byte":
+				return true
+			case "char":
+				return true
+		}
+		return false
 	}
 
 }

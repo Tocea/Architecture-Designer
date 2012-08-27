@@ -3,6 +3,7 @@ package com.tocea.codewatch.architecture.dsl.generator
 import com.google.inject.Guice
 import com.google.inject.Inject
 import com.tocea.codewatch.architecture.dsl.ArchitectureDSLRuntimeModule
+import com.tocea.codewatch.architecture.dsl.ArchitectureDslFileSystemAccess
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureExtension
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionEntity
 import com.tocea.codewatch.architecture.dsl.architectureDSL.NamedEntity
@@ -23,7 +24,8 @@ class ArchitectureDSLGenerator implements IGenerator {
 	val injector = Guice::createInjector(new ArchitectureDSLRuntimeModule)
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		(fsa as AbstractFileSystemAccess).setOutputPath("src")
+		val cfsa = fsa as ArchitectureDslFileSystemAccess
+		cfsa.setOutputPath(cfsa.extensionOutput);
 		for(architectureExtension : resource.allContents.toIterable.filter(typeof(ArchitectureExtension))) {
 			if(!architectureExtension.entities.filter([e| e instanceof ParametrizedType || e instanceof Relationship]).empty) {
 				fsa.generateFile(architectureExtension.fullyQualifiedName.toString("/")+"/"+architectureExtension.simpleName+"Factory.java", compile(architectureExtension))
@@ -32,6 +34,8 @@ class ArchitectureDSLGenerator implements IGenerator {
 			}
 		}
 	}
+	
+
 
 	def dispatch compile(ArchitectureExtension architectureExtension) {
 		val helper = injector.getInstance(typeof(GeneratorHelper))

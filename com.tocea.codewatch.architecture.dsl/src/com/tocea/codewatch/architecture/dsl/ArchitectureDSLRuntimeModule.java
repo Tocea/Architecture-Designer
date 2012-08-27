@@ -5,6 +5,7 @@ package com.tocea.codewatch.architecture.dsl;
 
 import org.eclipse.xtext.documentation.IEObjectDocumentationProvider;
 import org.eclipse.xtext.documentation.impl.MultiLineCommentDocumentationProvider;
+import org.eclipse.xtext.builder.EclipseResourceFileSystemAccess2;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.scoping.IScopeProvider;
 
@@ -17,6 +18,14 @@ import com.tocea.codewatch.architecture.dsl.scoping.ArchitectureDSLScopeProvider
  */
 public class ArchitectureDSLRuntimeModule extends com.tocea.codewatch.architecture.dsl.AbstractArchitectureDSLRuntimeModule {
 
+    @Override
+    public void configure(Binder binder) {
+        binder.bind(EclipseResourceFileSystemAccess2.class).to(ArchitectureDslFileSystemAccess.class);
+        binder.bind(IEObjectDocumentationProvider.class).to(MultiLineCommentDocumentationProvider.class);
+        super.configure(binder);
+    }
+
+    
 	@Override
 	public Class<? extends IScopeProvider> bindIScopeProvider() {
 		return ArchitectureDSLScopeProvider.class;
@@ -25,12 +34,6 @@ public class ArchitectureDSLRuntimeModule extends com.tocea.codewatch.architectu
 	@Override
 	public Class<? extends IGenerator> bindIGenerator() {
 		return ArchitectureDSLGenerator.class;
-	}
-
-	@Override
-	public void configure(Binder binder) {
-		binder.bind(IEObjectDocumentationProvider.class).to(MultiLineCommentDocumentationProvider.class);
-		super.configure(binder);
 	}
 
 //	@Override
