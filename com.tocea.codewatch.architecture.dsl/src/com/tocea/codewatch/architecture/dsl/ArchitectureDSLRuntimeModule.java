@@ -3,9 +3,11 @@
  */
 package com.tocea.codewatch.architecture.dsl;
 
+import org.eclipse.xtext.builder.EclipseResourceFileSystemAccess2;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.scoping.IScopeProvider;
 
+import com.google.inject.Binder;
 import com.tocea.codewatch.architecture.dsl.generator.ArchitectureDSLGenerator;
 import com.tocea.codewatch.architecture.dsl.scoping.ArchitectureDSLScopeProvider;
 
@@ -14,6 +16,14 @@ import com.tocea.codewatch.architecture.dsl.scoping.ArchitectureDSLScopeProvider
  */
 public class ArchitectureDSLRuntimeModule extends com.tocea.codewatch.architecture.dsl.AbstractArchitectureDSLRuntimeModule {
 
+    @Override
+    public void configure(Binder binder) {
+        binder.bind(EclipseResourceFileSystemAccess2.class).to(ArchitectureDslFileSystemAccess.class);
+        super.configure(binder);
+     
+    }
+
+    
 	@Override
 	public Class<? extends IScopeProvider> bindIScopeProvider() {
 		return ArchitectureDSLScopeProvider.class;
@@ -29,5 +39,8 @@ public class ArchitectureDSLRuntimeModule extends com.tocea.codewatch.architectu
 //		// TODO Auto-generated method stub
 //		return super.bindIDefaultResourceDescriptionStrategy();
 //	}
+	
+
+	
 
 }
