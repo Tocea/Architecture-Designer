@@ -78,16 +78,16 @@ class GeneratorHelper {
 	def dispatch print(Field field) {
 		switch field {
 			case field.many :
-				'''private ÇLIST.printÈ<Çfield.type.printÈ> Çfield.nameÈ = new ÇARRAY_LIST.printÈ<Çfield.type.printÈ>();'''
+				'''private Â«LIST.printÂ»<Â«field.type.printÂ»> Â«field.nameÂ» = new Â«ARRAY_LIST.printÂ»<Â«field.type.printÂ»>();'''
 			case field.lb!=null:
-				'''private ÇLIST.printÈ<Çfield.type.printÈ> Çfield.nameÈ = new ÇBOUNDLIST.printÈ<Çfield.type.printÈ>();'''
+				'''private Â«LIST.printÂ»<Â«field.type.printÂ»> Â«field.nameÂ» = new Â«BOUNDLIST.printÂ»<Â«field.type.printÂ»>();'''
 			default:
-				'''private Çfield.type.printÈ Çfield.nameÈ;'''
+				'''private Â«field.type.printÂ» Â«field.nameÂ»;'''
 		}		
 	}
 
 	def dispatch print(TypeReference reference)
-		'''Çreference.reference.printÈÇFOR parameter : reference.parameters BEFORE '<' SEPARATOR ', ' AFTER '>'ÈÇparameter.printÈÇENDFORÈ'''
+		'''Â«reference.reference.printÂ»Â«FOR parameter : reference.parameters BEFORE '<' SEPARATOR ', ' AFTER '>'Â»Â«parameter.printÂ»Â«ENDFORÂ»'''
 
 	def dispatch print(Parameter parameter) {
 		parameter.name.printNoImport
@@ -100,9 +100,9 @@ class GeneratorHelper {
 	def dispatch print(List<RelationshipConstraint> constraints) {
 		switch constraints {
 			case constraints.size==1 :
-				'''Ç(constraints.get(0) as RelationshipConjunctionConstraint).printÈ;'''
+				'''Â«(constraints.get(0) as RelationshipConjunctionConstraint).printÂ»;'''
 			case constraints.size>1 :
-				'''new ÇDISJUNCTION_CONSTRAINT.printÈ(ÇFOR c : constraints SEPARATOR ', 'ÈÇ(c as RelationshipConjunctionConstraint).printÈÇENDFORÈ);'''
+				'''new Â«DISJUNCTION_CONSTRAINT.printÂ»(Â«FOR c : constraints SEPARATOR ', 'Â»Â«(c as RelationshipConjunctionConstraint).printÂ»Â«ENDFORÂ»);'''
 		}
 	}
 
@@ -111,33 +111,33 @@ class GeneratorHelper {
 			case constraint.constraints.size == 1 :
 				(constraint.constraints.get(0) as TypeConstraint).print
 			case constraint.constraints.size > 1 :
-				'''new ÇCONJUNCTION_CONSTRAINT.printÈ(ÇFOR c : constraint.constraints SEPARATOR ', 'ÈÇ(c as TypeConstraint).printÈÇENDFORÈ)'''
+				'''new Â«CONJUNCTION_CONSTRAINT.printÂ»(Â«FOR c : constraint.constraints SEPARATOR ', 'Â»Â«(c as TypeConstraint).printÂ»Â«ENDFORÂ»)'''
 			default:
 				""
 		}
 	}
 
 	def dispatch print(TypeConstraint constraint)
-		'''new ÇTYPE_CONSTRAINT.printÈ(ÇIF constraint.source==nullÈnullÇELSEÈÇconstraint.source.qualifiedName.printÈ.classÇENDIFÈ, ÇIF constraint.target==nullÈnullÇELSEÈÇconstraint.target.qualifiedName.printÈ.classÇENDIFÈ)'''
+		'''new Â«TYPE_CONSTRAINT.printÂ»(Â«IF constraint.source==nullÂ»nullÂ«ELSEÂ»Â«constraint.source.qualifiedName.printÂ».classÂ«ENDIFÂ», Â«IF constraint.target==nullÂ»nullÂ«ELSEÂ»Â«constraint.target.qualifiedName.printÂ».classÂ«ENDIFÂ»)'''
 
 	def printAccessors(Field field)
 	'''
 
 		/**
-		 * Getter for field Çfield.nameÈ.
+		 * Getter for field Â«field.nameÂ».
 		 */
-		public ÇIF field.many || field.lb!=nullÈÇLIST.printÈ<Çfield.type.printÈ>ÇELSEÈÇfield.type.printÈÇENDIFÈ getÇfield.name.toFirstUpperÈ() {
-			return Çfield.nameÈ;
+		public Â«IF field.many || field.lb!=nullÂ»Â«LIST.printÂ»<Â«field.type.printÂ»>Â«ELSEÂ»Â«field.type.printÂ»Â«ENDIFÂ» getÂ«field.name.toFirstUpperÂ»() {
+			return Â«field.nameÂ»;
 		}
-		ÇIF !field.many && field.lb==nullÈ
+		Â«IF !field.many && field.lb==nullÂ»
 
 			/**
-			 * Setter for field Çfield.nameÈ.
+			 * Setter for field Â«field.nameÂ».
 			 */
-			public void setÇfield.name.toFirstUpperÈ(Çfield.type.printÈ Çfield.nameÈ) {
-				this.Çfield.nameÈ = Çfield.nameÈ;
+			public void setÂ«field.name.toFirstUpperÂ»(Â«field.type.printÂ» Â«field.nameÂ») {
+				this.Â«field.nameÂ» = Â«field.nameÂ»;
 			}
-		ÇENDIFÈ
+		Â«ENDIFÂ»
 	'''
 
 	def printDocumentation(EObject object) {
@@ -145,9 +145,9 @@ class GeneratorHelper {
 		if(doc!=null)  {
 			'''
 				/**
-				ÇFOR line : doc.split("\\r?\\n")È
-					Ç" * "ÈÇlineÈ
-				ÇENDFORÈ
+				Â«FOR line : doc.split("\\r?\\n")Â»
+					Â«" * "Â»Â«lineÂ»
+				Â«ENDFORÂ»
 				 */
 			'''
 		}
@@ -157,21 +157,21 @@ class GeneratorHelper {
 		Collections::sort(imports)
 		'''
 
-			ÇFOR i : importsÈ
-				import ÇiÈ;
-			ÇENDFORÈ
+			Â«FOR i : importsÂ»
+				import Â«iÂ»;
+			Â«ENDFORÂ»
 		'''
 	}
 
 	def dispatch printDeclaration(ParametrizedType type)
-		'''Çtype.name.printNoImportÈÇtype.printParametersÈ'''
+		'''Â«type.name.printNoImportÂ»Â«type.printParametersÂ»'''
 
 	def dispatch printDeclaration(Relationship relationship) {
 		relationship.qualifiedName.printNoImport
 	}
 
 	def printParameters(ParametrizedType type)
-		'''ÇFOR parameter : type.parameters BEFORE'<' SEPARATOR ', ' AFTER '>'ÈÇparameter.nameÈÇENDFORÈ'''
+		'''Â«FOR parameter : type.parameters BEFORE'<' SEPARATOR ', ' AFTER '>'Â»Â«parameter.nameÂ»Â«ENDFORÂ»'''
 
 	def private getSimpleName(String qualifiedName) {
 		qualifiedName.split("\\.").last
