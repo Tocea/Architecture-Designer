@@ -38,18 +38,18 @@ class ArchitectureDSLGenerator implements IGenerator {
 
 	def dispatch compile(ArchitectureExtension architectureExtension)
 	'''
-		package ÇarchitectureExtension.fullyQualifiedNameÈ;
+		package Â«architectureExtension.fullyQualifiedNameÂ»;
 
-		public class ÇarchitectureExtension.simpleNameÈFactory {
+		public class Â«architectureExtension.simpleNameÂ»Factory {
 
-			public static final ÇarchitectureExtension.simpleNameÈFactory instance = new ÇarchitectureExtension.simpleNameÈFactory();
+			public static final Â«architectureExtension.simpleNameÂ»Factory instance = new Â«architectureExtension.simpleNameÂ»Factory();
 
-			ÇFOR entity : architectureExtension.entities.filter([e|e.toInclude])È
+			Â«FOR entity : architectureExtension.entities.filter([e|e.toInclude])Â»
 
-				public ÇIF entity instanceof ParametrizedType && !(entity as ParametrizedType).parameters.emptyÈÇ(entity as ParametrizedType).printParametersÈ ÇENDIFÈÇentity.printTypeÈ createÇ(entity as NamedEntity).name.toFirstUpperÈ() {
-					return new Çentity.printTypeÈ();
+				public Â«IF entity instanceof ParametrizedType && !(entity as ParametrizedType).parameters.emptyÂ»Â«(entity as ParametrizedType).printParametersÂ» Â«ENDIFÂ»Â«entity.printTypeÂ» createÂ«(entity as NamedEntity).name.toFirstUpperÂ»() {
+					return new Â«entity.printTypeÂ»();
 				}
-			ÇENDFORÈ
+			Â«ENDFORÂ»
 
 		}
 	'''
@@ -58,18 +58,18 @@ class ArchitectureDSLGenerator implements IGenerator {
 		val helper = new GeneratorHelper(pattern, _iQualifiedNameProvider)
 
 		'''
-			package Çpattern.eContainer.fullyQualifiedNameÈ;
-			Çhelper.printImportsÈ
+			package Â«pattern.eContainer.fullyQualifiedNameÂ»;
+			Â«helper.printImportsÂ»
 
-			Çhelper.getDocumentation(pattern)È
-			public ÇIF pattern.isAbstractÈabstract ÇENDIFÈclass Çhelper.printDeclaration(pattern)È extends ÇIF pattern.superPattern==nullÈÇhelper.print(GeneratorHelper::ABSTRACT_PATTERN)ÈÇELSEÈÇhelper.print(pattern.superPattern)ÈÇENDIFÈ {
+			Â«helper.getDocumentation(pattern)Â»
+			public Â«IF pattern.isAbstractÂ»abstract Â«ENDIFÂ»class Â«helper.printDeclaration(pattern)Â» extends Â«IF pattern.superPattern==nullÂ»Â«helper.print(GeneratorHelper::ABSTRACT_PATTERN)Â»Â«ELSEÂ»Â«helper.print(pattern.superPattern)Â»Â«ENDIFÂ» {
 
-				ÇFOR field : pattern.fieldsÈ
-					Çhelper.print(field)È
-				ÇENDFORÈ
-				ÇFOR field : pattern.fieldsÈ
-					Çhelper.printAccessor(field)È
-				ÇENDFORÈ
+				Â«FOR field : pattern.fieldsÂ»
+					Â«helper.print(field)Â»
+				Â«ENDFORÂ»
+				Â«FOR field : pattern.fieldsÂ»
+					Â«helper.printAccessor(field)Â»
+				Â«ENDFORÂ»
 
 			}
 		'''
@@ -79,18 +79,18 @@ class ArchitectureDSLGenerator implements IGenerator {
 		val helper = new GeneratorHelper(role, _iQualifiedNameProvider)
 
 		'''
-			package Çrole.eContainer.fullyQualifiedNameÈ;
-			Çhelper.printImportsÈ
+			package Â«role.eContainer.fullyQualifiedNameÂ»;
+			Â«helper.printImportsÂ»
 
-			Çhelper.getDocumentation(role)È
-			public ÇIF role.isAbstractÈabstract ÇENDIFÈclass Çhelper.printDeclaration(role)È extends ÇIF role.superRole==nullÈÇhelper.print(GeneratorHelper::ABSTRACT_ROLE)È<ÇIF role.element==nullÈÇhelper.print(GeneratorHelper::ANALYSED_ELEMENT)ÈÇELSEÈÇhelper.print(role.element)ÈÇENDIFÈ>ÇELSEÈÇhelper.print(role.superRole)ÈÇENDIFÈ {
+			Â«helper.getDocumentation(role)Â»
+			public Â«IF role.isAbstractÂ»abstract Â«ENDIFÂ»class Â«helper.printDeclaration(role)Â» extends Â«IF role.superRole==nullÂ»Â«helper.print(GeneratorHelper::ABSTRACT_ROLE)Â»<Â«IF role.element==nullÂ»Â«helper.print(GeneratorHelper::ANALYSED_ELEMENT)Â»Â«ELSEÂ»Â«helper.print(role.element)Â»Â«ENDIFÂ»>Â«ELSEÂ»Â«helper.print(role.superRole)Â»Â«ENDIFÂ» {
 
-				ÇFOR field : role.fieldsÈ
-					Çhelper.print(field)È
-				ÇENDFORÈ
-				ÇFOR field : role.fieldsÈ
-					Çhelper.printAccessor(field)È
-				ÇENDFORÈ
+				Â«FOR field : role.fieldsÂ»
+					Â«helper.print(field)Â»
+				Â«ENDFORÂ»
+				Â«FOR field : role.fieldsÂ»
+					Â«helper.printAccessor(field)Â»
+				Â«ENDFORÂ»
 
 			}
 		'''	
@@ -100,27 +100,27 @@ class ArchitectureDSLGenerator implements IGenerator {
 		val helper = new GeneratorHelper(relationship, _iQualifiedNameProvider)
 
 		'''
-			package Çrelationship.eContainer.fullyQualifiedNameÈ;
-			Çhelper.printImportsÈ
+			package Â«relationship.eContainer.fullyQualifiedNameÂ»;
+			Â«helper.printImportsÂ»
 
-			Çhelper.getDocumentation(relationship)È
-			public ÇIF relationship.isAbstractÈabstract ÇENDIFÈclass Çrelationship.nameÈ extends ÇIF relationship.superRelationship==nullÈÇhelper.print(GeneratorHelper::ABSTRACT_EXTENSION_RELATIONSHIP)ÈÇELSEÈÇhelper.print(relationship.superRelationship)ÈÇENDIFÈ {
-				ÇFOR field : relationship.fieldsÈ
-					Çhelper.print(field)È
-				ÇENDFORÈ
-				ÇFOR field : relationship.fieldsÈ
-					Çhelper.printAccessor(field)È
-				ÇENDFORÈ
+			Â«helper.getDocumentation(relationship)Â»
+			public Â«IF relationship.isAbstractÂ»abstract Â«ENDIFÂ»class Â«relationship.nameÂ» extends Â«IF relationship.superRelationship==nullÂ»Â«helper.print(GeneratorHelper::ABSTRACT_EXTENSION_RELATIONSHIP)Â»Â«ELSEÂ»Â«helper.print(relationship.superRelationship)Â»Â«ENDIFÂ» {
+				Â«FOR field : relationship.fieldsÂ»
+					Â«helper.print(field)Â»
+				Â«ENDFORÂ»
+				Â«FOR field : relationship.fieldsÂ»
+					Â«helper.printAccessor(field)Â»
+				Â«ENDFORÂ»
 
-				ÇIF relationship.constraints.size>0È
-					private static final Çhelper.print(GeneratorHelper::IRELATIONSHIP_CONSTRAINT)È _constraint = Çhelper.print(relationship.constraints)È;
+				Â«IF relationship.constraints.size>0Â»
+					private static final Â«helper.print(GeneratorHelper::IRELATIONSHIP_CONSTRAINT)Â» _constraint = Â«helper.print(relationship.constraints)Â»;
 
 					@Override
 					public boolean checkConstraint() {
-						return ÇIF relationship.superRelationship!=nullÈsuper.checkConstraint() && ÇENDIFÈ_constraint.check(this);
+						return Â«IF relationship.superRelationship!=nullÂ»super.checkConstraint() && Â«ENDIFÂ»_constraint.check(this);
 					}
 
-				ÇENDIFÈ
+				Â«ENDIFÂ»
 			}
 		'''
 	}
@@ -146,7 +146,7 @@ class ArchitectureDSLGenerator implements IGenerator {
 	}
 
 	def dispatch printType(ParametrizedType type)
-		'''Çtype.fullyQualifiedNameÈÇtype.printParametersÈ'''
+		'''Â«type.fullyQualifiedNameÂ»Â«type.printParametersÂ»'''
 
 	def dispatch printType(Relationship relationship) {
 		relationship.fullyQualifiedName
@@ -165,6 +165,6 @@ class ArchitectureDSLGenerator implements IGenerator {
 	}
 
 	def printParameters(ParametrizedType type)
-		'''ÇFOR parameter : type.parameters BEFORE '<' SEPARATOR ', ' AFTER '>'ÈÇparameter.printTypeÈÇENDFORÈ'''
+		'''Â«FOR parameter : type.parameters BEFORE '<' SEPARATOR ', ' AFTER '>'Â»Â«parameter.printTypeÂ»Â«ENDFORÂ»'''
 
 }

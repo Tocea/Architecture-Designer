@@ -232,30 +232,30 @@ class GeneratorHelper {
 	
 	def print(Field field)
 	'''
-		Çfield.documentationÈ
-		ÇIF field.manyÈ
-		private final ÇLIST.printÈ<Çfield.type.printÈ> Çfield.varnameÈ = new ÇARRAY_LIST.printÈ<Çfield.type.printÈ>();
-		ÇELSEÈ
-			ÇIF field.lb!=nullÈ
-				private final ÇBOUNDLIST.printÈ<Çfield.type.printÈ> Çfield.varnameÈ = new ÇBOUNDLIST.printÈ<Çfield.type.printÈ>(Çfield.lb.printÈ, ÇIF field.ub==nullÈ-1ÇELSEÈÇfield.ub.printÈÇENDIFÈ);
-			ÇELSEÈ
-			private Çfield.printTypeÈ Çfield.varnameÈ;
-			ÇENDIFÈ
-		ÇENDIFÈ
+		Â«field.documentationÂ»
+		Â«IF field.manyÂ»
+		private final Â«LIST.printÂ»<Â«field.type.printÂ»> Â«field.varnameÂ» = new Â«ARRAY_LIST.printÂ»<Â«field.type.printÂ»>();
+		Â«ELSEÂ»
+			Â«IF field.lb!=nullÂ»
+				private final Â«BOUNDLIST.printÂ»<Â«field.type.printÂ»> Â«field.varnameÂ» = new Â«BOUNDLIST.printÂ»<Â«field.type.printÂ»>(Â«field.lb.printÂ», Â«IF field.ub==nullÂ»-1Â«ELSEÂ»Â«field.ub.printÂ»Â«ENDIFÂ»);
+			Â«ELSEÂ»
+			private Â«field.printTypeÂ» Â«field.varnameÂ»;
+			Â«ENDIFÂ»
+		Â«ENDIFÂ»
 	'''
 	
 	def printAccessor(Field field)
 	'''
 
-		public Çfield.printTypeÈ getÇfield.name.toFirstUpperÈ() {
-			return this.Çfield.varnameÈ;
+		public Â«field.printTypeÂ» getÂ«field.name.toFirstUpperÂ»() {
+			return this.Â«field.varnameÂ»;
 		}
 
-		ÇIF !field.many && field.lb==nullÈ
-			public void setÇfield.name.toFirstUpperÈ(Çfield.printTypeÈ _Çfield.nameÈ) {
-				this.Çfield.varnameÈ = _Çfield.nameÈ;
+		Â«IF !field.many && field.lb==nullÂ»
+			public void setÂ«field.name.toFirstUpperÂ»(Â«field.printTypeÂ» _Â«field.nameÂ») {
+				this.Â«field.varnameÂ» = _Â«field.nameÂ»;
 			}
-		ÇENDIFÈ
+		Â«ENDIFÂ»
 	'''
 
 	def print(NamedEntity entity) {
@@ -292,14 +292,14 @@ class GeneratorHelper {
 	}
 
 	def private <T> printParameters(Collection<T> parameters, (T)=>String f)
-		'''<ÇFOR parameter : parameters SEPARATOR ', 'ÈÇf.apply(parameter)ÈÇENDFORÈ>'''
+		'''<Â«FOR parameter : parameters SEPARATOR ', 'Â»Â«f.apply(parameter)Â»Â«ENDFORÂ»>'''
 
 	def printImports()
 		'''
 
-			ÇFOR i : importsÈ
-				import ÇiÈ;
-			ÇENDFORÈ
+			Â«FOR i : importsÂ»
+				import Â«iÂ»;
+			Â«ENDFORÂ»
 		'''
 
 	def getDocumentation(EObject object) {
@@ -307,9 +307,9 @@ class GeneratorHelper {
 		if(doc!=null)  {
 			'''
 				/**
-				ÇFOR line : doc.split("\\r?\\n")È
-					Ç" * "ÈÇlineÈ
-				ÇENDFORÈ
+				Â«FOR line : doc.split("\\r?\\n")Â»
+					Â«" * "Â»Â«lineÂ»
+				Â«ENDFORÂ»
 				 */
 			'''
 		}
@@ -317,9 +317,9 @@ class GeneratorHelper {
 
 	def printType(Field field) {
 		if(field.many)
-			'''ÇLIST.printÈ<Çfield.type.printÈ>'''
+			'''Â«LIST.printÂ»<Â«field.type.printÂ»>'''
 		else if(field.lb!=null)
-			'''ÇBOUNDLIST.printÈ<Çfield.type.printÈ>'''
+			'''Â«BOUNDLIST.printÂ»<Â«field.type.printÂ»>'''
 		else
 			field.type.print
 	}
@@ -327,9 +327,9 @@ class GeneratorHelper {
 	def print(List<RelationshipConstraint> constraints) {
 		switch constraints {
 			case constraints.size==1 :
-				'''Ç(constraints.get(0) as RelationshipConjunctionConstraint).printÈ;'''
+				'''Â«(constraints.get(0) as RelationshipConjunctionConstraint).printÂ»;'''
 			case constraints.size>1 :
-				'''new ÇDISJUNCTION_CONSTRAINT.printÈ(ÇFOR c : constraints SEPARATOR ', 'ÈÇ(c as RelationshipConjunctionConstraint).printÈÇENDFORÈ);'''
+				'''new Â«DISJUNCTION_CONSTRAINT.printÂ»(Â«FOR c : constraints SEPARATOR ', 'Â»Â«(c as RelationshipConjunctionConstraint).printÂ»Â«ENDFORÂ»);'''
 		}
 	}
 
@@ -338,13 +338,13 @@ class GeneratorHelper {
 			case constraint.constraints.size == 1 :
 				(constraint.constraints.get(0) as TypeConstraint).print
 			case constraint.constraints.size > 1 :
-				'''new ÇCONJUNCTION_CONSTRAINT.printÈ(ÇFOR c : constraint.constraints SEPARATOR ', 'ÈÇ(c as TypeConstraint).printÈÇENDFORÈ)'''
+				'''new Â«CONJUNCTION_CONSTRAINT.printÂ»(Â«FOR c : constraint.constraints SEPARATOR ', 'Â»Â«(c as TypeConstraint).printÂ»Â«ENDFORÂ»)'''
 			default:
 				""
 		}
 	}
 
 	def print(TypeConstraint constraint)
-		'''new ÇTYPE_CONSTRAINT.printÈ(ÇIF constraint.source==nullÈnullÇELSEÈÇconstraint.source.qualifiedName.printÈ.classÇENDIFÈ, ÇIF constraint.target==nullÈnullÇELSEÈÇconstraint.target.qualifiedName.printÈ.classÇENDIFÈ)'''
+		'''new Â«TYPE_CONSTRAINT.printÂ»(Â«IF constraint.source==nullÂ»nullÂ«ELSEÂ»Â«constraint.source.qualifiedName.printÂ».classÂ«ENDIFÂ», Â«IF constraint.target==nullÂ»nullÂ«ELSEÂ»Â«constraint.target.qualifiedName.printÂ».classÂ«ENDIFÂ»)'''
 
 }
