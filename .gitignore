@@ -10,6 +10,11 @@
 !*/.project
 */.settings/*
 
+# com.tocea.codewatch.architecture
+com.tocea.codewatch.architecture/.classpath
+com.tocea.codewatch.architecture/.project
+com.tocea.codewatch.architecture/target
+
 # Generated sources are not included
 */src-gen/*
 */xtend-gen/*
