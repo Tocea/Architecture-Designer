@@ -1,24 +1,26 @@
 package com.tocea.codewatch.architecture.dsl.generator
 
+import com.google.inject.Guice
 import com.google.inject.Inject
+import com.tocea.codewatch.architecture.dsl.ArchitectureDSLRuntimeModule
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureExtension
-import com.tocea.codewatch.architecture.dsl.architectureDSL.Datatype
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionEntity
 import com.tocea.codewatch.architecture.dsl.architectureDSL.NamedEntity
-import com.tocea.codewatch.architecture.dsl.architectureDSL.Parameter
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ParametrizedType
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Pattern
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Relationship
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Role
 import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.xtext.generator.AbstractFileSystemAccess
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.naming.IQualifiedNameProvider
-import org.eclipse.xtext.generator.AbstractFileSystemAccess
 
 class ArchitectureDSLGenerator implements IGenerator {
 
 	@Inject extension IQualifiedNameProvider
+
+	val injector = Guice::createInjector(new ArchitectureDSLRuntimeModule)
 
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		(fsa as AbstractFileSystemAccess).setOutputPath("src")
@@ -31,80 +33,85 @@ class ArchitectureDSLGenerator implements IGenerator {
 		}
 	}
 
-	def dispatch compile(ArchitectureExtension architectureExtension)
-	'''
-		package «architectureExtension.fullyQualifiedName»;
+	def dispatch compile(ArchitectureExtension architectureExtension) {
+		val helper = injector.getInstance(typeof(GeneratorHelper))
+		
+		var res =
+		'''
+			public class «architectureExtension.simpleName»Factory {
 
-		public class «architectureExtension.simpleName»Factory {
+				public static final «architectureExtension.simpleName»Factory instance = new «architectureExtension.simpleName»Factory();
 
-			public static final «architectureExtension.simpleName»Factory instance = new «architectureExtension.simpleName»Factory();
+				«FOR entity : architectureExtension.entities.filter([e|e.toInclude])»
 
-			«FOR entity : architectureExtension.entities.filter([e|e.toInclude])»
+					/**
+					 * Creates an instance of {@link «entity.fullyQualifiedName» <em>«(entity as NamedEntity).name»</em>}.
+					 */
+					public «IF entity instanceof ParametrizedType && !(entity as ParametrizedType).parameters.empty»«helper.printParameters(entity as ParametrizedType)» «ENDIF»«helper.printDeclaration(entity)» create«(entity as NamedEntity).name.toFirstUpper»() {
+						return new «helper.printDeclaration(entity)»();
+					}
+				«ENDFOR»
 
-				public «IF entity instanceof ParametrizedType && !(entity as ParametrizedType).parameters.empty»«(entity as ParametrizedType).printParameters» «ENDIF»«entity.printType» create«(entity as NamedEntity).name.toFirstUpper»() {
-					return new «entity.printType»();
-				}
-			«ENDFOR»
-
-		}
-	'''
+			}
+		'''
+		res = "package "+architectureExtension.fullyQualifiedName+";\n"+helper.printImports+"\n"+res
+		res
+	}
 
 	def dispatch compile(Pattern pattern) {
-		val helper = new GeneratorHelper(pattern, _iQualifiedNameProvider)
-
+		val helper = injector.getInstance(typeof(GeneratorHelper))
+		
+		var res =
 		'''
-			package «pattern.eContainer.fullyQualifiedName»;
-			«helper.printImports»
-
-			«helper.getDocumentation(pattern)»
+			«helper.printDocumentation(pattern)»
 			public «IF pattern.isAbstract»abstract «ENDIF»class «helper.printDeclaration(pattern)» extends «IF pattern.superPattern==null»«helper.print(GeneratorHelper::ABSTRACT_PATTERN)»«ELSE»«helper.print(pattern.superPattern)»«ENDIF» {
 
 				«FOR field : pattern.fields»
 					«helper.print(field)»
 				«ENDFOR»
 				«FOR field : pattern.fields»
-					«helper.printAccessor(field)»
+					«helper.printAccessors(field)»
 				«ENDFOR»
 
 			}
 		'''
+		res = "package "+pattern.eContainer.fullyQualifiedName+";\n"+helper.printImports+"\n"+res
+		res.toString
 	}
 
 	def dispatch compile(Role role) {
-		val helper = new GeneratorHelper(role, _iQualifiedNameProvider)
-
+		val helper = injector.getInstance(typeof(GeneratorHelper))
+		
+		var res=
 		'''
-			package «role.eContainer.fullyQualifiedName»;
-			«helper.printImports»
-
-			«helper.getDocumentation(role)»
+			«helper.printDocumentation(role)»
 			public «IF role.isAbstract»abstract «ENDIF»class «helper.printDeclaration(role)» extends «IF role.superRole==null»«helper.print(GeneratorHelper::ABSTRACT_ROLE)»«ELSE»«helper.print(role.superRole)»«ENDIF»<«IF role.element==null»«helper.print(GeneratorHelper::ANALYSED_ELEMENT)»«ELSE»«helper.print(role.element)»«ENDIF»> {
 
 				«FOR field : role.fields»
 					«helper.print(field)»
 				«ENDFOR»
 				«FOR field : role.fields»
-					«helper.printAccessor(field)»
+					«helper.printAccessors(field)»
 				«ENDFOR»
 
 			}
-		'''	
+		'''
+		res = "package "+role.eContainer.fullyQualifiedName+";\n"+helper.printImports+"\n"+res
+		res
 	}
 
 	def dispatch compile(Relationship relationship) {
-		val helper = new GeneratorHelper(relationship, _iQualifiedNameProvider)
+		val helper = injector.getInstance(typeof(GeneratorHelper))
 
+		var res =
 		'''
-			package «relationship.eContainer.fullyQualifiedName»;
-			«helper.printImports»
-
-			«helper.getDocumentation(relationship)»
-			public «IF relationship.isAbstract»abstract «ENDIF»class «relationship.name» extends «IF relationship.superRelationship==null»«helper.print(GeneratorHelper::ABSTRACT_EXTENSION_RELATIONSHIP)»«ELSE»«helper.print(relationship.superRelationship)»«ENDIF» {
+			«helper.printDocumentation(relationship)»
+			public «IF relationship.isAbstract»abstract «ENDIF»class «helper.printDeclaration(relationship)» extends «IF relationship.superRelationship==null»«helper.print(GeneratorHelper::ABSTRACT_EXTENSION_RELATIONSHIP)»«ELSE»«helper.print(relationship.superRelationship)»«ENDIF» {
 				«FOR field : relationship.fields»
 					«helper.print(field)»
 				«ENDFOR»
 				«FOR field : relationship.fields»
-					«helper.printAccessor(field)»
+					«helper.printAccessors(field)»
 				«ENDFOR»
 
 				«IF relationship.constraints.size>0»
@@ -118,6 +125,8 @@ class ArchitectureDSLGenerator implements IGenerator {
 				«ENDIF»
 			}
 		'''
+		res = "package "+relationship.eContainer.fullyQualifiedName+";\n"+helper.printImports+"\n"+res
+		res
 	}
 
 	def dispatch toInclude(ExtensionEntity entity) {
@@ -140,7 +149,7 @@ class ArchitectureDSLGenerator implements IGenerator {
 		architectureExtension.name.split("\\.").last.toFirstUpper
 	}
 
-	def dispatch printType(ParametrizedType type)
+	/*def dispatch printType(ParametrizedType type)
 		'''«type.fullyQualifiedName»«type.printParameters»'''
 
 	def dispatch printType(Relationship relationship) {
@@ -160,6 +169,6 @@ class ArchitectureDSLGenerator implements IGenerator {
 	}
 
 	def printParameters(ParametrizedType type)
-		'''«FOR parameter : type.parameters BEFORE '<' SEPARATOR ', ' AFTER '>'»«parameter.printType»«ENDFOR»'''
+		'''«FOR parameter : type.parameters BEFORE '<' SEPARATOR ', ' AFTER '>'»«parameter.printType»«ENDFOR»'''*/
 
 }

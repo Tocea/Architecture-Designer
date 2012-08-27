@@ -1,28 +1,25 @@
 package com.tocea.codewatch.architecture.dsl.generator
 
+import com.google.inject.Inject
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Datatype
-import com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionEntity
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Field
 import com.tocea.codewatch.architecture.dsl.architectureDSL.NamedEntity
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Parameter
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ParametrizedType
-import com.tocea.codewatch.architecture.dsl.architectureDSL.Pattern
-import com.tocea.codewatch.architecture.dsl.architectureDSL.Relationship
-import com.tocea.codewatch.architecture.dsl.architectureDSL.RelationshipConjunctionConstraint
-import com.tocea.codewatch.architecture.dsl.architectureDSL.RelationshipConstraint
-import com.tocea.codewatch.architecture.dsl.architectureDSL.Role
-import com.tocea.codewatch.architecture.dsl.architectureDSL.TypeConstraint
+import com.tocea.codewatch.architecture.dsl.architectureDSL.PrimitiveRole
 import com.tocea.codewatch.architecture.dsl.architectureDSL.TypeReference
 import java.util.ArrayList
-import java.util.Collection
 import java.util.HashMap
 import java.util.List
 import java.util.Map
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.documentation.impl.MultiLineCommentDocumentationProvider
+import org.eclipse.xtext.documentation.IEObjectDocumentationProvider
 import org.eclipse.xtext.naming.IQualifiedNameProvider
-import com.tocea.codewatch.architecture.dsl.architectureDSL.PrimitiveRole
-import com.tocea.codewatch.architecture.dsl.architectureDSL.Arity
+import com.tocea.codewatch.architecture.dsl.architectureDSL.RelationshipConstraint
+import com.tocea.codewatch.architecture.dsl.architectureDSL.RelationshipConjunctionConstraint
+import com.tocea.codewatch.architecture.dsl.architectureDSL.TypeConstraint
+import java.util.Collections
+import com.tocea.codewatch.architecture.dsl.architectureDSL.Relationship
 
 class GeneratorHelper {
 
@@ -46,126 +43,138 @@ class GeneratorHelper {
 	public static val METHOD = "com.tocea.codewatch.architecture.mm.core.api.IMethod"
 	public static val FIELD = "com.tocea.codewatch.architecture.mm.core.api.IField"
 
-	static val documentationProvider = new MultiLineCommentDocumentationProvider
-
-	extension IQualifiedNameProvider
+	@Inject extension IEObjectDocumentationProvider
+	@Inject extension IQualifiedNameProvider
 
 	val List<String> imports = new ArrayList
 	val Map<String, String> names = new HashMap // Qualified Name => Name to use
 
-	new(ExtensionEntity entity, IQualifiedNameProvider qualifiedNameProvider) {
-		this._iQualifiedNameProvider = qualifiedNameProvider
-		entity.parseReferences
+	def private printNoImport(String qualifiedName) {
+		print(qualifiedName, false)
 	}
 
-	def private addName(String qualifiedName) {
-		addName(qualifiedName, true)
-	}
-
-	def private addName(String qualifiedName, boolean addImport) {
-		val simpleName = qualifiedName.split("\\.").last
+	def private print(String qualifiedName, boolean addImport) {
 		if(names.containsKey(qualifiedName))
-			return null
-		if(names.containsValue(simpleName))
-			names.put(qualifiedName, qualifiedName)
+			names.get(qualifiedName)
 		else {
-			names.put(qualifiedName, simpleName)
-			if(addImport)
-				imports.add(qualifiedName)
-		}
-	}
-
-	def private dispatch void parseReferences(ExtensionEntity entity) {}
-
-	def private dispatch void parseReferences(Datatype datatype) {
-		addName(datatype.reference.qualifiedName)
-	}
-
-	def private dispatch void parseReferences(PrimitiveRole primitiveRole) {
-		addName(primitiveRole.type.qualifiedName)
-	}
-
-	def private dispatch void parseReferences(Pattern pattern) {
-		addName(pattern.qualifiedName, false)
-		for(parameter : pattern.parameters)
-			addName(parameter.qualifiedName, false)
-		if(pattern.superPattern==null)
-			addName(ABSTRACT_PATTERN)
-		else
-			pattern.superPattern.parseReferences
-		pattern.fields.parseFields
-	}
-
-	def private dispatch void parseReferences(Role role) {
-		addName(role.qualifiedName, false)
-		for(parameter : role.parameters)
-			addName(parameter.qualifiedName, false)
-		if(role.superRole==null)
-			addName(ABSTRACT_ROLE)
-		if(role.element!=null)
-			addName(role.element.qualifiedName)
-		else
-			addName(ANALYSED_ELEMENT)
-		if(role.superRole!=null)
-			role.superRole.parseReferences
-		role.fields.parseFields
-	}
-
-	def private dispatch void parseReferences(Relationship relationship) {
-		addName(relationship.qualifiedName, false)
-		if(relationship.superRelationship==null)
-			addName(ABSTRACT_EXTENSION_RELATIONSHIP)
-		else
-			addName(relationship.superRelationship.qualifiedName)
-		relationship.constraints.parseConstraints
-		relationship.fields.parseFields
-	}
-
-	def private dispatch void parseReferences(TypeReference reference) {
-		addName(reference.reference.qualifiedName, !(reference.reference instanceof Parameter))
-		for(parameter : reference.parameters)
-			parameter.parseReferences
-	}
-
-	def private parseFields(Collection<Field> fields) {
-		for(field : fields) {
-			if(field.many) {
-				addName(LIST)
-				addName(ARRAY_LIST)
+			val simpleName = qualifiedName.simpleName
+			if(names.containsValue(simpleName)) {
+				names.put(qualifiedName, qualifiedName)
+				qualifiedName
 			}
-			if(field.lb!=null)
-				addName(BOUNDLIST)
-			field.type.parseReferences
-		}			
-	}
-
-	def private parseConstraints(Collection<RelationshipConstraint> constraints) {
-		if(constraints!=null) {
-			if(constraints.size>1)
-				addName(DISJUNCTION_CONSTRAINT)
-			for(constraint : constraints)
-				constraint.parseConstraint
+			else {
+				names.put(qualifiedName, simpleName)
+				if(addImport)
+					imports.add(qualifiedName) 
+				simpleName
+			}
 		}
 	}
 
-	def private parseConstraint(RelationshipConstraint constraint) {
+	def dispatch print(String qualifiedName) {
+		print(qualifiedName, true)
+	}
+
+	def dispatch print(Field field) {
+		switch field {
+			case field.many :
+				'''private «LIST.print»<«field.type.print»> «field.name» = new «ARRAY_LIST.print»<«field.type.print»>();'''
+			case field.lb!=null:
+				'''private «LIST.print»<«field.type.print»> «field.name» = new «BOUNDLIST.print»<«field.type.print»>();'''
+			default:
+				'''private «field.type.print» «field.name»;'''
+		}		
+	}
+
+	def dispatch print(TypeReference reference)
+		'''«reference.reference.print»«FOR parameter : reference.parameters BEFORE '<' SEPARATOR ', ' AFTER '>'»«parameter.print»«ENDFOR»'''
+
+	def dispatch print(Parameter parameter) {
+		parameter.name.printNoImport
+	}
+
+	def dispatch print(NamedEntity entity) {
+		entity.qualifiedName.print
+	}
+
+	def dispatch print(List<RelationshipConstraint> constraints) {
+		switch constraints {
+			case constraints.size==1 :
+				'''«(constraints.get(0) as RelationshipConjunctionConstraint).print»;'''
+			case constraints.size>1 :
+				'''new «DISJUNCTION_CONSTRAINT.print»(«FOR c : constraints SEPARATOR ', '»«(c as RelationshipConjunctionConstraint).print»«ENDFOR»);'''
+		}
+	}
+
+	def dispatch print(RelationshipConjunctionConstraint constraint) {
 		switch constraint {
-			RelationshipConjunctionConstraint : {
-				addName(TYPE_CONSTRAINT)
-				addName(IRELATIONSHIP_CONSTRAINT)
-				if(constraint.constraints.size>1)
-					addName(CONJUNCTION_CONSTRAINT)
-				for(c : constraint.constraints)
-					switch c {
-						TypeConstraint : {
-							if(c.source!=null)
-								addName(c.source.qualifiedName)
-							if(c.target!=null)
-								addName(c.target.qualifiedName)
-						}
-					} 
-			}
+			case constraint.constraints.size == 1 :
+				(constraint.constraints.get(0) as TypeConstraint).print
+			case constraint.constraints.size > 1 :
+				'''new «CONJUNCTION_CONSTRAINT.print»(«FOR c : constraint.constraints SEPARATOR ', '»«(c as TypeConstraint).print»«ENDFOR»)'''
+			default:
+				""
 		}
+	}
+
+	def dispatch print(TypeConstraint constraint)
+		'''new «TYPE_CONSTRAINT.print»(«IF constraint.source==null»null«ELSE»«constraint.source.qualifiedName.print».class«ENDIF», «IF constraint.target==null»null«ELSE»«constraint.target.qualifiedName.print».class«ENDIF»)'''
+
+	def printAccessors(Field field)
+	'''
+
+		/**
+		 * Getter for field «field.name».
+		 */
+		public «IF field.many || field.lb!=null»«LIST.print»<«field.type.print»>«ELSE»«field.type.print»«ENDIF» get«field.name.toFirstUpper»() {
+			return «field.name»;
+		}
+		«IF !field.many && field.lb==null»
+
+			/**
+			 * Setter for field «field.name».
+			 */
+			public void set«field.name.toFirstUpper»(«field.type.print» «field.name») {
+				this.«field.name» = «field.name»;
+			}
+		«ENDIF»
+	'''
+
+	def printDocumentation(EObject object) {
+		val doc = object.documentation
+		if(doc!=null)  {
+			'''
+				/**
+				«FOR line : doc.split("\\r?\\n")»
+					«" * "»«line»
+				«ENDFOR»
+				 */
+			'''
+		}
+	}
+
+	def printImports() {
+		Collections::sort(imports)
+		'''
+
+			«FOR i : imports»
+				import «i»;
+			«ENDFOR»
+		'''
+	}
+
+	def dispatch printDeclaration(ParametrizedType type)
+		'''«type.name.printNoImport»«type.printParameters»'''
+
+	def dispatch printDeclaration(Relationship relationship) {
+		relationship.qualifiedName.printNoImport
+	}
+
+	def printParameters(ParametrizedType type)
+		'''«FOR parameter : type.parameters BEFORE'<' SEPARATOR ', ' AFTER '>'»«parameter.name»«ENDFOR»'''
+
+	def private getSimpleName(String qualifiedName) {
+		qualifiedName.split("\\.").last
 	}
 
 	def private dispatch getQualifiedName(NamedEntity entity) {
@@ -180,125 +189,8 @@ class GeneratorHelper {
 		datatype.reference.qualifiedName
 	}
 
-	def private dispatch getQualifiedName(PrimitiveRole primitiveRole) {
-		primitiveRole.type.qualifiedName
+	def private dispatch getQualifiedName(PrimitiveRole role) {
+		role.type.qualifiedName
 	}
-
-	def print(Field field)
-	'''
-		«field.documentation»
-		«IF field.many»
-		private final «LIST.print»<«field.type.print»> «field.name» = new «ARRAY_LIST.print»<«field.type.print»>();
-		«ELSE»
-			«IF field.lb!=null»
-				private final «BOUNDLIST.print»<«field.type.print»> «field.name» = new «BOUNDLIST.print»<«field.type.print»>(«field.lb.print», «IF field.ub==null»-1«ELSE»«field.ub.print»«ENDIF»);
-			«ELSE»
-			private «field.printType» «field.name»;
-			«ENDIF»
-		«ENDIF»
-	'''
-
-	def printAccessor(Field field)
-	'''
-
-		public «field.printType» get«field.name.toFirstUpper»() {
-			return «field.name»;
-		}
-
-		«IF !field.many && field.lb==null»
-			public void set«field.name.toFirstUpper»(«field.printType» «field.name») {
-				this.«field.name» = «field.name»;
-			}
-		«ENDIF»
-	'''
-
-	def print(NamedEntity entity) {
-		entity.qualifiedName.print
-	}
-
-	def print(TypeReference reference) {
-		if(!reference.parameters.empty)
-			reference.reference.print + reference.parameters.printParameters([p | p.print])
-		else
-			reference.reference.print
-	}
-
-	def print(String qualifiedName) {
-		if(names.containsKey(qualifiedName))
-			names.get(qualifiedName)
-		else
-			qualifiedName
-	}
-
-	def print(Arity arity) {
-		if(arity.unbound)
-			"-1"
-		else
-			arity.value.toString
-	}
-
-
-	def printDeclaration(ParametrizedType type) {
-		if(!type.parameters.empty)
-			type.name + type.parameters.printParameters([p | p.name])
-		else
-			type.name
-	}
-
-	def private <T> printParameters(Collection<T> parameters, (T)=>String f)
-		'''<«FOR parameter : parameters SEPARATOR ', '»«f.apply(parameter)»«ENDFOR»>'''
-
-	def printImports()
-		'''
-
-			«FOR i : imports»
-				import «i»;
-			«ENDFOR»
-		'''
-
-	def getDocumentation(EObject object) {
-		val doc = documentationProvider.getDocumentation(object)
-		if(doc!=null)  {
-			'''
-				/**
-				«FOR line : doc.split("\\r?\\n")»
-					«" * "»«line»
-				«ENDFOR»
-				 */
-			'''
-		}
-	}
-
-	def printType(Field field) {
-		if(field.many)
-			'''«LIST.print»<«field.type.print»>'''
-		else if(field.lb!=null)
-			'''«BOUNDLIST.print»<«field.type.print»>'''
-		else
-			field.type.print
-	}
-
-	def print(List<RelationshipConstraint> constraints) {
-		switch constraints {
-			case constraints.size==1 :
-				'''«(constraints.get(0) as RelationshipConjunctionConstraint).print»;'''
-			case constraints.size>1 :
-				'''new «DISJUNCTION_CONSTRAINT.print»(«FOR c : constraints SEPARATOR ', '»«(c as RelationshipConjunctionConstraint).print»«ENDFOR»);'''
-		}
-	}
-
-	def print(RelationshipConjunctionConstraint constraint) {
-		switch constraint {
-			case constraint.constraints.size == 1 :
-				(constraint.constraints.get(0) as TypeConstraint).print
-			case constraint.constraints.size > 1 :
-				'''new «CONJUNCTION_CONSTRAINT.print»(«FOR c : constraint.constraints SEPARATOR ', '»«(c as TypeConstraint).print»«ENDFOR»)'''
-			default:
-				""
-		}
-	}
-
-	def print(TypeConstraint constraint)
-		'''new «TYPE_CONSTRAINT.print»(«IF constraint.source==null»null«ELSE»«constraint.source.qualifiedName.print».class«ENDIF», «IF constraint.target==null»null«ELSE»«constraint.target.qualifiedName.print».class«ENDIF»)'''
 
 }
