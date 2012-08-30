@@ -10,6 +10,9 @@
 !*/.project
 */.settings/*
 
+# Maven
+*/target/*
+
 # com.tocea.codewatch.architecture
 com.tocea.codewatch.architecture/.classpath
 com.tocea.codewatch.architecture/.project
