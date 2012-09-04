@@ -10,6 +10,10 @@
 !*/.project
 */.settings/*
 
+# Maven
+*/target/*
+*/*/target/*
+
 # com.tocea.codewatch.architecture
 com.tocea.codewatch.architecture/.classpath
 com.tocea.codewatch.architecture/.project
@@ -19,6 +23,7 @@ com.tocea.codewatch.architecture/target
 */src-gen/*
 */xtend-gen/*
 *_gen
+*._trace
 
 # Ignore anything in a bin folder
 */bin/*
