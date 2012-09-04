@@ -23,6 +23,7 @@ com.tocea.codewatch.architecture/target
 */src-gen/*
 */xtend-gen/*
 *_gen
+*._trace
 
 # Ignore anything in a bin folder
 */bin/*

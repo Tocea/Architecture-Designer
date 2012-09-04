@@ -13,6 +13,7 @@
 		<module>../com.tocea.codewatch.architecture.dsl.ui</module>
 		<module>../com.tocea.codewatch.architecture.dsl.tests</module>
 		<module>../com.tocea.codewatch.architecture.dsl.sdk</module>
+		<module>../com.tocea.codewatch.architecture.dsl.updatesite</module>
 	</modules>
 
 	<properties>

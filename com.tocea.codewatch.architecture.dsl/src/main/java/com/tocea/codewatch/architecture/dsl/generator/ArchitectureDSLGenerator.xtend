@@ -1,9 +1,10 @@
 package com.tocea.codewatch.architecture.dsl.generator
 
 import com.google.inject.Inject
-import com.tocea.codewatch.architecture.dsl.ArchitectureDslFileSystemAccess
+import com.tocea.annotations.factory.AnnotationsFactory
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureExtension
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionEntity
+import com.tocea.codewatch.architecture.dsl.architectureDSL.Field
 import com.tocea.codewatch.architecture.dsl.architectureDSL.NamedEntity
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ParametrizedType
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Pattern
@@ -13,21 +14,38 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess
 import org.eclipse.xtext.generator.IGenerator
 import org.eclipse.xtext.naming.IQualifiedNameProvider
+import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.core.runtime.Path
+import org.eclipse.xtext.generator.AbstractFileSystemAccess
+import java.util.ArrayList
+import com.tocea.annotations.api.IAnnotationType
+import com.tocea.annotations.xml.AnnotationsXMLTools
 
 class ArchitectureDSLGenerator implements IGenerator {
 
 	@Inject extension IQualifiedNameProvider
 
+	val annotationsFactory = new AnnotationsFactory
+
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		val cfsa = fsa as ArchitectureDslFileSystemAccess
-		cfsa.setOutputPath(cfsa.extensionOutput);
+		val project = ResourcesPlugin::workspace.root.getFile(new Path(resource.URI.toPlatformString(true))).project
+		val propertiesHelper = new PropertiesHelper(project)
+		(fsa as AbstractFileSystemAccess).setOutputPath(propertiesHelper.outputPath)
+		val annotationTypes = new ArrayList<IAnnotationType>
 		for(architectureExtension : resource.allContents.toIterable.filter(typeof(ArchitectureExtension))) {
-			if(!architectureExtension.entities.filter([e| e instanceof ParametrizedType || e instanceof Relationship]).empty) {
+			val entities = architectureExtension.entities.filter([e| e instanceof ParametrizedType || e instanceof Relationship])
+			if(!entities.empty) {
 				fsa.generateFile(architectureExtension.fullyQualifiedName.toString("/")+"/"+architectureExtension.simpleName+"Factory.java", compile(architectureExtension))
-				for(entity : architectureExtension.entities.filter([e| e instanceof ParametrizedType || e instanceof Relationship]))
+				for(entity : entities) {
 					fsa.generateFile(entity.fullyQualifiedName.toString("/")+".java", compile(entity))
+					if(entity instanceof Role)
+						annotationTypes.add((entity as Role).annotationType)
+				}
 			}
 		}
+		val name = resource.URI.trimFileExtension.lastSegment.split("/").last+".xml"
+		val file = propertiesHelper.getAnnotationFile(name).location.toFile
+		AnnotationsXMLTools::serialize(file, annotationTypes as IAnnotationType[])
 	}
 	
 
@@ -146,6 +164,17 @@ class ArchitectureDSLGenerator implements IGenerator {
 
 	def getSimpleName(ArchitectureExtension architectureExtension) {
 		architectureExtension.name.split("\\.").last.toFirstUpper
+	}
+
+	def getAnnotationType(Role role) {
+		val annotationType = annotationsFactory.newAnnotationType(role.name)
+		for(field : role.fields)
+			annotationType.attributes.add(field.annotationAttribute)
+		annotationType
+	}
+
+	def getAnnotationAttribute(Field field) {
+		annotationsFactory.newAnnotationAttribute(field.name, field.many)
 	}
 
 }

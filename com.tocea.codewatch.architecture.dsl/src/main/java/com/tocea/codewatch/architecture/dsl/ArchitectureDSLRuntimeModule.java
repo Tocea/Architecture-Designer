@@ -3,11 +3,9 @@
  */
 package com.tocea.codewatch.architecture.dsl;
 
-import org.eclipse.xtext.builder.EclipseResourceFileSystemAccess2;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.scoping.IScopeProvider;
 
-import com.google.inject.Binder;
 import com.tocea.codewatch.architecture.dsl.generator.ArchitectureDSLGenerator;
 import com.tocea.codewatch.architecture.dsl.scoping.ArchitectureDSLScopeProvider;
 
@@ -15,13 +13,6 @@ import com.tocea.codewatch.architecture.dsl.scoping.ArchitectureDSLScopeProvider
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 public class ArchitectureDSLRuntimeModule extends com.tocea.codewatch.architecture.dsl.AbstractArchitectureDSLRuntimeModule {
-
-    @Override
-    public void configure(Binder binder) {
-        binder.bind(EclipseResourceFileSystemAccess2.class).to(ArchitectureDslFileSystemAccess.class);
-        super.configure(binder);
-    }
-
     
 	@Override
 	public Class<? extends IScopeProvider> bindIScopeProvider() {

@@ -3,7 +3,10 @@ package com.tocea.codewatch.architecture.dsl.generator;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
-import com.tocea.codewatch.architecture.dsl.ArchitectureDslFileSystemAccess;
+import com.tocea.annotations.api.IAnnotationAttribute;
+import com.tocea.annotations.api.IAnnotationType;
+import com.tocea.annotations.factory.AnnotationsFactory;
+import com.tocea.annotations.xml.AnnotationsXMLTools;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureExtension;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionEntity;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Field;
@@ -17,18 +20,31 @@ import com.tocea.codewatch.architecture.dsl.architectureDSL.Role;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Type;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.TypeReference;
 import com.tocea.codewatch.architecture.dsl.generator.GeneratorHelper;
+import com.tocea.codewatch.architecture.dsl.generator.PropertiesHelper;
+import java.io.File;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.generator.AbstractFileSystemAccess;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.xbase.lib.Conversions;
-import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Functions.Function0;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
@@ -39,15 +55,32 @@ public class ArchitectureDSLGenerator implements IGenerator {
   @Inject
   private IQualifiedNameProvider _iQualifiedNameProvider;
   
+  private final AnnotationsFactory annotationsFactory = new Function0<AnnotationsFactory>() {
+    public AnnotationsFactory apply() {
+      AnnotationsFactory _annotationsFactory = new AnnotationsFactory();
+      return _annotationsFactory;
+    }
+  }.apply();
+  
   public void doGenerate(final Resource resource, final IFileSystemAccess fsa) {
-    try {
-      final ArchitectureDslFileSystemAccess cfsa = ((ArchitectureDslFileSystemAccess) fsa);
-      String _extensionOutput = cfsa.getExtensionOutput();
-      cfsa.setOutputPath(_extensionOutput);
-      TreeIterator<EObject> _allContents = resource.getAllContents();
-      Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
-      Iterable<ArchitectureExtension> _filter = Iterables.<ArchitectureExtension>filter(_iterable, ArchitectureExtension.class);
-      for (final ArchitectureExtension architectureExtension : _filter) {
+    IWorkspace _workspace = ResourcesPlugin.getWorkspace();
+    IWorkspaceRoot _root = _workspace.getRoot();
+    URI _uRI = resource.getURI();
+    String _platformString = _uRI.toPlatformString(true);
+    Path _path = new Path(_platformString);
+    IFile _file = _root.getFile(_path);
+    final IProject project = _file.getProject();
+    PropertiesHelper _propertiesHelper = new PropertiesHelper(project);
+    final PropertiesHelper propertiesHelper = _propertiesHelper;
+    String _outputPath = propertiesHelper.getOutputPath();
+    ((AbstractFileSystemAccess) fsa).setOutputPath(_outputPath);
+    ArrayList<IAnnotationType> _arrayList = new ArrayList<IAnnotationType>();
+    final ArrayList<IAnnotationType> annotationTypes = _arrayList;
+    TreeIterator<EObject> _allContents = resource.getAllContents();
+    Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
+    Iterable<ArchitectureExtension> _filter = Iterables.<ArchitectureExtension>filter(_iterable, ArchitectureExtension.class);
+    for (final ArchitectureExtension architectureExtension : _filter) {
+      {
         EList<ExtensionEntity> _entities = architectureExtension.getEntities();
         final Function1<ExtensionEntity,Boolean> _function = new Function1<ExtensionEntity,Boolean>() {
             public Boolean apply(final ExtensionEntity e) {
@@ -60,8 +93,8 @@ public class ArchitectureDSLGenerator implements IGenerator {
               return Boolean.valueOf(_or);
             }
           };
-        Iterable<ExtensionEntity> _filter_1 = IterableExtensions.<ExtensionEntity>filter(_entities, _function);
-        boolean _isEmpty = IterableExtensions.isEmpty(_filter_1);
+        final Iterable<ExtensionEntity> entities = IterableExtensions.<ExtensionEntity>filter(_entities, _function);
+        boolean _isEmpty = IterableExtensions.isEmpty(entities);
         boolean _not = (!_isEmpty);
         if (_not) {
           QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(architectureExtension);
@@ -72,31 +105,32 @@ public class ArchitectureDSLGenerator implements IGenerator {
           String _plus_2 = (_plus_1 + "Factory.java");
           CharSequence _compile = this.compile(architectureExtension);
           fsa.generateFile(_plus_2, _compile);
-          EList<ExtensionEntity> _entities_1 = architectureExtension.getEntities();
-          final Function1<ExtensionEntity,Boolean> _function_1 = new Function1<ExtensionEntity,Boolean>() {
-              public Boolean apply(final ExtensionEntity e) {
-                boolean _or = false;
-                if ((e instanceof ParametrizedType)) {
-                  _or = true;
-                } else {
-                  _or = ((e instanceof ParametrizedType) || (e instanceof Relationship));
-                }
-                return Boolean.valueOf(_or);
+          for (final ExtensionEntity entity : entities) {
+            {
+              QualifiedName _fullyQualifiedName_1 = this._iQualifiedNameProvider.getFullyQualifiedName(entity);
+              String _string_1 = _fullyQualifiedName_1.toString("/");
+              String _plus_3 = (_string_1 + ".java");
+              CharSequence _compile_1 = this.compile(entity);
+              fsa.generateFile(_plus_3, _compile_1);
+              if ((entity instanceof Role)) {
+                IAnnotationType _annotationType = this.getAnnotationType(((Role) entity));
+                annotationTypes.add(_annotationType);
               }
-            };
-          Iterable<ExtensionEntity> _filter_2 = IterableExtensions.<ExtensionEntity>filter(_entities_1, _function_1);
-          for (final ExtensionEntity entity : _filter_2) {
-            QualifiedName _fullyQualifiedName_1 = this._iQualifiedNameProvider.getFullyQualifiedName(entity);
-            String _string_1 = _fullyQualifiedName_1.toString("/");
-            String _plus_3 = (_string_1 + ".java");
-            CharSequence _compile_1 = this.compile(entity);
-            fsa.generateFile(_plus_3, _compile_1);
+            }
           }
         }
       }
-    } catch (Exception _e) {
-      throw Exceptions.sneakyThrow(_e);
     }
+    URI _uRI_1 = resource.getURI();
+    URI _trimFileExtension = _uRI_1.trimFileExtension();
+    String _lastSegment = _trimFileExtension.lastSegment();
+    String[] _split = _lastSegment.split("/");
+    String _last = IterableExtensions.<String>last(((Iterable<String>)Conversions.doWrapArray(_split)));
+    final String name = (_last + ".xml");
+    IFile _annotationFile = propertiesHelper.getAnnotationFile(name);
+    IPath _location = _annotationFile.getLocation();
+    final File file = _location.toFile();
+    AnnotationsXMLTools.serialize(file, ((IAnnotationType[]) ((IAnnotationType[])Conversions.unwrapArray(annotationTypes, IAnnotationType.class))));
   }
   
   protected CharSequence _compile(final ArchitectureExtension architectureExtension) {
@@ -498,6 +532,29 @@ public class ArchitectureDSLGenerator implements IGenerator {
     String _last = IterableExtensions.<String>last(((Iterable<String>)Conversions.doWrapArray(_split)));
     String _firstUpper = StringExtensions.toFirstUpper(_last);
     return _firstUpper;
+  }
+  
+  public IAnnotationType getAnnotationType(final Role role) {
+    IAnnotationType _xblockexpression = null;
+    {
+      String _name = role.getName();
+      final IAnnotationType annotationType = this.annotationsFactory.newAnnotationType(_name);
+      EList<Field> _fields = role.getFields();
+      for (final Field field : _fields) {
+        List<IAnnotationAttribute> _attributes = annotationType.getAttributes();
+        IAnnotationAttribute _annotationAttribute = this.getAnnotationAttribute(field);
+        _attributes.add(_annotationAttribute);
+      }
+      _xblockexpression = (annotationType);
+    }
+    return _xblockexpression;
+  }
+  
+  public IAnnotationAttribute getAnnotationAttribute(final Field field) {
+    String _name = field.getName();
+    boolean _isMany = field.isMany();
+    IAnnotationAttribute _newAnnotationAttribute = this.annotationsFactory.newAnnotationAttribute(_name, _isMany);
+    return _newAnnotationAttribute;
   }
   
   public CharSequence compile(final EObject pattern) {
