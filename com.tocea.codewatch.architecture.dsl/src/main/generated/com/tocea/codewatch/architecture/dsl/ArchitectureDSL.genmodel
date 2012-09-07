@@ -44,6 +44,7 @@
     </genClasses>
     <genClasses ecoreClass="ArchitectureDSL.ecore#//Parameter"/>
     <genClasses ecoreClass="ArchitectureDSL.ecore#//Field">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//Field/mandatory"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//Field/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Field/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//Field/many"/>
@@ -66,6 +67,12 @@
     <genClasses ecoreClass="ArchitectureDSL.ecore#//TypeConstraint">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//TypeConstraint/source"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//TypeConstraint/target"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//Enumeration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Enumeration/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//EnumerationElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//EnumerationElement/name"/>
     </genClasses>
     <genClasses ecoreClass="ArchitectureDSL.ecore#//NamedEntity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//NamedEntity/name"/>

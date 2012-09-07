@@ -7,6 +7,8 @@ import com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureDSLPacka
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureExtension;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Arity;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Datatype;
+import com.tocea.codewatch.architecture.dsl.architectureDSL.Enumeration;
+import com.tocea.codewatch.architecture.dsl.architectureDSL.EnumerationElement;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionEntity;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Field;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Import;
@@ -167,6 +169,20 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
    * @generated
    */
   private EClass typeConstraintEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass enumerationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass enumerationElementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -523,7 +539,7 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getField_Name()
+  public EAttribute getField_Mandatory()
   {
     return (EAttribute)fieldEClass.getEStructuralFeatures().get(0);
   }
@@ -533,9 +549,19 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getField_Name()
+  {
+    return (EAttribute)fieldEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getField_Type()
   {
-    return (EReference)fieldEClass.getEStructuralFeatures().get(1);
+    return (EReference)fieldEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -545,7 +571,7 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
    */
   public EAttribute getField_Many()
   {
-    return (EAttribute)fieldEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)fieldEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -555,7 +581,7 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
    */
   public EReference getField_Lb()
   {
-    return (EReference)fieldEClass.getEStructuralFeatures().get(3);
+    return (EReference)fieldEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -565,7 +591,7 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
    */
   public EReference getField_Ub()
   {
-    return (EReference)fieldEClass.getEStructuralFeatures().get(4);
+    return (EReference)fieldEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -703,6 +729,46 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getEnumeration()
+  {
+    return enumerationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEnumeration_Elements()
+  {
+    return (EReference)enumerationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getEnumerationElement()
+  {
+    return enumerationElementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getEnumerationElement_Name()
+  {
+    return (EAttribute)enumerationElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getNamedEntity()
   {
     return namedEntityEClass;
@@ -796,6 +862,7 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
     parameterEClass = createEClass(PARAMETER);
 
     fieldEClass = createEClass(FIELD);
+    createEAttribute(fieldEClass, FIELD__MANDATORY);
     createEAttribute(fieldEClass, FIELD__NAME);
     createEReference(fieldEClass, FIELD__TYPE);
     createEAttribute(fieldEClass, FIELD__MANY);
@@ -820,6 +887,12 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
     typeConstraintEClass = createEClass(TYPE_CONSTRAINT);
     createEReference(typeConstraintEClass, TYPE_CONSTRAINT__SOURCE);
     createEReference(typeConstraintEClass, TYPE_CONSTRAINT__TARGET);
+
+    enumerationEClass = createEClass(ENUMERATION);
+    createEReference(enumerationEClass, ENUMERATION__ELEMENTS);
+
+    enumerationElementEClass = createEClass(ENUMERATION_ELEMENT);
+    createEAttribute(enumerationElementEClass, ENUMERATION_ELEMENT__NAME);
 
     namedEntityEClass = createEClass(NAMED_ENTITY);
     createEAttribute(namedEntityEClass, NAMED_ENTITY__NAME);
@@ -872,6 +945,7 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
     parameterEClass.getESuperTypes().add(this.getReferencedType());
     relationshipConjunctionConstraintEClass.getESuperTypes().add(this.getRelationshipConstraint());
     typeConstraintEClass.getESuperTypes().add(this.getRelationshipPrimitiveConstraint());
+    enumerationEClass.getESuperTypes().add(this.getType());
     referencedTypeEClass.getESuperTypes().add(this.getNamedEntity());
 
     // Initialize classes and features; add operations and parameters
@@ -913,6 +987,7 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
     initEClass(parameterEClass, Parameter.class, "Parameter", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(fieldEClass, Field.class, "Field", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getField_Mandatory(), ecorePackage.getEBoolean(), "mandatory", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getField_Name(), ecorePackage.getEString(), "name", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getField_Type(), this.getTypeReference(), null, "type", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getField_Many(), ecorePackage.getEBoolean(), "many", null, 0, 1, Field.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -937,6 +1012,12 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
     initEClass(typeConstraintEClass, TypeConstraint.class, "TypeConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getTypeConstraint_Source(), this.getType(), null, "source", null, 0, 1, TypeConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getTypeConstraint_Target(), this.getType(), null, "target", null, 0, 1, TypeConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(enumerationEClass, Enumeration.class, "Enumeration", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEnumeration_Elements(), this.getEnumerationElement(), null, "elements", null, 0, -1, Enumeration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(enumerationElementEClass, EnumerationElement.class, "EnumerationElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEnumerationElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, EnumerationElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(namedEntityEClass, NamedEntity.class, "NamedEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getNamedEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

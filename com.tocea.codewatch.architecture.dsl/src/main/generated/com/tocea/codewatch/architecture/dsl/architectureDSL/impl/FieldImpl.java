@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.FieldImpl#isMandatory <em>Mandatory</em>}</li>
  *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.FieldImpl#getName <em>Name</em>}</li>
  *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.FieldImpl#getType <em>Type</em>}</li>
  *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.FieldImpl#isMany <em>Many</em>}</li>
@@ -35,6 +36,26 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public class FieldImpl extends MinimalEObjectImpl.Container implements Field
 {
+  /**
+   * The default value of the '{@link #isMandatory() <em>Mandatory</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isMandatory()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean MANDATORY_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isMandatory() <em>Mandatory</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isMandatory()
+   * @generated
+   * @ordered
+   */
+  protected boolean mandatory = MANDATORY_EDEFAULT;
+
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -124,6 +145,29 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
   protected EClass eStaticClass()
   {
     return ArchitectureDSLPackage.Literals.FIELD;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isMandatory()
+  {
+    return mandatory;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setMandatory(boolean newMandatory)
+  {
+    boolean oldMandatory = mandatory;
+    mandatory = newMandatory;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitectureDSLPackage.FIELD__MANDATORY, oldMandatory, mandatory));
   }
 
   /**
@@ -346,6 +390,8 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
   {
     switch (featureID)
     {
+      case ArchitectureDSLPackage.FIELD__MANDATORY:
+        return isMandatory();
       case ArchitectureDSLPackage.FIELD__NAME:
         return getName();
       case ArchitectureDSLPackage.FIELD__TYPE:
@@ -370,6 +416,9 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
   {
     switch (featureID)
     {
+      case ArchitectureDSLPackage.FIELD__MANDATORY:
+        setMandatory((Boolean)newValue);
+        return;
       case ArchitectureDSLPackage.FIELD__NAME:
         setName((String)newValue);
         return;
@@ -399,6 +448,9 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
   {
     switch (featureID)
     {
+      case ArchitectureDSLPackage.FIELD__MANDATORY:
+        setMandatory(MANDATORY_EDEFAULT);
+        return;
       case ArchitectureDSLPackage.FIELD__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -428,6 +480,8 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
   {
     switch (featureID)
     {
+      case ArchitectureDSLPackage.FIELD__MANDATORY:
+        return mandatory != MANDATORY_EDEFAULT;
       case ArchitectureDSLPackage.FIELD__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ArchitectureDSLPackage.FIELD__TYPE:
@@ -453,7 +507,9 @@ public class FieldImpl extends MinimalEObjectImpl.Container implements Field
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
+    result.append(" (mandatory: ");
+    result.append(mandatory);
+    result.append(", name: ");
     result.append(name);
     result.append(", many: ");
     result.append(many);

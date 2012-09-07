@@ -51,7 +51,7 @@
       <alternatives xsi:type="xtext:Group">
         <elements xsi:type="xtext:Keyword" value="import"/>
         <elements xsi:type="xtext:Assignment" feature="importedNamespace" operator="=">
-          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.20"/>
+          <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.22"/>
         </elements>
         <elements xsi:type="xtext:Keyword" value=";"/>
       </alternatives>
@@ -64,6 +64,7 @@
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.5"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.2"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.7"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.18"/>
       </alternatives>
     </rules>
     <rules xsi:type="xtext:ParserRule" name="ParametrizedType">
@@ -259,6 +260,9 @@
         <classifier xsi:type="ecore:EClass" href="http://www.tocea.com/codewatch/architecture/dsl/ArchitectureDSL#//Field"/>
       </type>
       <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Assignment" cardinality="?" feature="mandatory" operator="?=">
+          <terminal xsi:type="xtext:Keyword" value="mandatory"/>
+        </elements>
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">
           <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
         </elements>
@@ -390,12 +394,39 @@
         </elements>
       </alternatives>
     </rules>
+    <rules xsi:type="xtext:ParserRule" name="Enumeration">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.tocea.com/codewatch/architecture/dsl/ArchitectureDSL#//Enumeration"/>
+      </type>
+      <alternatives xsi:type="xtext:Group">
+        <elements xsi:type="xtext:Keyword" value="enumeration"/>
+        <elements xsi:type="xtext:Assignment" feature="name" operator="=">
+          <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="{"/>
+        <elements xsi:type="xtext:Group" cardinality="*">
+          <elements xsi:type="xtext:Assignment" feature="elements" operator="+=">
+            <terminal xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+          </elements>
+          <elements xsi:type="xtext:Keyword" cardinality="?" value=","/>
+        </elements>
+        <elements xsi:type="xtext:Keyword" value="}"/>
+      </alternatives>
+    </rules>
+    <rules xsi:type="xtext:ParserRule" name="EnumerationElement">
+      <type metamodel="/0/@metamodelDeclarations.0">
+        <classifier xsi:type="ecore:EClass" href="http://www.tocea.com/codewatch/architecture/dsl/ArchitectureDSL#//EnumerationElement"/>
+      </type>
+      <alternatives xsi:type="xtext:Assignment" feature="name" operator="=">
+        <terminal xsi:type="xtext:RuleCall" rule="/2/@rules.11"/>
+      </alternatives>
+    </rules>
     <rules xsi:type="xtext:ParserRule" name="NamedEntity">
       <type metamodel="/0/@metamodelDeclarations.0">
         <classifier xsi:type="ecore:EClass" href="http://www.tocea.com/codewatch/architecture/dsl/ArchitectureDSL#//NamedEntity"/>
       </type>
       <alternatives xsi:type="xtext:Alternatives">
-        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.19"/>
+        <elements xsi:type="xtext:RuleCall" rule="/0/@rules.21"/>
         <elements xsi:type="xtext:RuleCall" rule="/0/@rules.9"/>
       </alternatives>
     </rules>

@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Field#isMandatory <em>Mandatory</em>}</li>
  *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Field#getName <em>Name</em>}</li>
  *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Field#getType <em>Type</em>}</li>
  *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Field#isMany <em>Many</em>}</li>
@@ -26,6 +27,32 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Field extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Mandatory</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Mandatory</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Mandatory</em>' attribute.
+   * @see #setMandatory(boolean)
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureDSLPackage#getField_Mandatory()
+   * @model
+   * @generated
+   */
+  boolean isMandatory();
+
+  /**
+   * Sets the value of the '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Field#isMandatory <em>Mandatory</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Mandatory</em>' attribute.
+   * @see #isMandatory()
+   * @generated
+   */
+  void setMandatory(boolean value);
+
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->

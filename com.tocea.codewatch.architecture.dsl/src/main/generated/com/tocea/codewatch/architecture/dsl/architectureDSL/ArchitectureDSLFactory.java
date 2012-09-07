@@ -185,6 +185,24 @@ public interface ArchitectureDSLFactory extends EFactory
   TypeConstraint createTypeConstraint();
 
   /**
+   * Returns a new object of class '<em>Enumeration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Enumeration</em>'.
+   * @generated
+   */
+  Enumeration createEnumeration();
+
+  /**
+   * Returns a new object of class '<em>Enumeration Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Enumeration Element</em>'.
+   * @generated
+   */
+  EnumerationElement createEnumerationElement();
+
+  /**
    * Returns a new object of class '<em>Named Entity</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

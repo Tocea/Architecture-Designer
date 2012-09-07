@@ -82,6 +82,8 @@ public class ArchitectureDSLFactoryImpl extends EFactoryImpl implements Architec
       case ArchitectureDSLPackage.RELATIONSHIP_CONJUNCTION_CONSTRAINT: return createRelationshipConjunctionConstraint();
       case ArchitectureDSLPackage.RELATIONSHIP_PRIMITIVE_CONSTRAINT: return createRelationshipPrimitiveConstraint();
       case ArchitectureDSLPackage.TYPE_CONSTRAINT: return createTypeConstraint();
+      case ArchitectureDSLPackage.ENUMERATION: return createEnumeration();
+      case ArchitectureDSLPackage.ENUMERATION_ELEMENT: return createEnumerationElement();
       case ArchitectureDSLPackage.NAMED_ENTITY: return createNamedEntity();
       case ArchitectureDSLPackage.REFERENCED_TYPE: return createReferencedType();
       default:
@@ -285,6 +287,28 @@ public class ArchitectureDSLFactoryImpl extends EFactoryImpl implements Architec
   {
     TypeConstraintImpl typeConstraint = new TypeConstraintImpl();
     return typeConstraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Enumeration createEnumeration()
+  {
+    EnumerationImpl enumeration = new EnumerationImpl();
+    return enumeration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EnumerationElement createEnumerationElement()
+  {
+    EnumerationElementImpl enumerationElement = new EnumerationElementImpl();
+    return enumerationElement;
   }
 
   /**

@@ -20,7 +20,7 @@ Import :
 ;
 
 Type :
-	ParametrizedType | Datatype | PrimitiveRole
+	ParametrizedType | Datatype | PrimitiveRole | Enumeration
 ;
 
 ParametrizedType:
@@ -60,7 +60,7 @@ Parameter :
 ;
 
 Field :
-	name = ID ':' type = TypeReference (many?='*' | '['lb=Arity ('..'ub=Arity)?']')?
+	(mandatory?='mandatory')? name = ID ':' type = TypeReference (many?='*' | '['lb=Arity ('..'ub=Arity)?']')?
 ;
 
 Arity:
@@ -86,6 +86,16 @@ RelationshipPrimitiveConstraint :
 TypeConstraint :
 	{TypeConstraint}
 	(source = [Type | QualifiedName] | '*') '->' (target = [Type | QualifiedName] | '*')
+;
+
+Enumeration :
+	'enumeration' name = ID '{'
+		(elements += EnumerationElement ','?)*
+	'}'
+;
+
+EnumerationElement :
+	name = ID
 ;
 
 NamedEntity :

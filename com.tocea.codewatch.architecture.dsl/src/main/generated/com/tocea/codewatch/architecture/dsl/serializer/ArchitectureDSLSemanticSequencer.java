@@ -6,6 +6,8 @@ import com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureDSLPacka
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureExtension;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Arity;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Datatype;
+import com.tocea.codewatch.architecture.dsl.architectureDSL.Enumeration;
+import com.tocea.codewatch.architecture.dsl.architectureDSL.EnumerationElement;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Field;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Import;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Parameter;
@@ -93,6 +95,22 @@ public class ArchitectureDSLSemanticSequencer extends XbaseSemanticSequencer {
 				   context == grammarAccess.getReferencedTypeRule() ||
 				   context == grammarAccess.getTypeRule()) {
 					sequence_Datatype(context, (Datatype) semanticObject); 
+					return; 
+				}
+				else break;
+			case ArchitectureDSLPackage.ENUMERATION:
+				if(context == grammarAccess.getEnumerationRule() ||
+				   context == grammarAccess.getExtensionEntityRule() ||
+				   context == grammarAccess.getNamedEntityRule() ||
+				   context == grammarAccess.getReferencedTypeRule() ||
+				   context == grammarAccess.getTypeRule()) {
+					sequence_Enumeration(context, (Enumeration) semanticObject); 
+					return; 
+				}
+				else break;
+			case ArchitectureDSLPackage.ENUMERATION_ELEMENT:
+				if(context == grammarAccess.getEnumerationElementRule()) {
+					sequence_EnumerationElement(context, (EnumerationElement) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1076,7 +1094,32 @@ public class ArchitectureDSLSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID type=TypeReference (many?='*' | (lb=Arity ub=Arity?))?)
+	 *     name=ID
+	 */
+	protected void sequence_EnumerationElement(EObject context, EnumerationElement semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, ArchitectureDSLPackage.Literals.ENUMERATION_ELEMENT__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ArchitectureDSLPackage.Literals.ENUMERATION_ELEMENT__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getEnumerationElementAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (name=ID elements+=EnumerationElement*)
+	 */
+	protected void sequence_Enumeration(EObject context, Enumeration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (mandatory?='mandatory'? name=ID type=TypeReference (many?='*' | (lb=Arity ub=Arity?))?)
 	 */
 	protected void sequence_Field(EObject context, Field semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

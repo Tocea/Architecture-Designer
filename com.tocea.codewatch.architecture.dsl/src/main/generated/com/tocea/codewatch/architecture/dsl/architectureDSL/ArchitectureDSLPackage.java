@@ -506,7 +506,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getNamedEntity()
    * @generated
    */
-  int NAMED_ENTITY = 18;
+  int NAMED_ENTITY = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -534,7 +534,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getReferencedType()
    * @generated
    */
-  int REFERENCED_TYPE = 19;
+  int REFERENCED_TYPE = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -593,13 +593,22 @@ public interface ArchitectureDSLPackage extends EPackage
   int FIELD = 11;
 
   /**
+   * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FIELD__MANDATORY = 0;
+
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FIELD__NAME = 0;
+  int FIELD__NAME = 1;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -608,7 +617,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FIELD__TYPE = 1;
+  int FIELD__TYPE = 2;
 
   /**
    * The feature id for the '<em><b>Many</b></em>' attribute.
@@ -617,7 +626,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FIELD__MANY = 2;
+  int FIELD__MANY = 3;
 
   /**
    * The feature id for the '<em><b>Lb</b></em>' containment reference.
@@ -626,7 +635,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FIELD__LB = 3;
+  int FIELD__LB = 4;
 
   /**
    * The feature id for the '<em><b>Ub</b></em>' containment reference.
@@ -635,7 +644,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FIELD__UB = 4;
+  int FIELD__UB = 5;
 
   /**
    * The number of structural features of the '<em>Field</em>' class.
@@ -644,7 +653,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FIELD_FEATURE_COUNT = 5;
+  int FIELD_FEATURE_COUNT = 6;
 
   /**
    * The meta object id for the '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArityImpl <em>Arity</em>}' class.
@@ -822,6 +831,71 @@ public interface ArchitectureDSLPackage extends EPackage
    * @ordered
    */
   int TYPE_CONSTRAINT_FEATURE_COUNT = RELATIONSHIP_PRIMITIVE_CONSTRAINT_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.EnumerationImpl <em>Enumeration</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.EnumerationImpl
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getEnumeration()
+   * @generated
+   */
+  int ENUMERATION = 18;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENUMERATION__NAME = TYPE__NAME;
+
+  /**
+   * The feature id for the '<em><b>Elements</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENUMERATION__ELEMENTS = TYPE_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Enumeration</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENUMERATION_FEATURE_COUNT = TYPE_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.EnumerationElementImpl <em>Enumeration Element</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.EnumerationElementImpl
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getEnumerationElement()
+   * @generated
+   */
+  int ENUMERATION_ELEMENT = 19;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENUMERATION_ELEMENT__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Enumeration Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENUMERATION_ELEMENT_FEATURE_COUNT = 1;
 
 
   /**
@@ -1110,6 +1184,17 @@ public interface ArchitectureDSLPackage extends EPackage
   EClass getField();
 
   /**
+   * Returns the meta object for the attribute '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Field#isMandatory <em>Mandatory</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Mandatory</em>'.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.Field#isMandatory()
+   * @see #getField()
+   * @generated
+   */
+  EAttribute getField_Mandatory();
+
+  /**
    * Returns the meta object for the attribute '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Field#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1300,6 +1385,48 @@ public interface ArchitectureDSLPackage extends EPackage
    * @generated
    */
   EReference getTypeConstraint_Target();
+
+  /**
+   * Returns the meta object for class '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Enumeration <em>Enumeration</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Enumeration</em>'.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.Enumeration
+   * @generated
+   */
+  EClass getEnumeration();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Enumeration#getElements <em>Elements</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Elements</em>'.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.Enumeration#getElements()
+   * @see #getEnumeration()
+   * @generated
+   */
+  EReference getEnumeration_Elements();
+
+  /**
+   * Returns the meta object for class '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.EnumerationElement <em>Enumeration Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Enumeration Element</em>'.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.EnumerationElement
+   * @generated
+   */
+  EClass getEnumerationElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.EnumerationElement#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.EnumerationElement#getName()
+   * @see #getEnumerationElement()
+   * @generated
+   */
+  EAttribute getEnumerationElement_Name();
 
   /**
    * Returns the meta object for class '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.NamedEntity <em>Named Entity</em>}'.
@@ -1596,6 +1723,14 @@ public interface ArchitectureDSLPackage extends EPackage
     EClass FIELD = eINSTANCE.getField();
 
     /**
+     * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FIELD__MANDATORY = eINSTANCE.getField_Mandatory();
+
+    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1750,6 +1885,42 @@ public interface ArchitectureDSLPackage extends EPackage
      * @generated
      */
     EReference TYPE_CONSTRAINT__TARGET = eINSTANCE.getTypeConstraint_Target();
+
+    /**
+     * The meta object literal for the '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.EnumerationImpl <em>Enumeration</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.EnumerationImpl
+     * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getEnumeration()
+     * @generated
+     */
+    EClass ENUMERATION = eINSTANCE.getEnumeration();
+
+    /**
+     * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ENUMERATION__ELEMENTS = eINSTANCE.getEnumeration_Elements();
+
+    /**
+     * The meta object literal for the '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.EnumerationElementImpl <em>Enumeration Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.EnumerationElementImpl
+     * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getEnumerationElement()
+     * @generated
+     */
+    EClass ENUMERATION_ELEMENT = eINSTANCE.getEnumerationElement();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ENUMERATION_ELEMENT__NAME = eINSTANCE.getEnumerationElement_Name();
 
     /**
      * The meta object literal for the '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.NamedEntityImpl <em>Named Entity</em>}' class.

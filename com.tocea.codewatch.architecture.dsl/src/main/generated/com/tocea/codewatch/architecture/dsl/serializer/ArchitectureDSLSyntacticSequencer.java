@@ -19,6 +19,7 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class ArchitectureDSLSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected ArchitectureDSLGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_Enumeration_CommaKeyword_3_1_q;
 	protected AbstractElementAlias match_Pattern_SemicolonKeyword_5_1_or___LeftCurlyBracketKeyword_5_0_0_RightCurlyBracketKeyword_5_0_2__;
 	protected AbstractElementAlias match_Relationship_SemicolonKeyword_5_1_or___LeftCurlyBracketKeyword_5_0_0_RightCurlyBracketKeyword_5_0_2__;
 	protected AbstractElementAlias match_Role_SemicolonKeyword_5_1_or___LeftCurlyBracketKeyword_5_0_0_RightCurlyBracketKeyword_5_0_2__;
@@ -32,6 +33,7 @@ public class ArchitectureDSLSyntacticSequencer extends AbstractSyntacticSequence
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (ArchitectureDSLGrammarAccess) access;
+		match_Enumeration_CommaKeyword_3_1_q = new TokenAlias(false, true, grammarAccess.getEnumerationAccess().getCommaKeyword_3_1());
 		match_Pattern_SemicolonKeyword_5_1_or___LeftCurlyBracketKeyword_5_0_0_RightCurlyBracketKeyword_5_0_2__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getPatternAccess().getLeftCurlyBracketKeyword_5_0_0()), new TokenAlias(false, false, grammarAccess.getPatternAccess().getRightCurlyBracketKeyword_5_0_2())), new TokenAlias(false, false, grammarAccess.getPatternAccess().getSemicolonKeyword_5_1()));
 		match_Relationship_SemicolonKeyword_5_1_or___LeftCurlyBracketKeyword_5_0_0_RightCurlyBracketKeyword_5_0_2__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getRelationshipAccess().getLeftCurlyBracketKeyword_5_0_0()), new TokenAlias(false, false, grammarAccess.getRelationshipAccess().getRightCurlyBracketKeyword_5_0_2())), new TokenAlias(false, false, grammarAccess.getRelationshipAccess().getSemicolonKeyword_5_1()));
 		match_Role_SemicolonKeyword_5_1_or___LeftCurlyBracketKeyword_5_0_0_RightCurlyBracketKeyword_5_0_2__ = new AlternativeAlias(false, false, new GroupAlias(false, false, new TokenAlias(false, false, grammarAccess.getRoleAccess().getLeftCurlyBracketKeyword_5_0_0()), new TokenAlias(false, false, grammarAccess.getRoleAccess().getRightCurlyBracketKeyword_5_0_2())), new TokenAlias(false, false, grammarAccess.getRoleAccess().getSemicolonKeyword_5_1()));
@@ -67,7 +69,9 @@ public class ArchitectureDSLSyntacticSequencer extends AbstractSyntacticSequence
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_Pattern_SemicolonKeyword_5_1_or___LeftCurlyBracketKeyword_5_0_0_RightCurlyBracketKeyword_5_0_2__.equals(syntax))
+			if(match_Enumeration_CommaKeyword_3_1_q.equals(syntax))
+				emit_Enumeration_CommaKeyword_3_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_Pattern_SemicolonKeyword_5_1_or___LeftCurlyBracketKeyword_5_0_0_RightCurlyBracketKeyword_5_0_2__.equals(syntax))
 				emit_Pattern_SemicolonKeyword_5_1_or___LeftCurlyBracketKeyword_5_0_0_RightCurlyBracketKeyword_5_0_2__(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_Relationship_SemicolonKeyword_5_1_or___LeftCurlyBracketKeyword_5_0_0_RightCurlyBracketKeyword_5_0_2__.equals(syntax))
 				emit_Relationship_SemicolonKeyword_5_1_or___LeftCurlyBracketKeyword_5_0_0_RightCurlyBracketKeyword_5_0_2__(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -89,6 +93,14 @@ public class ArchitectureDSLSyntacticSequencer extends AbstractSyntacticSequence
 		}
 	}
 
+	/**
+	 * Syntax:
+	 *     ','?
+	 */
+	protected void emit_Enumeration_CommaKeyword_3_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Syntax:
 	 *     ('{' '}') | ';'

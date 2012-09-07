@@ -230,6 +230,24 @@ public class ArchitectureDSLSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ArchitectureDSLPackage.ENUMERATION:
+      {
+        Enumeration enumeration = (Enumeration)theEObject;
+        T result = caseEnumeration(enumeration);
+        if (result == null) result = caseType(enumeration);
+        if (result == null) result = caseExtensionEntity(enumeration);
+        if (result == null) result = caseReferencedType(enumeration);
+        if (result == null) result = caseNamedEntity(enumeration);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ArchitectureDSLPackage.ENUMERATION_ELEMENT:
+      {
+        EnumerationElement enumerationElement = (EnumerationElement)theEObject;
+        T result = caseEnumerationElement(enumerationElement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ArchitectureDSLPackage.NAMED_ENTITY:
       {
         NamedEntity namedEntity = (NamedEntity)theEObject;
@@ -533,6 +551,38 @@ public class ArchitectureDSLSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseTypeConstraint(TypeConstraint object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Enumeration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Enumeration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEnumeration(Enumeration object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Enumeration Element</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Enumeration Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseEnumerationElement(EnumerationElement object)
   {
     return null;
   }

@@ -165,6 +165,16 @@ public class ArchitectureDSLAdapterFactory extends AdapterFactoryImpl
         return createTypeConstraintAdapter();
       }
       @Override
+      public Adapter caseEnumeration(Enumeration object)
+      {
+        return createEnumerationAdapter();
+      }
+      @Override
+      public Adapter caseEnumerationElement(EnumerationElement object)
+      {
+        return createEnumerationElementAdapter();
+      }
+      @Override
       public Adapter caseNamedEntity(NamedEntity object)
       {
         return createNamedEntityAdapter();
@@ -462,6 +472,36 @@ public class ArchitectureDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createTypeConstraintAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Enumeration <em>Enumeration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.Enumeration
+   * @generated
+   */
+  public Adapter createEnumerationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.EnumerationElement <em>Enumeration Element</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.EnumerationElement
+   * @generated
+   */
+  public Adapter createEnumerationElementAdapter()
   {
     return null;
   }
