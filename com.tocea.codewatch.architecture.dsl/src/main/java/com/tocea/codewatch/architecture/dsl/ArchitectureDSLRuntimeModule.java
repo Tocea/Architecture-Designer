@@ -6,7 +6,7 @@ package com.tocea.codewatch.architecture.dsl;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.scoping.IScopeProvider;
 
-import com.tocea.codewatch.architecture.dsl.generator.ArchitectureDSLGenerator;
+import com.tocea.codewatch.architecture.dsl.generator.ExtensibleArchitectureGenerator;
 import com.tocea.codewatch.architecture.dsl.scoping.ArchitectureDSLScopeProvider;
 
 /**
@@ -21,13 +21,7 @@ public class ArchitectureDSLRuntimeModule extends com.tocea.codewatch.architectu
 
 	@Override
 	public Class<? extends IGenerator> bindIGenerator() {
-		return ArchitectureDSLGenerator.class;
+		return ExtensibleArchitectureGenerator.class;
 	}
-
-//	@Override
-//	public Class<? extends IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
-//		// TODO Auto-generated method stub
-//		return super.bindIDefaultResourceDescriptionStrategy();
-//	}
 
 }
