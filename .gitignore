@@ -27,3 +27,4 @@ com.tocea.codewatch.architecture/target
 
 # Ignore anything in a bin folder
 */bin/*
+com.tocea.codewatch.architecture.dsl/.launch/Launch Runtime Eclipse.launch
