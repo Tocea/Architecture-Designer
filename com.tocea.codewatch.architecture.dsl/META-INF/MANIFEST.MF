@@ -36,5 +36,3 @@ Export-Package: com.tocea.codewatch.architecture.dsl,
  com.tocea.codewatch.architecture.dsl.jvmmodel,
  com.tocea.codewatch.architecture.dsl.scoping,
  com.tocea.codewatch.architecture.dsl.generator
-Bundle-Classpath: .,
- binding-bundle/target/dependency/com.tocea.annotations.core-1.0.0-SNAPSHOT.jar
