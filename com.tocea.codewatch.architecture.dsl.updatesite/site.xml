@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<site>
-   <feature url="features/com.tocea.codewatch.architecture.dsl.sdk_1.0.0.qualifier.jar" id="com.tocea.codewatch.architecture.dsl.sdk" version="1.0.0.qualifier">
-      <category name="com.tocea.codewatch.architecture"/>
-   </feature>
-   <category-def name="com.tocea.codewatch.architecture" label="Tocea Architecture"/>
-</site>
