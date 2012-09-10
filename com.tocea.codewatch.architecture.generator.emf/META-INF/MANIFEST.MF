@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Architecture EMF generator
+Bundle-SymbolicName: com.tocea.codewatch.architecture.generator.emf;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.tocea.codewatch.architecture.generator.emf.Activator
+Bundle-Vendor: TOCEA
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ com.tocea.codewatch.architecture.dsl;bundle-version="1.0.0",
+ org.eclipse.core.resources;bundle-version="3.7.100"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy

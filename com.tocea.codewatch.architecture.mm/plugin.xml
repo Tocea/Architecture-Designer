@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.tocea.com/codewatch/architecture/"
+            class="com.tocea.codewatch.architecture.ArchitecturePackage"
+            genModel="model/archi.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.tocea.com/codewatch/architecture/extension"
+            class="com.tocea.codewatch.architecture.extension.ExtensionPackage"
+            genModel="model/archi.genmodel"/>
+   </extension>
+
+</plugin>
