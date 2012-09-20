@@ -3,7 +3,7 @@
 <schema targetNamespace="com.tocea.codewatch.architecture.dsl" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appInfo>
-         <meta.schema plugin="com.tocea.codewatch.architecture.dsl" id="ArchitectureExtensionGenerator" name="com.tocea.codewatch.architecture.extension.generator"/>
+         <meta.schema plugin="com.tocea.codewatch.architecture.dsl" id="com.tocea.codewatch.architecture.dsl.extension.generator" name="Architecture Extension Generator"/>
       </appInfo>
       <documentation>
          Extension point to map a new code generator for any architecture extension.

@@ -2,7 +2,7 @@
 <?eclipse version="3.0"?>
 
 <plugin>
-   <extension-point id="ArchitectureExtensionGenerator" name="com.tocea.codewatch.architecture.extension.generator" schema="schema/ArchitectureExtensionGenerator.exsd"/>
+   <extension-point id="generator" name="Architecture Extension Generator" schema="src/main/resources/schema/ArchitectureExtensionGenerator.exsd"/>
 
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 

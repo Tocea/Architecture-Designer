@@ -10,7 +10,7 @@ import org.eclipse.xtext.generator.IGenerator;
 
 public class ExtensionGeneratorContributionsHandler {
 
-	private static final String GENERATOR_EXTENSION_ID = "com.tocea.codewatch.architecture.dsl.ArchitectureExtensionGenerator";
+	private static final String GENERATOR_EXTENSION_ID = "com.tocea.codewatch.architecture.dsl.generator";
 	private IExtensionRegistry registry;
 
 	public ExtensionGeneratorContributionsHandler(IExtensionRegistry registry) {
