@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.RoleImpl#isInherited <em>Inherited</em>}</li>
  *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.RoleImpl#getElement <em>Element</em>}</li>
  *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.RoleImpl#getSuperRole <em>Super Role</em>}</li>
  * </ul>
@@ -31,6 +32,26 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class RoleImpl extends ParametrizedTypeImpl implements Role
 {
+  /**
+   * The default value of the '{@link #isInherited() <em>Inherited</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isInherited()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean INHERITED_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isInherited() <em>Inherited</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isInherited()
+   * @generated
+   * @ordered
+   */
+  protected boolean inherited = INHERITED_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getElement() <em>Element</em>}' reference.
    * <!-- begin-user-doc -->
@@ -70,6 +91,29 @@ public class RoleImpl extends ParametrizedTypeImpl implements Role
   protected EClass eStaticClass()
   {
     return ArchitectureDSLPackage.Literals.ROLE;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isInherited()
+  {
+    return inherited;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setInherited(boolean newInherited)
+  {
+    boolean oldInherited = inherited;
+    inherited = newInherited;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ArchitectureDSLPackage.ROLE__INHERITED, oldInherited, inherited));
   }
 
   /**
@@ -189,6 +233,8 @@ public class RoleImpl extends ParametrizedTypeImpl implements Role
   {
     switch (featureID)
     {
+      case ArchitectureDSLPackage.ROLE__INHERITED:
+        return isInherited();
       case ArchitectureDSLPackage.ROLE__ELEMENT:
         if (resolve) return getElement();
         return basicGetElement();
@@ -208,6 +254,9 @@ public class RoleImpl extends ParametrizedTypeImpl implements Role
   {
     switch (featureID)
     {
+      case ArchitectureDSLPackage.ROLE__INHERITED:
+        setInherited((Boolean)newValue);
+        return;
       case ArchitectureDSLPackage.ROLE__ELEMENT:
         setElement((Type)newValue);
         return;
@@ -228,6 +277,9 @@ public class RoleImpl extends ParametrizedTypeImpl implements Role
   {
     switch (featureID)
     {
+      case ArchitectureDSLPackage.ROLE__INHERITED:
+        setInherited(INHERITED_EDEFAULT);
+        return;
       case ArchitectureDSLPackage.ROLE__ELEMENT:
         setElement((Type)null);
         return;
@@ -248,12 +300,31 @@ public class RoleImpl extends ParametrizedTypeImpl implements Role
   {
     switch (featureID)
     {
+      case ArchitectureDSLPackage.ROLE__INHERITED:
+        return inherited != INHERITED_EDEFAULT;
       case ArchitectureDSLPackage.ROLE__ELEMENT:
         return element != null;
       case ArchitectureDSLPackage.ROLE__SUPER_ROLE:
         return superRole != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (inherited: ");
+    result.append(inherited);
+    result.append(')');
+    return result.toString();
   }
 
 } //RoleImpl

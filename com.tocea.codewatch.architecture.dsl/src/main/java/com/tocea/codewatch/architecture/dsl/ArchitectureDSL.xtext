@@ -40,7 +40,7 @@ PrimitiveRole :
 ;
 
 Role :
-	(abstract?='abstract')?
+	(abstract?='abstract' | inherited?='inherited')*
 	'role' name = ID
 	('<' parameters += Parameter (',' parameters += Parameter)* '>')?
 	('for' element = [Type | QualifiedName] |

@@ -143,8 +143,13 @@
         <classifier xsi:type="ecore:EClass" href="http://www.tocea.com/codewatch/architecture/dsl/ArchitectureDSL#//Role"/>
       </type>
       <alternatives xsi:type="xtext:Group">
-        <elements xsi:type="xtext:Assignment" cardinality="?" feature="abstract" operator="?=">
-          <terminal xsi:type="xtext:Keyword" value="abstract"/>
+        <elements xsi:type="xtext:Alternatives" cardinality="*">
+          <elements xsi:type="xtext:Assignment" feature="abstract" operator="?=">
+            <terminal xsi:type="xtext:Keyword" value="abstract"/>
+          </elements>
+          <elements xsi:type="xtext:Assignment" feature="inherited" operator="?=">
+            <terminal xsi:type="xtext:Keyword" value="inherited"/>
+          </elements>
         </elements>
         <elements xsi:type="xtext:Keyword" value="role"/>
         <elements xsi:type="xtext:Assignment" feature="name" operator="=">

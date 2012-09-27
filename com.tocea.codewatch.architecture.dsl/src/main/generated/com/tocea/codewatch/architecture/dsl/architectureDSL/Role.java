@@ -11,6 +11,7 @@ package com.tocea.codewatch.architecture.dsl.architectureDSL;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Role#isInherited <em>Inherited</em>}</li>
  *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Role#getElement <em>Element</em>}</li>
  *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Role#getSuperRole <em>Super Role</em>}</li>
  * </ul>
@@ -22,6 +23,32 @@ package com.tocea.codewatch.architecture.dsl.architectureDSL;
  */
 public interface Role extends ParametrizedType
 {
+  /**
+   * Returns the value of the '<em><b>Inherited</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Inherited</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Inherited</em>' attribute.
+   * @see #setInherited(boolean)
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureDSLPackage#getRole_Inherited()
+   * @model
+   * @generated
+   */
+  boolean isInherited();
+
+  /**
+   * Sets the value of the '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Role#isInherited <em>Inherited</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Inherited</em>' attribute.
+   * @see #isInherited()
+   * @generated
+   */
+  void setInherited(boolean value);
+
   /**
    * Returns the value of the '<em><b>Element</b></em>' reference.
    * <!-- begin-user-doc -->

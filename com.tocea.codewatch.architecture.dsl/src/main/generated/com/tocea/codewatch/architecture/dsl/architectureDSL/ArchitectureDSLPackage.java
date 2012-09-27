@@ -408,13 +408,22 @@ public interface ArchitectureDSLPackage extends EPackage
   int ROLE__FIELDS = PARAMETRIZED_TYPE__FIELDS;
 
   /**
+   * The feature id for the '<em><b>Inherited</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROLE__INHERITED = PARAMETRIZED_TYPE_FEATURE_COUNT + 0;
+
+  /**
    * The feature id for the '<em><b>Element</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ROLE__ELEMENT = PARAMETRIZED_TYPE_FEATURE_COUNT + 0;
+  int ROLE__ELEMENT = PARAMETRIZED_TYPE_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Super Role</b></em>' containment reference.
@@ -423,7 +432,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ROLE__SUPER_ROLE = PARAMETRIZED_TYPE_FEATURE_COUNT + 1;
+  int ROLE__SUPER_ROLE = PARAMETRIZED_TYPE_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Role</em>' class.
@@ -432,7 +441,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ROLE_FEATURE_COUNT = PARAMETRIZED_TYPE_FEATURE_COUNT + 2;
+  int ROLE_FEATURE_COUNT = PARAMETRIZED_TYPE_FEATURE_COUNT + 3;
 
   /**
    * The meta object id for the '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.RelationshipImpl <em>Relationship</em>}' class.
@@ -1088,6 +1097,17 @@ public interface ArchitectureDSLPackage extends EPackage
   EClass getRole();
 
   /**
+   * Returns the meta object for the attribute '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Role#isInherited <em>Inherited</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Inherited</em>'.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.Role#isInherited()
+   * @see #getRole()
+   * @generated
+   */
+  EAttribute getRole_Inherited();
+
+  /**
    * Returns the meta object for the reference '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Role#getElement <em>Element</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1643,6 +1663,14 @@ public interface ArchitectureDSLPackage extends EPackage
      * @generated
      */
     EClass ROLE = eINSTANCE.getRole();
+
+    /**
+     * The meta object literal for the '<em><b>Inherited</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ROLE__INHERITED = eINSTANCE.getRole_Inherited();
 
     /**
      * The meta object literal for the '<em><b>Element</b></em>' reference feature.

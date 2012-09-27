@@ -32,6 +32,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Role" eSuperTypes="#//ParametrizedType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="inherited" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="element" eType="#//Type"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="superRole" eType="#//TypeReference"
         containment="true"/>

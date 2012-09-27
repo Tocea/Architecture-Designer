@@ -449,9 +449,19 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getRole_Inherited()
+  {
+    return (EAttribute)roleEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getRole_Element()
   {
-    return (EReference)roleEClass.getEStructuralFeatures().get(0);
+    return (EReference)roleEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -461,7 +471,7 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
    */
   public EReference getRole_SuperRole()
   {
-    return (EReference)roleEClass.getEStructuralFeatures().get(1);
+    return (EReference)roleEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -850,6 +860,7 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
     createEReference(primitiveRoleEClass, PRIMITIVE_ROLE__TYPE);
 
     roleEClass = createEClass(ROLE);
+    createEAttribute(roleEClass, ROLE__INHERITED);
     createEReference(roleEClass, ROLE__ELEMENT);
     createEReference(roleEClass, ROLE__SUPER_ROLE);
 
@@ -975,6 +986,7 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
     initEReference(getPrimitiveRole_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, PrimitiveRole.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(roleEClass, Role.class, "Role", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getRole_Inherited(), ecorePackage.getEBoolean(), "inherited", null, 0, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRole_Element(), this.getType(), null, "element", null, 0, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRole_SuperRole(), this.getTypeReference(), null, "superRole", null, 0, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 

@@ -2573,6 +2573,28 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__Role__Alternatives_0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getRoleAccess().getAbstractAssignment_0_0()); }
+(rule__Role__AbstractAssignment_0_0)
+{ after(grammarAccess.getRoleAccess().getAbstractAssignment_0_0()); }
+)
+
+    |(
+{ before(grammarAccess.getRoleAccess().getInheritedAssignment_0_1()); }
+(rule__Role__InheritedAssignment_0_1)
+{ after(grammarAccess.getRoleAccess().getInheritedAssignment_0_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__Role__Alternatives_4
     @init {
 		int stackSize = keepStackSize();
@@ -4786,9 +4808,9 @@ rule__Role__Group__0__Impl
     }
 :
 (
-{ before(grammarAccess.getRoleAccess().getAbstractAssignment_0()); }
-(rule__Role__AbstractAssignment_0)?
-{ after(grammarAccess.getRoleAccess().getAbstractAssignment_0()); }
+{ before(grammarAccess.getRoleAccess().getAlternatives_0()); }
+(rule__Role__Alternatives_0)*
+{ after(grammarAccess.getRoleAccess().getAlternatives_0()); }
 )
 
 ;
@@ -17942,22 +17964,45 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Role__AbstractAssignment_0
+rule__Role__AbstractAssignment_0_0
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getRoleAccess().getAbstractAbstractKeyword_0_0()); }
+{ before(grammarAccess.getRoleAccess().getAbstractAbstractKeyword_0_0_0()); }
 (
-{ before(grammarAccess.getRoleAccess().getAbstractAbstractKeyword_0_0()); }
+{ before(grammarAccess.getRoleAccess().getAbstractAbstractKeyword_0_0_0()); }
 
 	'abstract' 
 
-{ after(grammarAccess.getRoleAccess().getAbstractAbstractKeyword_0_0()); }
+{ after(grammarAccess.getRoleAccess().getAbstractAbstractKeyword_0_0_0()); }
 )
 
-{ after(grammarAccess.getRoleAccess().getAbstractAbstractKeyword_0_0()); }
+{ after(grammarAccess.getRoleAccess().getAbstractAbstractKeyword_0_0_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Role__InheritedAssignment_0_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getRoleAccess().getInheritedInheritedKeyword_0_1_0()); }
+(
+{ before(grammarAccess.getRoleAccess().getInheritedInheritedKeyword_0_1_0()); }
+
+	'inherited' 
+
+{ after(grammarAccess.getRoleAccess().getInheritedInheritedKeyword_0_1_0()); }
+)
+
+{ after(grammarAccess.getRoleAccess().getInheritedInheritedKeyword_0_1_0()); }
 )
 
 ;

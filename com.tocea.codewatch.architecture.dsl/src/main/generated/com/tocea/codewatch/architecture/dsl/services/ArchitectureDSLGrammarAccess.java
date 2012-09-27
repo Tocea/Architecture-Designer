@@ -357,8 +357,11 @@ public class ArchitectureDSLGrammarAccess extends AbstractGrammarElementFinder {
 	public class RoleElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Role");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cAbstractAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final Keyword cAbstractAbstractKeyword_0_0 = (Keyword)cAbstractAssignment_0.eContents().get(0);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Assignment cAbstractAssignment_0_0 = (Assignment)cAlternatives_0.eContents().get(0);
+		private final Keyword cAbstractAbstractKeyword_0_0_0 = (Keyword)cAbstractAssignment_0_0.eContents().get(0);
+		private final Assignment cInheritedAssignment_0_1 = (Assignment)cAlternatives_0.eContents().get(1);
+		private final Keyword cInheritedInheritedKeyword_0_1_0 = (Keyword)cInheritedAssignment_0_1.eContents().get(0);
 		private final Keyword cRoleKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
@@ -392,19 +395,29 @@ public class ArchitectureDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_5_1 = (Keyword)cAlternatives_5.eContents().get(1);
 		
 		//Role:
-		//	abstract?="abstract"? "role" name=ID ("<" parameters+=Parameter ("," parameters+=Parameter)* ">")? ("for"
-		//	element=[Type|QualifiedName] | "extends" superRole=TypeReference)? ("{" (fields+=Field ";")* "}" | ";");
+		//	(abstract?="abstract" | inherited?="inherited")* "role" name=ID ("<" parameters+=Parameter (","
+		//	parameters+=Parameter)* ">")? ("for" element=[Type|QualifiedName] | "extends" superRole=TypeReference)? ("{"
+		//	(fields+=Field ";")* "}" | ";");
 		public ParserRule getRule() { return rule; }
 
-		//abstract?="abstract"? "role" name=ID ("<" parameters+=Parameter ("," parameters+=Parameter)* ">")? ("for"
-		//element=[Type|QualifiedName] | "extends" superRole=TypeReference)? ("{" (fields+=Field ";")* "}" | ";")
+		//(abstract?="abstract" | inherited?="inherited")* "role" name=ID ("<" parameters+=Parameter ("," parameters+=Parameter)*
+		//">")? ("for" element=[Type|QualifiedName] | "extends" superRole=TypeReference)? ("{" (fields+=Field ";")* "}" | ";")
 		public Group getGroup() { return cGroup; }
 
-		//abstract?="abstract"?
-		public Assignment getAbstractAssignment_0() { return cAbstractAssignment_0; }
+		//(abstract?="abstract" | inherited?="inherited")*
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+
+		//abstract?="abstract"
+		public Assignment getAbstractAssignment_0_0() { return cAbstractAssignment_0_0; }
 
 		//"abstract"
-		public Keyword getAbstractAbstractKeyword_0_0() { return cAbstractAbstractKeyword_0_0; }
+		public Keyword getAbstractAbstractKeyword_0_0_0() { return cAbstractAbstractKeyword_0_0_0; }
+
+		//inherited?="inherited"
+		public Assignment getInheritedAssignment_0_1() { return cInheritedAssignment_0_1; }
+
+		//"inherited"
+		public Keyword getInheritedInheritedKeyword_0_1_0() { return cInheritedInheritedKeyword_0_1_0; }
 
 		//"role"
 		public Keyword getRoleKeyword_1() { return cRoleKeyword_1; }
@@ -1204,8 +1217,9 @@ public class ArchitectureDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Role:
-	//	abstract?="abstract"? "role" name=ID ("<" parameters+=Parameter ("," parameters+=Parameter)* ">")? ("for"
-	//	element=[Type|QualifiedName] | "extends" superRole=TypeReference)? ("{" (fields+=Field ";")* "}" | ";");
+	//	(abstract?="abstract" | inherited?="inherited")* "role" name=ID ("<" parameters+=Parameter (","
+	//	parameters+=Parameter)* ">")? ("for" element=[Type|QualifiedName] | "extends" superRole=TypeReference)? ("{"
+	//	(fields+=Field ";")* "}" | ";");
 	public RoleElements getRoleAccess() {
 		return (pRole != null) ? pRole : (pRole = new RoleElements());
 	}

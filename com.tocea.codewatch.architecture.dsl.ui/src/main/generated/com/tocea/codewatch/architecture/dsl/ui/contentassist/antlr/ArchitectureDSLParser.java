@@ -41,6 +41,7 @@ public class ArchitectureDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getTypeAccess().getAlternatives(), "rule__Type__Alternatives");
 					put(grammarAccess.getParametrizedTypeAccess().getAlternatives(), "rule__ParametrizedType__Alternatives");
 					put(grammarAccess.getPatternAccess().getAlternatives_5(), "rule__Pattern__Alternatives_5");
+					put(grammarAccess.getRoleAccess().getAlternatives_0(), "rule__Role__Alternatives_0");
 					put(grammarAccess.getRoleAccess().getAlternatives_4(), "rule__Role__Alternatives_4");
 					put(grammarAccess.getRoleAccess().getAlternatives_5(), "rule__Role__Alternatives_5");
 					put(grammarAccess.getRelationshipAccess().getAlternatives_5(), "rule__Relationship__Alternatives_5");
@@ -272,7 +273,8 @@ public class ArchitectureDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPatternAccess().getFieldsAssignment_5_0_1_0(), "rule__Pattern__FieldsAssignment_5_0_1_0");
 					put(grammarAccess.getPrimitiveRoleAccess().getNameAssignment_1(), "rule__PrimitiveRole__NameAssignment_1");
 					put(grammarAccess.getPrimitiveRoleAccess().getTypeAssignment_3(), "rule__PrimitiveRole__TypeAssignment_3");
-					put(grammarAccess.getRoleAccess().getAbstractAssignment_0(), "rule__Role__AbstractAssignment_0");
+					put(grammarAccess.getRoleAccess().getAbstractAssignment_0_0(), "rule__Role__AbstractAssignment_0_0");
+					put(grammarAccess.getRoleAccess().getInheritedAssignment_0_1(), "rule__Role__InheritedAssignment_0_1");
 					put(grammarAccess.getRoleAccess().getNameAssignment_2(), "rule__Role__NameAssignment_2");
 					put(grammarAccess.getRoleAccess().getParametersAssignment_3_1(), "rule__Role__ParametersAssignment_3_1");
 					put(grammarAccess.getRoleAccess().getParametersAssignment_3_2_1(), "rule__Role__ParametersAssignment_3_2_1");

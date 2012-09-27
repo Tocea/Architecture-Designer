@@ -33,6 +33,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//PrimitiveRole/type"/>
     </genClasses>
     <genClasses ecoreClass="ArchitectureDSL.ecore#//Role">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//Role/inherited"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Role/element"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Role/superRole"/>
     </genClasses>

@@ -72,6 +72,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
     public static final int T__85=85;
     public static final int T__84=84;
     public static final int RULE_SL_COMMENT=10;
+    public static final int T__87=87;
     public static final int T__86=86;
     public static final int RULE_ML_COMMENT=9;
     public static final int T__30=30;
@@ -1522,10 +1523,10 @@ public class InternalArchitectureDSLLexer extends Lexer {
         try {
             int _type = T__81;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:79:7: ( 'mandatory' )
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:79:9: 'mandatory'
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:79:7: ( 'inherited' )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:79:9: 'inherited'
             {
-            match("mandatory"); 
+            match("inherited"); 
 
 
             }
@@ -1543,10 +1544,10 @@ public class InternalArchitectureDSLLexer extends Lexer {
         try {
             int _type = T__82;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:80:7: ( '?.' )
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:80:9: '?.'
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:80:7: ( 'mandatory' )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:80:9: 'mandatory'
             {
-            match("?."); 
+            match("mandatory"); 
 
 
             }
@@ -1564,10 +1565,10 @@ public class InternalArchitectureDSLLexer extends Lexer {
         try {
             int _type = T__83;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:81:7: ( '*.' )
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:81:9: '*.'
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:81:7: ( '?.' )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:81:9: '?.'
             {
-            match("*."); 
+            match("?."); 
 
 
             }
@@ -1585,10 +1586,11 @@ public class InternalArchitectureDSLLexer extends Lexer {
         try {
             int _type = T__84;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:82:7: ( '|' )
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:82:9: '|'
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:82:7: ( '*.' )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:82:9: '*.'
             {
-            match('|'); 
+            match("*."); 
+
 
             }
 
@@ -1605,11 +1607,10 @@ public class InternalArchitectureDSLLexer extends Lexer {
         try {
             int _type = T__85;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:83:7: ( 'var' )
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:83:9: 'var'
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:83:7: ( '|' )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:83:9: '|'
             {
-            match("var"); 
-
+            match('|'); 
 
             }
 
@@ -1626,10 +1627,10 @@ public class InternalArchitectureDSLLexer extends Lexer {
         try {
             int _type = T__86;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:84:7: ( 'true' )
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:84:9: 'true'
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:84:7: ( 'var' )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:84:9: 'var'
             {
-            match("true"); 
+            match("var"); 
 
 
             }
@@ -1642,15 +1643,36 @@ public class InternalArchitectureDSLLexer extends Lexer {
     }
     // $ANTLR end "T__86"
 
+    // $ANTLR start "T__87"
+    public final void mT__87() throws RecognitionException {
+        try {
+            int _type = T__87;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:85:7: ( 'true' )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:85:9: 'true'
+            {
+            match("true"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__87"
+
     // $ANTLR start "RULE_HEX"
     public final void mRULE_HEX() throws RecognitionException {
         try {
             int _type = RULE_HEX;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20287:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20287:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20332:10: ( ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )? )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20332:12: ( '0x' | '0X' ) ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+ ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             {
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20287:12: ( '0x' | '0X' )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20332:12: ( '0x' | '0X' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -1678,7 +1700,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20287:13: '0x'
+                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20332:13: '0x'
                     {
                     match("0x"); 
 
@@ -1686,7 +1708,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20287:18: '0X'
+                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20332:18: '0X'
                     {
                     match("0X"); 
 
@@ -1696,7 +1718,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
 
             }
 
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20287:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20332:24: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' | '_' )+
             int cnt2=0;
             loop2:
             do {
@@ -1734,7 +1756,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
                 cnt2++;
             } while (true);
 
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20287:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20332:58: ( '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) ) )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -1743,10 +1765,10 @@ public class InternalArchitectureDSLLexer extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20287:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20332:59: '#' ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     {
                     match('#'); 
-                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20287:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
+                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20332:63: ( ( 'b' | 'B' ) ( 'i' | 'I' ) | ( 'l' | 'L' ) )
                     int alt3=2;
                     int LA3_0 = input.LA(1);
 
@@ -1764,7 +1786,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
                     }
                     switch (alt3) {
                         case 1 :
-                            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20287:64: ( 'b' | 'B' ) ( 'i' | 'I' )
+                            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20332:64: ( 'b' | 'B' ) ( 'i' | 'I' )
                             {
                             if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                                 input.consume();
@@ -1788,7 +1810,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
                             }
                             break;
                         case 2 :
-                            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20287:84: ( 'l' | 'L' )
+                            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20332:84: ( 'l' | 'L' )
                             {
                             if ( input.LA(1)=='L'||input.LA(1)=='l' ) {
                                 input.consume();
@@ -1827,11 +1849,11 @@ public class InternalArchitectureDSLLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20289:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20289:12: '0' .. '9' ( '0' .. '9' | '_' )*
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20334:10: ( '0' .. '9' ( '0' .. '9' | '_' )* )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20334:12: '0' .. '9' ( '0' .. '9' | '_' )*
             {
             matchRange('0','9'); 
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20289:21: ( '0' .. '9' | '_' )*
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20334:21: ( '0' .. '9' | '_' )*
             loop5:
             do {
                 int alt5=2;
@@ -1880,11 +1902,11 @@ public class InternalArchitectureDSLLexer extends Lexer {
         try {
             int _type = RULE_DECIMAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20291:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20291:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20336:14: ( RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )? )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20336:16: RULE_INT ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )? ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             {
             mRULE_INT(); 
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20291:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20336:25: ( ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT )?
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1893,7 +1915,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20291:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
+                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20336:26: ( 'e' | 'E' ) ( '+' | '-' )? RULE_INT
                     {
                     if ( input.LA(1)=='E'||input.LA(1)=='e' ) {
                         input.consume();
@@ -1904,7 +1926,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
                         recover(mse);
                         throw mse;}
 
-                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20291:36: ( '+' | '-' )?
+                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20336:36: ( '+' | '-' )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -1937,7 +1959,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
 
             }
 
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20291:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20336:58: ( ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' ) | ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' ) )?
             int alt8=3;
             int LA8_0 = input.LA(1);
 
@@ -1949,7 +1971,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
             }
             switch (alt8) {
                 case 1 :
-                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20291:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
+                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20336:59: ( 'b' | 'B' ) ( 'i' | 'I' | 'd' | 'D' )
                     {
                     if ( input.LA(1)=='B'||input.LA(1)=='b' ) {
                         input.consume();
@@ -1973,7 +1995,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20291:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
+                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20336:87: ( 'l' | 'L' | 'd' | 'D' | 'f' | 'F' )
                     {
                     if ( input.LA(1)=='D'||input.LA(1)=='F'||input.LA(1)=='L'||input.LA(1)=='d'||input.LA(1)=='f'||input.LA(1)=='l' ) {
                         input.consume();
@@ -2006,10 +2028,10 @@ public class InternalArchitectureDSLLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20293:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20293:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20338:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )* )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20338:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             {
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20293:11: ( '^' )?
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20338:11: ( '^' )?
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -2018,7 +2040,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
             }
             switch (alt9) {
                 case 1 :
-                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20293:11: '^'
+                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20338:11: '^'
                     {
                     match('^'); 
 
@@ -2036,7 +2058,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20293:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20338:44: ( 'a' .. 'z' | 'A' .. 'Z' | '$' | '_' | '0' .. '9' )*
             loop10:
             do {
                 int alt10=2;
@@ -2085,10 +2107,10 @@ public class InternalArchitectureDSLLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20295:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20295:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20340:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20340:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20295:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20340:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -2106,10 +2128,10 @@ public class InternalArchitectureDSLLexer extends Lexer {
             }
             switch (alt13) {
                 case 1 :
-                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20295:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20340:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20295:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20340:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop11:
                     do {
                         int alt11=3;
@@ -2125,7 +2147,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
 
                         switch (alt11) {
                     	case 1 :
-                    	    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20295:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20340:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2141,7 +2163,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20295:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20340:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2166,10 +2188,10 @@ public class InternalArchitectureDSLLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20295:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20340:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20295:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20340:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop12:
                     do {
                         int alt12=3;
@@ -2185,7 +2207,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
 
                         switch (alt12) {
                     	case 1 :
-                    	    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20295:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20340:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -2201,7 +2223,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20295:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20340:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -2244,12 +2266,12 @@ public class InternalArchitectureDSLLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20297:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20297:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20342:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20342:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20297:24: ( options {greedy=false; } : . )*
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20342:24: ( options {greedy=false; } : . )*
             loop14:
             do {
                 int alt14=2;
@@ -2274,7 +2296,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
 
                 switch (alt14) {
             	case 1 :
-            	    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20297:52: .
+            	    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20342:52: .
             	    {
             	    matchAny(); 
 
@@ -2304,12 +2326,12 @@ public class InternalArchitectureDSLLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20299:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20299:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20344:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20344:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20299:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20344:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop15:
             do {
                 int alt15=2;
@@ -2322,7 +2344,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
 
                 switch (alt15) {
             	case 1 :
-            	    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20299:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20344:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2342,7 +2364,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
                 }
             } while (true);
 
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20299:40: ( ( '\\r' )? '\\n' )?
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20344:40: ( ( '\\r' )? '\\n' )?
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -2351,9 +2373,9 @@ public class InternalArchitectureDSLLexer extends Lexer {
             }
             switch (alt17) {
                 case 1 :
-                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20299:41: ( '\\r' )? '\\n'
+                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20344:41: ( '\\r' )? '\\n'
                     {
-                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20299:41: ( '\\r' )?
+                    // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20344:41: ( '\\r' )?
                     int alt16=2;
                     int LA16_0 = input.LA(1);
 
@@ -2362,7 +2384,7 @@ public class InternalArchitectureDSLLexer extends Lexer {
                     }
                     switch (alt16) {
                         case 1 :
-                            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20299:41: '\\r'
+                            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20344:41: '\\r'
                             {
                             match('\r'); 
 
@@ -2394,10 +2416,10 @@ public class InternalArchitectureDSLLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20301:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20301:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20346:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20346:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20301:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20346:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt18=0;
             loop18:
             do {
@@ -2451,8 +2473,8 @@ public class InternalArchitectureDSLLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20303:16: ( . )
-            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20303:18: .
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20348:16: ( . )
+            // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:20348:18: .
             {
             matchAny(); 
 
@@ -2467,8 +2489,8 @@ public class InternalArchitectureDSLLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:8: ( T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt19=83;
+        // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:8: ( T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt19=84;
         alt19 = dfa19.predict(input);
         switch (alt19) {
             case 1 :
@@ -2990,63 +3012,70 @@ public class InternalArchitectureDSLLexer extends Lexer {
                 }
                 break;
             case 75 :
-                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:454: RULE_HEX
+                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:454: T__87
+                {
+                mT__87(); 
+
+                }
+                break;
+            case 76 :
+                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:460: RULE_HEX
                 {
                 mRULE_HEX(); 
 
                 }
                 break;
-            case 76 :
-                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:463: RULE_INT
+            case 77 :
+                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:469: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 77 :
-                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:472: RULE_DECIMAL
+            case 78 :
+                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:478: RULE_DECIMAL
                 {
                 mRULE_DECIMAL(); 
 
                 }
                 break;
-            case 78 :
-                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:485: RULE_ID
+            case 79 :
+                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:491: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 79 :
-                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:493: RULE_STRING
+            case 80 :
+                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:499: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 80 :
-                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:505: RULE_ML_COMMENT
+            case 81 :
+                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:511: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 81 :
-                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:521: RULE_SL_COMMENT
+            case 82 :
+                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:527: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 82 :
-                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:537: RULE_WS
+            case 83 :
+                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:543: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 83 :
-                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:545: RULE_ANY_OTHER
+            case 84 :
+                // ../com.tocea.codewatch.architecture.dsl.ui/src/main/generated/com/tocea/codewatch/architecture/dsl/ui/contentassist/antlr/internal/InternalArchitectureDSL.g:1:551: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -3063,45 +3092,46 @@ public class InternalArchitectureDSLLexer extends Lexer {
         "\1\uffff\1\57\1\61\1\63\1\65\1\uffff\1\71\1\73\1\75\1\100\1\102"+
         "\1\105\1\110\1\113\1\uffff\5\116\1\133\2\116\3\uffff\1\116\2\uffff"+
         "\1\116\2\uffff\5\116\2\165\1\54\1\uffff\2\54\23\uffff\1\173\16\uffff"+
-        "\1\116\1\uffff\12\116\1\u0088\2\uffff\2\116\1\u008b\2\116\3\uffff"+
-        "\2\116\2\uffff\1\u0091\1\116\2\uffff\10\116\2\uffff\1\165\5\uffff"+
-        "\1\u009d\1\u009e\3\116\1\u00a2\6\116\1\uffff\2\116\1\uffff\5\116"+
-        "\1\uffff\4\116\1\u00b4\3\116\1\u00b8\2\116\2\uffff\3\116\1\uffff"+
-        "\3\116\1\u00c1\6\116\1\u00c8\3\116\1\u00cc\2\116\1\uffff\1\u00cf"+
-        "\2\116\1\uffff\1\u00d2\1\116\1\u00d4\1\116\1\u00d6\3\116\1\uffff"+
-        "\6\116\1\uffff\3\116\1\uffff\1\u00e4\1\u00e5\1\uffff\1\116\1\u00e7"+
-        "\1\uffff\1\116\1\uffff\1\u00e9\1\uffff\6\116\1\u00f0\4\116\1\u00f5"+
-        "\1\116\2\uffff\1\u00f7\1\uffff\1\116\1\uffff\1\u00f9\1\116\1\u00fb"+
-        "\2\116\1\u00fe\1\uffff\1\116\1\u0100\2\116\1\uffff\1\116\1\uffff"+
-        "\1\116\1\uffff\1\116\1\uffff\1\116\1\u0107\1\uffff\1\116\1\uffff"+
-        "\2\116\1\u010b\1\116\1\u010d\1\116\1\uffff\1\116\1\u0110\1\116\1"+
-        "\uffff\1\u0112\1\uffff\1\116\1\u0114\1\uffff\1\116\1\uffff\1\u0116"+
-        "\1\uffff\1\116\1\uffff\1\u0118\1\uffff";
+        "\1\116\1\uffff\12\116\1\u0088\2\uffff\2\116\1\u008c\2\116\3\uffff"+
+        "\2\116\2\uffff\1\u0092\1\116\2\uffff\10\116\2\uffff\1\165\5\uffff"+
+        "\1\u009e\1\u009f\3\116\1\u00a3\6\116\1\uffff\3\116\1\uffff\5\116"+
+        "\1\uffff\4\116\1\u00b6\3\116\1\u00ba\2\116\2\uffff\3\116\1\uffff"+
+        "\3\116\1\u00c3\7\116\1\u00cb\3\116\1\u00cf\2\116\1\uffff\1\u00d2"+
+        "\2\116\1\uffff\1\u00d5\1\116\1\u00d7\1\116\1\u00d9\3\116\1\uffff"+
+        "\7\116\1\uffff\3\116\1\uffff\1\u00e8\1\u00e9\1\uffff\1\116\1\u00eb"+
+        "\1\uffff\1\116\1\uffff\1\u00ed\1\uffff\6\116\1\u00f4\5\116\1\u00fa"+
+        "\1\116\2\uffff\1\u00fc\1\uffff\1\116\1\uffff\1\u00fe\1\116\1\u0100"+
+        "\2\116\1\u0103\1\uffff\2\116\1\u0106\2\116\1\uffff\1\116\1\uffff"+
+        "\1\116\1\uffff\1\116\1\uffff\1\116\1\u010d\1\uffff\2\116\1\uffff"+
+        "\2\116\1\u0112\1\116\1\u0114\1\116\1\uffff\1\116\1\u0117\1\u0118"+
+        "\1\116\1\uffff\1\u011a\1\uffff\1\116\1\u011c\2\uffff\1\116\1\uffff"+
+        "\1\u011e\1\uffff\1\116\1\uffff\1\u0120\1\uffff";
     static final String DFA19_eofS =
-        "\u0119\uffff";
+        "\u0121\uffff";
     static final String DFA19_minS =
         "\1\0\2\75\1\174\1\46\1\uffff\1\52\3\75\1\76\1\52\1\56\1\52\1\uffff"+
         "\1\141\1\165\1\141\1\154\1\141\1\72\1\146\1\141\3\uffff\1\145\2"+
         "\uffff\1\142\2\uffff\1\141\1\150\1\145\1\150\1\141\2\60\1\44\1\uffff"+
         "\2\0\23\uffff\1\76\16\uffff\1\154\1\uffff\1\160\1\151\1\154\1\162"+
-        "\1\156\1\164\1\165\1\163\1\164\1\146\1\44\2\uffff\1\160\1\163\1"+
+        "\1\156\1\164\1\165\1\163\1\164\1\146\1\44\2\uffff\1\160\1\150\1"+
         "\44\1\164\1\151\3\uffff\2\154\2\uffff\1\44\1\163\2\uffff\1\163\1"+
         "\151\1\167\1\154\1\160\1\162\1\165\1\156\2\uffff\1\60\5\uffff\2"+
         "\44\1\145\1\164\1\163\1\44\1\141\1\145\1\155\1\145\2\141\1\uffff"+
-        "\1\157\1\164\1\uffff\1\164\1\155\1\145\1\141\1\165\1\uffff\1\164"+
-        "\1\145\1\143\1\154\1\44\1\154\1\145\1\157\1\44\1\145\1\144\2\uffff"+
-        "\1\162\1\143\1\145\1\uffff\1\154\1\156\1\145\1\44\1\164\1\165\1"+
-        "\162\1\141\1\145\1\151\1\44\1\164\2\162\1\44\1\150\1\145\1\uffff"+
-        "\1\44\1\157\1\167\1\uffff\1\44\1\141\1\44\1\150\1\44\1\154\1\144"+
-        "\1\162\1\uffff\1\171\1\154\1\164\1\156\1\162\1\164\1\uffff\1\151"+
-        "\1\156\1\141\1\uffff\2\44\1\uffff\1\146\1\44\1\uffff\1\164\1\uffff"+
-        "\1\44\1\uffff\1\171\1\151\1\163\1\141\1\160\1\164\1\44\1\143\1\156"+
-        "\1\151\1\157\1\44\1\143\2\uffff\1\44\1\uffff\1\157\1\uffff\1\44"+
-        "\1\157\1\44\1\164\1\145\1\44\1\uffff\1\145\1\44\1\166\1\156\1\uffff"+
-        "\1\164\1\uffff\1\162\1\uffff\1\156\1\uffff\1\151\1\44\1\uffff\1"+
-        "\157\1\uffff\1\145\1\163\1\44\1\171\1\44\1\157\1\uffff\1\146\1\44"+
-        "\1\150\1\uffff\1\44\1\uffff\1\156\1\44\1\uffff\1\151\1\uffff\1\44"+
-        "\1\uffff\1\160\1\uffff\1\44\1\uffff";
+        "\1\157\1\164\1\145\1\uffff\1\164\1\155\1\145\1\141\1\165\1\uffff"+
+        "\1\164\1\145\1\143\1\154\1\44\1\154\1\145\1\157\1\44\1\145\1\144"+
+        "\2\uffff\1\162\1\143\1\145\1\uffff\1\154\1\156\1\145\1\44\1\164"+
+        "\1\165\1\162\1\141\1\162\1\145\1\151\1\44\1\164\2\162\1\44\1\150"+
+        "\1\145\1\uffff\1\44\1\157\1\167\1\uffff\1\44\1\141\1\44\1\150\1"+
+        "\44\1\154\1\144\1\162\1\uffff\1\171\1\154\1\164\1\156\1\151\1\162"+
+        "\1\164\1\uffff\1\151\1\156\1\141\1\uffff\2\44\1\uffff\1\146\1\44"+
+        "\1\uffff\1\164\1\uffff\1\44\1\uffff\1\171\1\151\1\163\1\141\1\160"+
+        "\1\164\1\44\1\143\1\164\1\156\1\151\1\157\1\44\1\143\2\uffff\1\44"+
+        "\1\uffff\1\157\1\uffff\1\44\1\157\1\44\1\164\1\145\1\44\1\uffff"+
+        "\2\145\1\44\1\166\1\156\1\uffff\1\164\1\uffff\1\162\1\uffff\1\156"+
+        "\1\uffff\1\151\1\44\1\uffff\1\157\1\144\1\uffff\1\145\1\163\1\44"+
+        "\1\171\1\44\1\157\1\uffff\1\146\2\44\1\150\1\uffff\1\44\1\uffff"+
+        "\1\156\1\44\2\uffff\1\151\1\uffff\1\44\1\uffff\1\160\1\uffff\1\44"+
+        "\1\uffff";
     static final String DFA19_maxS =
         "\1\uffff\1\76\1\75\1\174\1\46\1\uffff\1\56\2\75\2\76\1\56\1\72\1"+
         "\57\1\uffff\1\141\1\167\1\157\1\170\1\157\1\72\1\156\1\162\3\uffff"+
@@ -3111,38 +3141,38 @@ public class InternalArchitectureDSLLexer extends Lexer {
         "\2\uffff\1\160\1\163\1\172\1\164\1\151\3\uffff\1\154\1\164\2\uffff"+
         "\1\172\1\163\2\uffff\1\164\1\151\1\167\1\154\1\160\1\162\1\171\1"+
         "\156\2\uffff\1\154\5\uffff\2\172\1\145\1\164\1\163\1\172\1\141\1"+
-        "\145\1\155\1\145\2\141\1\uffff\1\157\1\164\1\uffff\1\164\1\155\1"+
-        "\145\1\141\1\165\1\uffff\1\164\1\145\1\143\1\154\1\172\1\154\1\145"+
-        "\1\157\1\172\1\145\1\144\2\uffff\1\162\1\143\1\145\1\uffff\1\154"+
-        "\1\156\1\145\1\172\1\164\1\165\1\162\1\141\1\145\1\151\1\172\1\164"+
-        "\2\162\1\172\1\150\1\145\1\uffff\1\172\1\157\1\167\1\uffff\1\172"+
-        "\1\141\1\172\1\150\1\172\1\154\1\163\1\162\1\uffff\1\171\1\154\1"+
-        "\164\1\156\1\162\1\164\1\uffff\1\151\1\156\1\141\1\uffff\2\172\1"+
-        "\uffff\1\146\1\172\1\uffff\1\164\1\uffff\1\172\1\uffff\1\171\1\151"+
-        "\1\163\1\141\1\160\1\164\1\172\1\143\1\156\1\151\1\157\1\172\1\143"+
-        "\2\uffff\1\172\1\uffff\1\157\1\uffff\1\172\1\157\1\172\1\164\1\145"+
-        "\1\172\1\uffff\1\145\1\172\1\166\1\156\1\uffff\1\164\1\uffff\1\162"+
-        "\1\uffff\1\156\1\uffff\1\151\1\172\1\uffff\1\157\1\uffff\1\145\1"+
-        "\163\1\172\1\171\1\172\1\157\1\uffff\1\146\1\172\1\150\1\uffff\1"+
-        "\172\1\uffff\1\156\1\172\1\uffff\1\151\1\uffff\1\172\1\uffff\1\160"+
-        "\1\uffff\1\172\1\uffff";
+        "\145\1\155\1\145\2\141\1\uffff\1\157\1\164\1\145\1\uffff\1\164\1"+
+        "\155\1\145\1\141\1\165\1\uffff\1\164\1\145\1\143\1\154\1\172\1\154"+
+        "\1\145\1\157\1\172\1\145\1\144\2\uffff\1\162\1\143\1\145\1\uffff"+
+        "\1\154\1\156\1\145\1\172\1\164\1\165\1\162\1\141\1\162\1\145\1\151"+
+        "\1\172\1\164\2\162\1\172\1\150\1\145\1\uffff\1\172\1\157\1\167\1"+
+        "\uffff\1\172\1\141\1\172\1\150\1\172\1\154\1\163\1\162\1\uffff\1"+
+        "\171\1\154\1\164\1\156\1\151\1\162\1\164\1\uffff\1\151\1\156\1\141"+
+        "\1\uffff\2\172\1\uffff\1\146\1\172\1\uffff\1\164\1\uffff\1\172\1"+
+        "\uffff\1\171\1\151\1\163\1\141\1\160\1\164\1\172\1\143\1\164\1\156"+
+        "\1\151\1\157\1\172\1\143\2\uffff\1\172\1\uffff\1\157\1\uffff\1\172"+
+        "\1\157\1\172\1\164\1\145\1\172\1\uffff\2\145\1\172\1\166\1\156\1"+
+        "\uffff\1\164\1\uffff\1\162\1\uffff\1\156\1\uffff\1\151\1\172\1\uffff"+
+        "\1\157\1\144\1\uffff\1\145\1\163\1\172\1\171\1\172\1\157\1\uffff"+
+        "\1\146\2\172\1\150\1\uffff\1\172\1\uffff\1\156\1\172\2\uffff\1\151"+
+        "\1\uffff\1\172\1\uffff\1\160\1\uffff\1\172\1\uffff";
     static final String DFA19_acceptS =
         "\5\uffff\1\5\10\uffff\1\27\10\uffff\1\42\1\44\1\45\1\uffff\1\52"+
-        "\1\53\1\uffff\1\60\1\61\10\uffff\1\116\2\uffff\1\122\1\123\1\7\1"+
-        "\17\1\1\1\2\1\23\1\3\1\110\1\4\1\103\1\5\1\25\1\107\1\6\1\10\1\30"+
-        "\1\11\1\13\1\uffff\1\20\1\14\1\15\1\24\1\16\1\55\1\31\1\21\1\106"+
-        "\1\102\1\120\1\121\1\26\1\27\1\uffff\1\116\13\uffff\1\71\1\37\5"+
+        "\1\53\1\uffff\1\60\1\61\10\uffff\1\117\2\uffff\1\123\1\124\1\7\1"+
+        "\17\1\1\1\2\1\23\1\3\1\111\1\4\1\103\1\5\1\25\1\110\1\6\1\10\1\30"+
+        "\1\11\1\13\1\uffff\1\20\1\14\1\15\1\24\1\16\1\55\1\31\1\21\1\107"+
+        "\1\102\1\121\1\122\1\26\1\27\1\uffff\1\117\13\uffff\1\71\1\37\5"+
         "\uffff\1\42\1\44\1\45\2\uffff\1\52\1\53\2\uffff\1\60\1\61\10\uffff"+
-        "\1\113\1\114\1\uffff\1\115\1\117\1\122\1\22\1\12\14\uffff\1\70\2"+
-        "\uffff\1\62\5\uffff\1\57\13\uffff\1\32\1\111\3\uffff\1\47\21\uffff"+
-        "\1\72\3\uffff\1\77\10\uffff\1\63\6\uffff\1\50\3\uffff\1\66\2\uffff"+
-        "\1\73\2\uffff\1\112\1\uffff\1\33\1\uffff\1\34\15\uffff\1\101\1\67"+
-        "\1\uffff\1\75\1\uffff\1\64\6\uffff\1\40\4\uffff\1\76\1\uffff\1\74"+
-        "\1\uffff\1\100\1\uffff\1\43\2\uffff\1\65\1\uffff\1\41\6\uffff\1"+
-        "\36\3\uffff\1\104\1\uffff\1\35\2\uffff\1\46\1\uffff\1\105\1\uffff"+
-        "\1\56\1\uffff\1\54\1\uffff\1\51";
+        "\1\114\1\115\1\uffff\1\116\1\120\1\123\1\22\1\12\14\uffff\1\70\3"+
+        "\uffff\1\62\5\uffff\1\57\13\uffff\1\32\1\112\3\uffff\1\47\22\uffff"+
+        "\1\72\3\uffff\1\77\10\uffff\1\63\7\uffff\1\50\3\uffff\1\66\2\uffff"+
+        "\1\73\2\uffff\1\113\1\uffff\1\33\1\uffff\1\34\16\uffff\1\101\1\67"+
+        "\1\uffff\1\75\1\uffff\1\64\6\uffff\1\40\5\uffff\1\76\1\uffff\1\74"+
+        "\1\uffff\1\100\1\uffff\1\43\2\uffff\1\65\2\uffff\1\41\6\uffff\1"+
+        "\36\4\uffff\1\104\1\uffff\1\35\2\uffff\1\105\1\46\1\uffff\1\106"+
+        "\1\uffff\1\56\1\uffff\1\54\1\uffff\1\51";
     static final String DFA19_specialS =
-        "\1\1\50\uffff\1\2\1\0\u00ee\uffff}>";
+        "\1\0\50\uffff\1\1\1\2\u00f6\uffff}>";
     static final String[] DFA19_transitionS = {
             "\11\54\2\53\2\54\1\53\22\54\1\53\1\7\1\51\1\54\1\50\1\16\1\4"+
             "\1\52\1\37\1\36\1\6\1\2\1\27\1\12\1\13\1\15\1\45\11\46\1\24"+
@@ -3246,31 +3276,31 @@ public class InternalArchitectureDSLLexer extends Lexer {
             "",
             "",
             "\1\u0089",
-            "\1\u008a",
+            "\1\u008b\12\uffff\1\u008a",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
-            "\1\u008c",
             "\1\u008d",
-            "",
-            "",
-            "",
             "\1\u008e",
-            "\1\u008f\7\uffff\1\u0090",
+            "",
+            "",
+            "",
+            "\1\u008f",
+            "\1\u0090\7\uffff\1\u0091",
             "",
             "",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
-            "\1\u0092",
+            "\1\u0093",
             "",
             "",
-            "\1\u0093\1\u0094",
-            "\1\u0095",
+            "\1\u0094\1\u0095",
             "\1\u0096",
             "\1\u0097",
             "\1\u0098",
             "\1\u0099",
-            "\1\u009b\3\uffff\1\u009a",
-            "\1\u009c",
+            "\1\u009a",
+            "\1\u009c\3\uffff\1\u009b",
+            "\1\u009d",
             "",
             "",
             "\12\166\10\uffff\1\167\1\uffff\3\167\5\uffff\1\167\22\uffff"+
@@ -3284,67 +3314,64 @@ public class InternalArchitectureDSLLexer extends Lexer {
             "\32\116",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
-            "\1\u009f",
             "\1\u00a0",
             "\1\u00a1",
+            "\1\u00a2",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
-            "\1\u00a3",
             "\1\u00a4",
             "\1\u00a5",
             "\1\u00a6",
             "\1\u00a7",
             "\1\u00a8",
-            "",
             "\1\u00a9",
-            "\1\u00aa",
             "",
+            "\1\u00aa",
             "\1\u00ab",
             "\1\u00ac",
+            "",
             "\1\u00ad",
             "\1\u00ae",
             "\1\u00af",
-            "",
             "\1\u00b0",
             "\1\u00b1",
+            "",
             "\1\u00b2",
             "\1\u00b3",
-            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
-            "\32\116",
+            "\1\u00b4",
             "\1\u00b5",
-            "\1\u00b6",
-            "\1\u00b7",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
+            "\1\u00b7",
+            "\1\u00b8",
             "\1\u00b9",
-            "\1\u00ba",
-            "",
-            "",
+            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
+            "\32\116",
             "\1\u00bb",
             "\1\u00bc",
-            "\1\u00bd",
             "",
+            "",
+            "\1\u00bd",
             "\1\u00be",
             "\1\u00bf",
+            "",
             "\1\u00c0",
+            "\1\u00c1",
+            "\1\u00c2",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
-            "\1\u00c2",
-            "\1\u00c3",
             "\1\u00c4",
             "\1\u00c5",
             "\1\u00c6",
             "\1\u00c7",
-            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
-            "\32\116",
+            "\1\u00c8",
             "\1\u00c9",
             "\1\u00ca",
-            "\1\u00cb",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
+            "\1\u00cc",
             "\1\u00cd",
             "\1\u00ce",
-            "",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
             "\1\u00d0",
@@ -3353,117 +3380,129 @@ public class InternalArchitectureDSLLexer extends Lexer {
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
             "\1\u00d3",
-            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
-            "\32\116",
-            "\1\u00d5",
-            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
-            "\32\116",
-            "\1\u00d7",
-            "\1\u00d9\16\uffff\1\u00d8",
-            "\1\u00da",
+            "\1\u00d4",
             "",
-            "\1\u00db",
-            "\1\u00dc",
+            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
+            "\32\116",
+            "\1\u00d6",
+            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
+            "\32\116",
+            "\1\u00d8",
+            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
+            "\32\116",
+            "\1\u00da",
+            "\1\u00dc\16\uffff\1\u00db",
             "\1\u00dd",
+            "",
             "\1\u00de",
             "\1\u00df",
             "\1\u00e0",
-            "",
             "\1\u00e1",
             "\1\u00e2",
             "\1\u00e3",
+            "\1\u00e4",
             "",
-            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
-            "\32\116",
-            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
-            "\32\116",
-            "",
+            "\1\u00e5",
             "\1\u00e6",
+            "\1\u00e7",
+            "",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
-            "",
-            "\1\u00e8",
-            "",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
             "",
             "\1\u00ea",
-            "\1\u00eb",
-            "\1\u00ec",
-            "\1\u00ed",
-            "\1\u00ee",
-            "\1\u00ef",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
+            "",
+            "\1\u00ec",
+            "",
+            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
+            "\32\116",
+            "",
+            "\1\u00ee",
+            "\1\u00ef",
+            "\1\u00f0",
             "\1\u00f1",
             "\1\u00f2",
             "\1\u00f3",
-            "\1\u00f4",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
+            "\1\u00f5",
             "\1\u00f6",
-            "",
-            "",
-            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
-            "\32\116",
-            "",
+            "\1\u00f7",
             "\1\u00f8",
+            "\1\u00f9",
+            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
+            "\32\116",
+            "\1\u00fb",
+            "",
             "",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
-            "\1\u00fa",
-            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
-            "\32\116",
-            "\1\u00fc",
+            "",
             "\1\u00fd",
+            "",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
-            "",
             "\1\u00ff",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
             "\1\u0101",
             "\1\u0102",
-            "",
-            "\1\u0103",
-            "",
-            "\1\u0104",
-            "",
-            "\1\u0105",
-            "",
-            "\1\u0106",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
             "",
+            "\1\u0104",
+            "\1\u0105",
+            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
+            "\32\116",
+            "\1\u0107",
             "\1\u0108",
             "",
             "\1\u0109",
+            "",
             "\1\u010a",
-            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
-            "\32\116",
+            "",
+            "\1\u010b",
+            "",
             "\1\u010c",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
+            "",
             "\1\u010e",
-            "",
             "\1\u010f",
-            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
-            "\32\116",
+            "",
+            "\1\u0110",
             "\1\u0111",
-            "",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
-            "",
             "\1\u0113",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
-            "",
             "\1\u0115",
+            "",
+            "\1\u0116",
+            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
+            "\32\116",
+            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
+            "\32\116",
+            "\1\u0119",
             "",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
             "",
-            "\1\u0117",
+            "\1\u011b",
+            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
+            "\32\116",
+            "",
+            "",
+            "\1\u011d",
+            "",
+            "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
+            "\32\116",
+            "",
+            "\1\u011f",
             "",
             "\1\116\13\uffff\12\116\7\uffff\32\116\4\uffff\1\116\1\uffff"+
             "\32\116",
@@ -3500,23 +3539,13 @@ public class InternalArchitectureDSLLexer extends Lexer {
             this.transition = DFA19_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | T__79 | T__80 | T__81 | T__82 | T__83 | T__84 | T__85 | T__86 | T__87 | RULE_HEX | RULE_INT | RULE_DECIMAL | RULE_ID | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA19_42 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA19_42>='\u0000' && LA19_42<='\uFFFF')) ) {s = 120;}
-
-                        else s = 44;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
                         int LA19_0 = input.LA(1);
 
                         s = -1;
@@ -3610,11 +3639,21 @@ public class InternalArchitectureDSLLexer extends Lexer {
 
                         if ( s>=0 ) return s;
                         break;
-                    case 2 : 
+                    case 1 : 
                         int LA19_41 = input.LA(1);
 
                         s = -1;
                         if ( ((LA19_41>='\u0000' && LA19_41<='\uFFFF')) ) {s = 120;}
+
+                        else s = 44;
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA19_42 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA19_42>='\u0000' && LA19_42<='\uFFFF')) ) {s = 120;}
 
                         else s = 44;
 
