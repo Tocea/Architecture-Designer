@@ -2,6 +2,8 @@ grammar com.tocea.codewatch.architecture.dsl.ArchitectureDSL with org.eclipse.xt
 
 generate architectureDSL "http://www.tocea.com/codewatch/architecture/dsl/ArchitectureDSL"
 
+import "http://www.tocea.com/codewatch/architecture/query/dsl/QueryDsl" as query
+
 ArchitectureExtension:
 	'extension' name = QualifiedName
 	entities+=ExtensionEntity*
@@ -45,8 +47,21 @@ Role :
 	('<' parameters += Parameter (',' parameters += Parameter)* '>')?
 	('for' element = [Type | QualifiedName] |
 	 'extends' superRole = TypeReference )?
-	('{' (fields+=Field ';')* '}' | ';' )
+	('{' (fields+=Field ';')*(constraints+=ExtensionConstraint ';')* '}' | ';' )
 ;
+
+ExtensionConstraint:
+	'enforce' constraint=Constraint ('?' explanation=STRING)?
+;
+
+Constraint:
+	'this''.'query=[query::Query] '()' (comparator=MetricComparator value=XExpression)? 
+;
+
+enum MetricComparator:
+	ge=">=" | le="<=" | gt=">" | lt="<" | eq="=" | ne="!="
+;
+
 
 Relationship :
 	(abstract?='abstract')?

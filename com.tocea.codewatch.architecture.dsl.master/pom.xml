@@ -19,12 +19,12 @@
 	<properties>
 		<tycho-version>0.15.0</tycho-version>
 	</properties>
-
+	
 	<repositories>
 		<repository>
-			<id>juno</id>
+			<id>indigo</id>
 			<layout>p2</layout>
-			<url>http://download.eclipse.org/releases/juno</url>
+			<url>http://download.eclipse.org/releases/indigo</url>
 		</repository>
 	</repositories>
 
