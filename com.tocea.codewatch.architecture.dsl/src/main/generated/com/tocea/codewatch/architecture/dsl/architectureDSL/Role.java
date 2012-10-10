@@ -2,6 +2,7 @@
  */
 package com.tocea.codewatch.architecture.dsl.architectureDSL;
 
+import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -14,6 +15,7 @@ package com.tocea.codewatch.architecture.dsl.architectureDSL;
  *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Role#isInherited <em>Inherited</em>}</li>
  *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Role#getElement <em>Element</em>}</li>
  *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Role#getSuperRole <em>Super Role</em>}</li>
+ *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Role#getConstraints <em>Constraints</em>}</li>
  * </ul>
  * </p>
  *
@@ -100,5 +102,21 @@ public interface Role extends ParametrizedType
    * @generated
    */
   void setSuperRole(TypeReference value);
+
+  /**
+   * Returns the value of the '<em><b>Constraints</b></em>' containment reference list.
+   * The list contents are of type {@link com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionConstraint}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Constraints</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Constraints</em>' containment reference list.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureDSLPackage#getRole_Constraints()
+   * @model containment="true"
+   * @generated
+   */
+  EList<ExtensionConstraint> getConstraints();
 
 } // Role

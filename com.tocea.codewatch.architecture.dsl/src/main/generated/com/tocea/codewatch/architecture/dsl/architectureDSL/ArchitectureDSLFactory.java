@@ -104,6 +104,24 @@ public interface ArchitectureDSLFactory extends EFactory
   Role createRole();
 
   /**
+   * Returns a new object of class '<em>Extension Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Extension Constraint</em>'.
+   * @generated
+   */
+  ExtensionConstraint createExtensionConstraint();
+
+  /**
+   * Returns a new object of class '<em>Constraint</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Constraint</em>'.
+   * @generated
+   */
+  Constraint createConstraint();
+
+  /**
    * Returns a new object of class '<em>Relationship</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -83,6 +83,7 @@ public class ArchitectureDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getJvmArgumentTypeReferenceAccess().getAlternatives(), "rule__JvmArgumentTypeReference__Alternatives");
 					put(grammarAccess.getJvmWildcardTypeReferenceAccess().getAlternatives_2(), "rule__JvmWildcardTypeReference__Alternatives_2");
 					put(grammarAccess.getJvmTypeParameterAccess().getAlternatives_1(), "rule__JvmTypeParameter__Alternatives_1");
+					put(grammarAccess.getMetricComparatorAccess().getAlternatives(), "rule__MetricComparator__Alternatives");
 					put(grammarAccess.getArchitectureExtensionAccess().getGroup(), "rule__ArchitectureExtension__Group__0");
 					put(grammarAccess.getDatatypeAccess().getGroup(), "rule__Datatype__Group__0");
 					put(grammarAccess.getImportAccess().getGroup(), "rule__Import__Group__0");
@@ -100,6 +101,11 @@ public class ArchitectureDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRoleAccess().getGroup_4_1(), "rule__Role__Group_4_1__0");
 					put(grammarAccess.getRoleAccess().getGroup_5_0(), "rule__Role__Group_5_0__0");
 					put(grammarAccess.getRoleAccess().getGroup_5_0_1(), "rule__Role__Group_5_0_1__0");
+					put(grammarAccess.getRoleAccess().getGroup_5_0_2(), "rule__Role__Group_5_0_2__0");
+					put(grammarAccess.getExtensionConstraintAccess().getGroup(), "rule__ExtensionConstraint__Group__0");
+					put(grammarAccess.getExtensionConstraintAccess().getGroup_2(), "rule__ExtensionConstraint__Group_2__0");
+					put(grammarAccess.getConstraintAccess().getGroup(), "rule__Constraint__Group__0");
+					put(grammarAccess.getConstraintAccess().getGroup_4(), "rule__Constraint__Group_4__0");
 					put(grammarAccess.getRelationshipAccess().getGroup(), "rule__Relationship__Group__0");
 					put(grammarAccess.getRelationshipAccess().getGroup_3(), "rule__Relationship__Group_3__0");
 					put(grammarAccess.getRelationshipAccess().getGroup_4(), "rule__Relationship__Group_4__0");
@@ -281,6 +287,12 @@ public class ArchitectureDSLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getRoleAccess().getElementAssignment_4_0_1(), "rule__Role__ElementAssignment_4_0_1");
 					put(grammarAccess.getRoleAccess().getSuperRoleAssignment_4_1_1(), "rule__Role__SuperRoleAssignment_4_1_1");
 					put(grammarAccess.getRoleAccess().getFieldsAssignment_5_0_1_0(), "rule__Role__FieldsAssignment_5_0_1_0");
+					put(grammarAccess.getRoleAccess().getConstraintsAssignment_5_0_2_0(), "rule__Role__ConstraintsAssignment_5_0_2_0");
+					put(grammarAccess.getExtensionConstraintAccess().getConstraintAssignment_1(), "rule__ExtensionConstraint__ConstraintAssignment_1");
+					put(grammarAccess.getExtensionConstraintAccess().getExplanationAssignment_2_1(), "rule__ExtensionConstraint__ExplanationAssignment_2_1");
+					put(grammarAccess.getConstraintAccess().getQueryAssignment_2(), "rule__Constraint__QueryAssignment_2");
+					put(grammarAccess.getConstraintAccess().getComparatorAssignment_4_0(), "rule__Constraint__ComparatorAssignment_4_0");
+					put(grammarAccess.getConstraintAccess().getValueAssignment_4_1(), "rule__Constraint__ValueAssignment_4_1");
 					put(grammarAccess.getRelationshipAccess().getAbstractAssignment_0(), "rule__Relationship__AbstractAssignment_0");
 					put(grammarAccess.getRelationshipAccess().getNameAssignment_2(), "rule__Relationship__NameAssignment_2");
 					put(grammarAccess.getRelationshipAccess().getSuperRelationshipAssignment_3_1(), "rule__Relationship__SuperRelationshipAssignment_3_1");

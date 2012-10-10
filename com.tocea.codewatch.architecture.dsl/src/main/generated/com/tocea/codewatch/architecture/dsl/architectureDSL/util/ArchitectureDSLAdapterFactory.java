@@ -120,6 +120,16 @@ public class ArchitectureDSLAdapterFactory extends AdapterFactoryImpl
         return createRoleAdapter();
       }
       @Override
+      public Adapter caseExtensionConstraint(ExtensionConstraint object)
+      {
+        return createExtensionConstraintAdapter();
+      }
+      @Override
+      public Adapter caseConstraint(Constraint object)
+      {
+        return createConstraintAdapter();
+      }
+      @Override
       public Adapter caseRelationship(Relationship object)
       {
         return createRelationshipAdapter();
@@ -337,6 +347,36 @@ public class ArchitectureDSLAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createRoleAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionConstraint <em>Extension Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionConstraint
+   * @generated
+   */
+  public Adapter createExtensionConstraintAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Constraint <em>Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.Constraint
+   * @generated
+   */
+  public Adapter createConstraintAdapter()
   {
     return null;
   }

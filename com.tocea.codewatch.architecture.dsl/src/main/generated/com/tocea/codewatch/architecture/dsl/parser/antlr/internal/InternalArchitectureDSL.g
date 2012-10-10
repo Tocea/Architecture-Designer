@@ -24,6 +24,7 @@ import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
@@ -805,16 +806,185 @@ ruleRole returns [EObject current=null]
     {
     	newLeafNode(otherlv_15, grammarAccess.getRoleAccess().getSemicolonKeyword_5_0_1_1());
     }
-)*	otherlv_16='}' 
+)*((
+(
+		{ 
+	        newCompositeNode(grammarAccess.getRoleAccess().getConstraintsExtensionConstraintParserRuleCall_5_0_2_0_0()); 
+	    }
+		lv_constraints_16_0=ruleExtensionConstraint		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getRoleRule());
+	        }
+       		add(
+       			$current, 
+       			"constraints",
+        		lv_constraints_16_0, 
+        		"ExtensionConstraint");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_17=';' 
     {
-    	newLeafNode(otherlv_16, grammarAccess.getRoleAccess().getRightCurlyBracketKeyword_5_0_2());
+    	newLeafNode(otherlv_17, grammarAccess.getRoleAccess().getSemicolonKeyword_5_0_2_1());
+    }
+)*	otherlv_18='}' 
+    {
+    	newLeafNode(otherlv_18, grammarAccess.getRoleAccess().getRightCurlyBracketKeyword_5_0_3());
     }
 )
-    |	otherlv_17=';' 
+    |	otherlv_19=';' 
     {
-    	newLeafNode(otherlv_17, grammarAccess.getRoleAccess().getSemicolonKeyword_5_1());
+    	newLeafNode(otherlv_19, grammarAccess.getRoleAccess().getSemicolonKeyword_5_1());
     }
 ))
+;
+
+
+
+
+
+// Entry rule entryRuleExtensionConstraint
+entryRuleExtensionConstraint returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getExtensionConstraintRule()); }
+	 iv_ruleExtensionConstraint=ruleExtensionConstraint 
+	 { $current=$iv_ruleExtensionConstraint.current; } 
+	 EOF 
+;
+
+// Rule ExtensionConstraint
+ruleExtensionConstraint returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='enforce' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getExtensionConstraintAccess().getEnforceKeyword_0());
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getExtensionConstraintAccess().getConstraintConstraintParserRuleCall_1_0()); 
+	    }
+		lv_constraint_1_0=ruleConstraint		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getExtensionConstraintRule());
+	        }
+       		set(
+       			$current, 
+       			"constraint",
+        		lv_constraint_1_0, 
+        		"Constraint");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(	otherlv_2='?' 
+    {
+    	newLeafNode(otherlv_2, grammarAccess.getExtensionConstraintAccess().getQuestionMarkKeyword_2_0());
+    }
+(
+(
+		lv_explanation_3_0=RULE_STRING
+		{
+			newLeafNode(lv_explanation_3_0, grammarAccess.getExtensionConstraintAccess().getExplanationSTRINGTerminalRuleCall_2_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getExtensionConstraintRule());
+	        }
+       		setWithLastConsumed(
+       			$current, 
+       			"explanation",
+        		lv_explanation_3_0, 
+        		"STRING");
+	    }
+
+)
+))?)
+;
+
+
+
+
+
+// Entry rule entryRuleConstraint
+entryRuleConstraint returns [EObject current=null] 
+	:
+	{ newCompositeNode(grammarAccess.getConstraintRule()); }
+	 iv_ruleConstraint=ruleConstraint 
+	 { $current=$iv_ruleConstraint.current; } 
+	 EOF 
+;
+
+// Rule Constraint
+ruleConstraint returns [EObject current=null] 
+    @init { enterRule(); 
+    }
+    @after { leaveRule(); }:
+(	otherlv_0='this' 
+    {
+    	newLeafNode(otherlv_0, grammarAccess.getConstraintAccess().getThisKeyword_0());
+    }
+	otherlv_1='.' 
+    {
+    	newLeafNode(otherlv_1, grammarAccess.getConstraintAccess().getFullStopKeyword_1());
+    }
+(
+(
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getConstraintRule());
+	        }
+        }
+	otherlv_2=RULE_ID
+	{
+		newLeafNode(otherlv_2, grammarAccess.getConstraintAccess().getQueryQueryCrossReference_2_0()); 
+	}
+
+)
+)	otherlv_3='()' 
+    {
+    	newLeafNode(otherlv_3, grammarAccess.getConstraintAccess().getLeftParenthesisRightParenthesisKeyword_3());
+    }
+((
+(
+		{ 
+	        newCompositeNode(grammarAccess.getConstraintAccess().getComparatorMetricComparatorEnumRuleCall_4_0_0()); 
+	    }
+		lv_comparator_4_0=ruleMetricComparator		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getConstraintRule());
+	        }
+       		set(
+       			$current, 
+       			"comparator",
+        		lv_comparator_4_0, 
+        		"MetricComparator");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getConstraintAccess().getValueXExpressionParserRuleCall_4_1_0()); 
+	    }
+		lv_value_5_0=ruleXExpression		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getConstraintRule());
+	        }
+       		set(
+       			$current, 
+       			"value",
+        		lv_value_5_0, 
+        		"XExpression");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))?)
 ;
 
 
@@ -6424,6 +6594,49 @@ ruleValidID returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()
     ;
 
 
+
+
+
+// Rule MetricComparator
+ruleMetricComparator returns [Enumerator current=null] 
+    @init { enterRule(); }
+    @after { leaveRule(); }:
+((	enumLiteral_0='>=' 
+	{
+        $current = grammarAccess.getMetricComparatorAccess().getGeEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_0, grammarAccess.getMetricComparatorAccess().getGeEnumLiteralDeclaration_0()); 
+    }
+)
+    |(	enumLiteral_1='<=' 
+	{
+        $current = grammarAccess.getMetricComparatorAccess().getLeEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_1, grammarAccess.getMetricComparatorAccess().getLeEnumLiteralDeclaration_1()); 
+    }
+)
+    |(	enumLiteral_2='>' 
+	{
+        $current = grammarAccess.getMetricComparatorAccess().getGtEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_2, grammarAccess.getMetricComparatorAccess().getGtEnumLiteralDeclaration_2()); 
+    }
+)
+    |(	enumLiteral_3='<' 
+	{
+        $current = grammarAccess.getMetricComparatorAccess().getLtEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_3, grammarAccess.getMetricComparatorAccess().getLtEnumLiteralDeclaration_3()); 
+    }
+)
+    |(	enumLiteral_4='=' 
+	{
+        $current = grammarAccess.getMetricComparatorAccess().getEqEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_4, grammarAccess.getMetricComparatorAccess().getEqEnumLiteralDeclaration_4()); 
+    }
+)
+    |(	enumLiteral_5='!=' 
+	{
+        $current = grammarAccess.getMetricComparatorAccess().getNeEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+        newLeafNode(enumLiteral_5, grammarAccess.getMetricComparatorAccess().getNeEnumLiteralDeclaration_5()); 
+    }
+));
 
 
 

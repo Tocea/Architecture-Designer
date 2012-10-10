@@ -391,17 +391,22 @@ public class ArchitectureDSLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cFieldsAssignment_5_0_1_0 = (Assignment)cGroup_5_0_1.eContents().get(0);
 		private final RuleCall cFieldsFieldParserRuleCall_5_0_1_0_0 = (RuleCall)cFieldsAssignment_5_0_1_0.eContents().get(0);
 		private final Keyword cSemicolonKeyword_5_0_1_1 = (Keyword)cGroup_5_0_1.eContents().get(1);
-		private final Keyword cRightCurlyBracketKeyword_5_0_2 = (Keyword)cGroup_5_0.eContents().get(2);
+		private final Group cGroup_5_0_2 = (Group)cGroup_5_0.eContents().get(2);
+		private final Assignment cConstraintsAssignment_5_0_2_0 = (Assignment)cGroup_5_0_2.eContents().get(0);
+		private final RuleCall cConstraintsExtensionConstraintParserRuleCall_5_0_2_0_0 = (RuleCall)cConstraintsAssignment_5_0_2_0.eContents().get(0);
+		private final Keyword cSemicolonKeyword_5_0_2_1 = (Keyword)cGroup_5_0_2.eContents().get(1);
+		private final Keyword cRightCurlyBracketKeyword_5_0_3 = (Keyword)cGroup_5_0.eContents().get(3);
 		private final Keyword cSemicolonKeyword_5_1 = (Keyword)cAlternatives_5.eContents().get(1);
 		
 		//Role:
 		//	(abstract?="abstract" | inherited?="inherited")* "role" name=ID ("<" parameters+=Parameter (","
 		//	parameters+=Parameter)* ">")? ("for" element=[Type|QualifiedName] | "extends" superRole=TypeReference)? ("{"
-		//	(fields+=Field ";")* "}" | ";");
+		//	(fields+=Field ";")* (constraints+=ExtensionConstraint ";")* "}" | ";");
 		public ParserRule getRule() { return rule; }
 
 		//(abstract?="abstract" | inherited?="inherited")* "role" name=ID ("<" parameters+=Parameter ("," parameters+=Parameter)*
-		//">")? ("for" element=[Type|QualifiedName] | "extends" superRole=TypeReference)? ("{" (fields+=Field ";")* "}" | ";")
+		//">")? ("for" element=[Type|QualifiedName] | "extends" superRole=TypeReference)? ("{" (fields+=Field ";")*
+		//(constraints+=ExtensionConstraint ";")* "}" | ";")
 		public Group getGroup() { return cGroup; }
 
 		//(abstract?="abstract" | inherited?="inherited")*
@@ -485,10 +490,10 @@ public class ArchitectureDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//TypeReference
 		public RuleCall getSuperRoleTypeReferenceParserRuleCall_4_1_1_0() { return cSuperRoleTypeReferenceParserRuleCall_4_1_1_0; }
 
-		//"{" (fields+=Field ";")* "}" | ";"
+		//"{" (fields+=Field ";")* (constraints+=ExtensionConstraint ";")* "}" | ";"
 		public Alternatives getAlternatives_5() { return cAlternatives_5; }
 
-		//"{" (fields+=Field ";")* "}"
+		//"{" (fields+=Field ";")* (constraints+=ExtensionConstraint ";")* "}"
 		public Group getGroup_5_0() { return cGroup_5_0; }
 
 		//"{"
@@ -506,11 +511,119 @@ public class ArchitectureDSLGrammarAccess extends AbstractGrammarElementFinder {
 		//";"
 		public Keyword getSemicolonKeyword_5_0_1_1() { return cSemicolonKeyword_5_0_1_1; }
 
+		//(constraints+=ExtensionConstraint ";")*
+		public Group getGroup_5_0_2() { return cGroup_5_0_2; }
+
+		//constraints+=ExtensionConstraint
+		public Assignment getConstraintsAssignment_5_0_2_0() { return cConstraintsAssignment_5_0_2_0; }
+
+		//ExtensionConstraint
+		public RuleCall getConstraintsExtensionConstraintParserRuleCall_5_0_2_0_0() { return cConstraintsExtensionConstraintParserRuleCall_5_0_2_0_0; }
+
+		//";"
+		public Keyword getSemicolonKeyword_5_0_2_1() { return cSemicolonKeyword_5_0_2_1; }
+
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_5_0_2() { return cRightCurlyBracketKeyword_5_0_2; }
+		public Keyword getRightCurlyBracketKeyword_5_0_3() { return cRightCurlyBracketKeyword_5_0_3; }
 
 		//";"
 		public Keyword getSemicolonKeyword_5_1() { return cSemicolonKeyword_5_1; }
+	}
+
+	public class ExtensionConstraintElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ExtensionConstraint");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cEnforceKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cConstraintAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cConstraintConstraintParserRuleCall_1_0 = (RuleCall)cConstraintAssignment_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cQuestionMarkKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cExplanationAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cExplanationSTRINGTerminalRuleCall_2_1_0 = (RuleCall)cExplanationAssignment_2_1.eContents().get(0);
+		
+		//ExtensionConstraint:
+		//	"enforce" constraint=Constraint ("?" explanation=STRING)?;
+		public ParserRule getRule() { return rule; }
+
+		//"enforce" constraint=Constraint ("?" explanation=STRING)?
+		public Group getGroup() { return cGroup; }
+
+		//"enforce"
+		public Keyword getEnforceKeyword_0() { return cEnforceKeyword_0; }
+
+		//constraint=Constraint
+		public Assignment getConstraintAssignment_1() { return cConstraintAssignment_1; }
+
+		//Constraint
+		public RuleCall getConstraintConstraintParserRuleCall_1_0() { return cConstraintConstraintParserRuleCall_1_0; }
+
+		//("?" explanation=STRING)?
+		public Group getGroup_2() { return cGroup_2; }
+
+		//"?"
+		public Keyword getQuestionMarkKeyword_2_0() { return cQuestionMarkKeyword_2_0; }
+
+		//explanation=STRING
+		public Assignment getExplanationAssignment_2_1() { return cExplanationAssignment_2_1; }
+
+		//STRING
+		public RuleCall getExplanationSTRINGTerminalRuleCall_2_1_0() { return cExplanationSTRINGTerminalRuleCall_2_1_0; }
+	}
+
+	public class ConstraintElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Constraint");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Keyword cThisKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cFullStopKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cQueryAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final CrossReference cQueryQueryCrossReference_2_0 = (CrossReference)cQueryAssignment_2.eContents().get(0);
+		private final RuleCall cQueryQueryIDTerminalRuleCall_2_0_1 = (RuleCall)cQueryQueryCrossReference_2_0.eContents().get(1);
+		private final Keyword cLeftParenthesisRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Assignment cComparatorAssignment_4_0 = (Assignment)cGroup_4.eContents().get(0);
+		private final RuleCall cComparatorMetricComparatorEnumRuleCall_4_0_0 = (RuleCall)cComparatorAssignment_4_0.eContents().get(0);
+		private final Assignment cValueAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cValueXExpressionParserRuleCall_4_1_0 = (RuleCall)cValueAssignment_4_1.eContents().get(0);
+		
+		//Constraint:
+		//	"this" "." query=[query::Query] "()" (comparator=MetricComparator value=XExpression)?;
+		public ParserRule getRule() { return rule; }
+
+		//"this" "." query=[query::Query] "()" (comparator=MetricComparator value=XExpression)?
+		public Group getGroup() { return cGroup; }
+
+		//"this"
+		public Keyword getThisKeyword_0() { return cThisKeyword_0; }
+
+		//"."
+		public Keyword getFullStopKeyword_1() { return cFullStopKeyword_1; }
+
+		//query=[query::Query]
+		public Assignment getQueryAssignment_2() { return cQueryAssignment_2; }
+
+		//[query::Query]
+		public CrossReference getQueryQueryCrossReference_2_0() { return cQueryQueryCrossReference_2_0; }
+
+		//ID
+		public RuleCall getQueryQueryIDTerminalRuleCall_2_0_1() { return cQueryQueryIDTerminalRuleCall_2_0_1; }
+
+		//"()"
+		public Keyword getLeftParenthesisRightParenthesisKeyword_3() { return cLeftParenthesisRightParenthesisKeyword_3; }
+
+		//(comparator=MetricComparator value=XExpression)?
+		public Group getGroup_4() { return cGroup_4; }
+
+		//comparator=MetricComparator
+		public Assignment getComparatorAssignment_4_0() { return cComparatorAssignment_4_0; }
+
+		//MetricComparator
+		public RuleCall getComparatorMetricComparatorEnumRuleCall_4_0_0() { return cComparatorMetricComparatorEnumRuleCall_4_0_0; }
+
+		//value=XExpression
+		public Assignment getValueAssignment_4_1() { return cValueAssignment_4_1; }
+
+		//XExpression
+		public RuleCall getValueXExpressionParserRuleCall_4_1_0() { return cValueXExpressionParserRuleCall_4_1_0; }
 	}
 
 	public class RelationshipElements extends AbstractParserRuleElementFinder {
@@ -1073,6 +1186,66 @@ public class ArchitectureDSLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	
+	public class MetricComparatorElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "MetricComparator");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cGeEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cGeGreaterThanSignEqualsSignKeyword_0_0 = (Keyword)cGeEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cLeEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cLeLessThanSignEqualsSignKeyword_1_0 = (Keyword)cLeEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cGtEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cGtGreaterThanSignKeyword_2_0 = (Keyword)cGtEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cLtEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cLtLessThanSignKeyword_3_0 = (Keyword)cLtEnumLiteralDeclaration_3.eContents().get(0);
+		private final EnumLiteralDeclaration cEqEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
+		private final Keyword cEqEqualsSignKeyword_4_0 = (Keyword)cEqEnumLiteralDeclaration_4.eContents().get(0);
+		private final EnumLiteralDeclaration cNeEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
+		private final Keyword cNeExclamationMarkEqualsSignKeyword_5_0 = (Keyword)cNeEnumLiteralDeclaration_5.eContents().get(0);
+		
+		//enum MetricComparator:
+		//	ge=">=" | le="<=" | gt=">" | lt="<" | eq="=" | ne="!=";
+		public EnumRule getRule() { return rule; }
+
+		//ge=">=" | le="<=" | gt=">" | lt="<" | eq="=" | ne="!="
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//ge=">="
+		public EnumLiteralDeclaration getGeEnumLiteralDeclaration_0() { return cGeEnumLiteralDeclaration_0; }
+
+		//">="
+		public Keyword getGeGreaterThanSignEqualsSignKeyword_0_0() { return cGeGreaterThanSignEqualsSignKeyword_0_0; }
+
+		//le="<="
+		public EnumLiteralDeclaration getLeEnumLiteralDeclaration_1() { return cLeEnumLiteralDeclaration_1; }
+
+		//"<="
+		public Keyword getLeLessThanSignEqualsSignKeyword_1_0() { return cLeLessThanSignEqualsSignKeyword_1_0; }
+
+		//gt=">"
+		public EnumLiteralDeclaration getGtEnumLiteralDeclaration_2() { return cGtEnumLiteralDeclaration_2; }
+
+		//">"
+		public Keyword getGtGreaterThanSignKeyword_2_0() { return cGtGreaterThanSignKeyword_2_0; }
+
+		//lt="<"
+		public EnumLiteralDeclaration getLtEnumLiteralDeclaration_3() { return cLtEnumLiteralDeclaration_3; }
+
+		//"<"
+		public Keyword getLtLessThanSignKeyword_3_0() { return cLtLessThanSignKeyword_3_0; }
+
+		//eq="="
+		public EnumLiteralDeclaration getEqEnumLiteralDeclaration_4() { return cEqEnumLiteralDeclaration_4; }
+
+		//"="
+		public Keyword getEqEqualsSignKeyword_4_0() { return cEqEqualsSignKeyword_4_0; }
+
+		//ne="!="
+		public EnumLiteralDeclaration getNeEnumLiteralDeclaration_5() { return cNeEnumLiteralDeclaration_5; }
+
+		//"!="
+		public Keyword getNeExclamationMarkEqualsSignKeyword_5_0() { return cNeExclamationMarkEqualsSignKeyword_5_0; }
+	}
+	
 	private ArchitectureExtensionElements pArchitectureExtension;
 	private ExtensionEntityElements pExtensionEntity;
 	private DatatypeElements pDatatype;
@@ -1082,6 +1255,9 @@ public class ArchitectureDSLGrammarAccess extends AbstractGrammarElementFinder {
 	private PatternElements pPattern;
 	private PrimitiveRoleElements pPrimitiveRole;
 	private RoleElements pRole;
+	private ExtensionConstraintElements pExtensionConstraint;
+	private ConstraintElements pConstraint;
+	private MetricComparatorElements unknownRuleMetricComparator;
 	private RelationshipElements pRelationship;
 	private ParameterElements pParameter;
 	private FieldElements pField;
@@ -1219,13 +1395,43 @@ public class ArchitectureDSLGrammarAccess extends AbstractGrammarElementFinder {
 	//Role:
 	//	(abstract?="abstract" | inherited?="inherited")* "role" name=ID ("<" parameters+=Parameter (","
 	//	parameters+=Parameter)* ">")? ("for" element=[Type|QualifiedName] | "extends" superRole=TypeReference)? ("{"
-	//	(fields+=Field ";")* "}" | ";");
+	//	(fields+=Field ";")* (constraints+=ExtensionConstraint ";")* "}" | ";");
 	public RoleElements getRoleAccess() {
 		return (pRole != null) ? pRole : (pRole = new RoleElements());
 	}
 	
 	public ParserRule getRoleRule() {
 		return getRoleAccess().getRule();
+	}
+
+	//ExtensionConstraint:
+	//	"enforce" constraint=Constraint ("?" explanation=STRING)?;
+	public ExtensionConstraintElements getExtensionConstraintAccess() {
+		return (pExtensionConstraint != null) ? pExtensionConstraint : (pExtensionConstraint = new ExtensionConstraintElements());
+	}
+	
+	public ParserRule getExtensionConstraintRule() {
+		return getExtensionConstraintAccess().getRule();
+	}
+
+	//Constraint:
+	//	"this" "." query=[query::Query] "()" (comparator=MetricComparator value=XExpression)?;
+	public ConstraintElements getConstraintAccess() {
+		return (pConstraint != null) ? pConstraint : (pConstraint = new ConstraintElements());
+	}
+	
+	public ParserRule getConstraintRule() {
+		return getConstraintAccess().getRule();
+	}
+
+	//enum MetricComparator:
+	//	ge=">=" | le="<=" | gt=">" | lt="<" | eq="=" | ne="!=";
+	public MetricComparatorElements getMetricComparatorAccess() {
+		return (unknownRuleMetricComparator != null) ? unknownRuleMetricComparator : (unknownRuleMetricComparator = new MetricComparatorElements());
+	}
+	
+	public EnumRule getMetricComparatorRule() {
+		return getMetricComparatorAccess().getRule();
 	}
 
 	//Relationship:

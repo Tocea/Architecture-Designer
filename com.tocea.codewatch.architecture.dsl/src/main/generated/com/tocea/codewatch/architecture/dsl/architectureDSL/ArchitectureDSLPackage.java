@@ -4,6 +4,7 @@ package com.tocea.codewatch.architecture.dsl.architectureDSL;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -435,13 +436,105 @@ public interface ArchitectureDSLPackage extends EPackage
   int ROLE__SUPER_ROLE = PARAMETRIZED_TYPE_FEATURE_COUNT + 2;
 
   /**
+   * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROLE__CONSTRAINTS = PARAMETRIZED_TYPE_FEATURE_COUNT + 3;
+
+  /**
    * The number of structural features of the '<em>Role</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ROLE_FEATURE_COUNT = PARAMETRIZED_TYPE_FEATURE_COUNT + 3;
+  int ROLE_FEATURE_COUNT = PARAMETRIZED_TYPE_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ExtensionConstraintImpl <em>Extension Constraint</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ExtensionConstraintImpl
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getExtensionConstraint()
+   * @generated
+   */
+  int EXTENSION_CONSTRAINT = 9;
+
+  /**
+   * The feature id for the '<em><b>Constraint</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXTENSION_CONSTRAINT__CONSTRAINT = 0;
+
+  /**
+   * The feature id for the '<em><b>Explanation</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXTENSION_CONSTRAINT__EXPLANATION = 1;
+
+  /**
+   * The number of structural features of the '<em>Extension Constraint</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXTENSION_CONSTRAINT_FEATURE_COUNT = 2;
+
+  /**
+   * The meta object id for the '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ConstraintImpl <em>Constraint</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ConstraintImpl
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getConstraint()
+   * @generated
+   */
+  int CONSTRAINT = 10;
+
+  /**
+   * The feature id for the '<em><b>Query</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINT__QUERY = 0;
+
+  /**
+   * The feature id for the '<em><b>Comparator</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINT__COMPARATOR = 1;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINT__VALUE = 2;
+
+  /**
+   * The number of structural features of the '<em>Constraint</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONSTRAINT_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.RelationshipImpl <em>Relationship</em>}' class.
@@ -451,7 +544,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getRelationship()
    * @generated
    */
-  int RELATIONSHIP = 9;
+  int RELATIONSHIP = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -515,7 +608,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getNamedEntity()
    * @generated
    */
-  int NAMED_ENTITY = 20;
+  int NAMED_ENTITY = 22;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -543,7 +636,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getReferencedType()
    * @generated
    */
-  int REFERENCED_TYPE = 21;
+  int REFERENCED_TYPE = 23;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -571,7 +664,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getParameter()
    * @generated
    */
-  int PARAMETER = 10;
+  int PARAMETER = 12;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -599,7 +692,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getField()
    * @generated
    */
-  int FIELD = 11;
+  int FIELD = 13;
 
   /**
    * The feature id for the '<em><b>Mandatory</b></em>' attribute.
@@ -672,7 +765,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getArity()
    * @generated
    */
-  int ARITY = 12;
+  int ARITY = 14;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -709,7 +802,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getTypeReference()
    * @generated
    */
-  int TYPE_REFERENCE = 13;
+  int TYPE_REFERENCE = 15;
 
   /**
    * The feature id for the '<em><b>Reference</b></em>' reference.
@@ -746,7 +839,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getRelationshipConstraint()
    * @generated
    */
-  int RELATIONSHIP_CONSTRAINT = 14;
+  int RELATIONSHIP_CONSTRAINT = 16;
 
   /**
    * The number of structural features of the '<em>Relationship Constraint</em>' class.
@@ -765,7 +858,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getRelationshipConjunctionConstraint()
    * @generated
    */
-  int RELATIONSHIP_CONJUNCTION_CONSTRAINT = 15;
+  int RELATIONSHIP_CONJUNCTION_CONSTRAINT = 17;
 
   /**
    * The feature id for the '<em><b>Constraints</b></em>' containment reference list.
@@ -793,7 +886,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getRelationshipPrimitiveConstraint()
    * @generated
    */
-  int RELATIONSHIP_PRIMITIVE_CONSTRAINT = 16;
+  int RELATIONSHIP_PRIMITIVE_CONSTRAINT = 18;
 
   /**
    * The number of structural features of the '<em>Relationship Primitive Constraint</em>' class.
@@ -812,7 +905,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getTypeConstraint()
    * @generated
    */
-  int TYPE_CONSTRAINT = 17;
+  int TYPE_CONSTRAINT = 19;
 
   /**
    * The feature id for the '<em><b>Source</b></em>' reference.
@@ -849,7 +942,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getEnumeration()
    * @generated
    */
-  int ENUMERATION = 18;
+  int ENUMERATION = 20;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -886,7 +979,7 @@ public interface ArchitectureDSLPackage extends EPackage
    * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getEnumerationElement()
    * @generated
    */
-  int ENUMERATION_ELEMENT = 19;
+  int ENUMERATION_ELEMENT = 21;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -905,6 +998,16 @@ public interface ArchitectureDSLPackage extends EPackage
    * @ordered
    */
   int ENUMERATION_ELEMENT_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.MetricComparator <em>Metric Comparator</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.MetricComparator
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getMetricComparator()
+   * @generated
+   */
+  int METRIC_COMPARATOR = 24;
 
 
   /**
@@ -1128,6 +1231,92 @@ public interface ArchitectureDSLPackage extends EPackage
    * @generated
    */
   EReference getRole_SuperRole();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Role#getConstraints <em>Constraints</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Constraints</em>'.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.Role#getConstraints()
+   * @see #getRole()
+   * @generated
+   */
+  EReference getRole_Constraints();
+
+  /**
+   * Returns the meta object for class '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionConstraint <em>Extension Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Extension Constraint</em>'.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionConstraint
+   * @generated
+   */
+  EClass getExtensionConstraint();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionConstraint#getConstraint <em>Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Constraint</em>'.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionConstraint#getConstraint()
+   * @see #getExtensionConstraint()
+   * @generated
+   */
+  EReference getExtensionConstraint_Constraint();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionConstraint#getExplanation <em>Explanation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Explanation</em>'.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionConstraint#getExplanation()
+   * @see #getExtensionConstraint()
+   * @generated
+   */
+  EAttribute getExtensionConstraint_Explanation();
+
+  /**
+   * Returns the meta object for class '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Constraint <em>Constraint</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Constraint</em>'.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.Constraint
+   * @generated
+   */
+  EClass getConstraint();
+
+  /**
+   * Returns the meta object for the reference '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Constraint#getQuery <em>Query</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Query</em>'.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.Constraint#getQuery()
+   * @see #getConstraint()
+   * @generated
+   */
+  EReference getConstraint_Query();
+
+  /**
+   * Returns the meta object for the attribute '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Constraint#getComparator <em>Comparator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Comparator</em>'.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.Constraint#getComparator()
+   * @see #getConstraint()
+   * @generated
+   */
+  EAttribute getConstraint_Comparator();
+
+  /**
+   * Returns the meta object for the containment reference '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Constraint#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.Constraint#getValue()
+   * @see #getConstraint()
+   * @generated
+   */
+  EReference getConstraint_Value();
 
   /**
    * Returns the meta object for class '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.Relationship <em>Relationship</em>}'.
@@ -1480,6 +1669,16 @@ public interface ArchitectureDSLPackage extends EPackage
   EClass getReferencedType();
 
   /**
+   * Returns the meta object for enum '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.MetricComparator <em>Metric Comparator</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Metric Comparator</em>'.
+   * @see com.tocea.codewatch.architecture.dsl.architectureDSL.MetricComparator
+   * @generated
+   */
+  EEnum getMetricComparator();
+
+  /**
    * Returns the factory that creates the instances of the model.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1687,6 +1886,74 @@ public interface ArchitectureDSLPackage extends EPackage
      * @generated
      */
     EReference ROLE__SUPER_ROLE = eINSTANCE.getRole_SuperRole();
+
+    /**
+     * The meta object literal for the '<em><b>Constraints</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ROLE__CONSTRAINTS = eINSTANCE.getRole_Constraints();
+
+    /**
+     * The meta object literal for the '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ExtensionConstraintImpl <em>Extension Constraint</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ExtensionConstraintImpl
+     * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getExtensionConstraint()
+     * @generated
+     */
+    EClass EXTENSION_CONSTRAINT = eINSTANCE.getExtensionConstraint();
+
+    /**
+     * The meta object literal for the '<em><b>Constraint</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXTENSION_CONSTRAINT__CONSTRAINT = eINSTANCE.getExtensionConstraint_Constraint();
+
+    /**
+     * The meta object literal for the '<em><b>Explanation</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute EXTENSION_CONSTRAINT__EXPLANATION = eINSTANCE.getExtensionConstraint_Explanation();
+
+    /**
+     * The meta object literal for the '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ConstraintImpl <em>Constraint</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ConstraintImpl
+     * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getConstraint()
+     * @generated
+     */
+    EClass CONSTRAINT = eINSTANCE.getConstraint();
+
+    /**
+     * The meta object literal for the '<em><b>Query</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONSTRAINT__QUERY = eINSTANCE.getConstraint_Query();
+
+    /**
+     * The meta object literal for the '<em><b>Comparator</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute CONSTRAINT__COMPARATOR = eINSTANCE.getConstraint_Comparator();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONSTRAINT__VALUE = eINSTANCE.getConstraint_Value();
 
     /**
      * The meta object literal for the '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.RelationshipImpl <em>Relationship</em>}' class.
@@ -1977,6 +2244,16 @@ public interface ArchitectureDSLPackage extends EPackage
      * @generated
      */
     EClass REFERENCED_TYPE = eINSTANCE.getReferencedType();
+
+    /**
+     * The meta object literal for the '{@link com.tocea.codewatch.architecture.dsl.architectureDSL.MetricComparator <em>Metric Comparator</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see com.tocea.codewatch.architecture.dsl.architectureDSL.MetricComparator
+     * @see com.tocea.codewatch.architecture.dsl.architectureDSL.impl.ArchitectureDSLPackageImpl#getMetricComparator()
+     * @generated
+     */
+    EEnum METRIC_COMPARATOR = eINSTANCE.getMetricComparator();
 
   }
 

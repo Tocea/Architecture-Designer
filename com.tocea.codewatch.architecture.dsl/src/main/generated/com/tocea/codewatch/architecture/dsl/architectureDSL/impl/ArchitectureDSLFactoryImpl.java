@@ -5,6 +5,7 @@ package com.tocea.codewatch.architecture.dsl.architectureDSL.impl;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.*;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
@@ -73,6 +74,8 @@ public class ArchitectureDSLFactoryImpl extends EFactoryImpl implements Architec
       case ArchitectureDSLPackage.PATTERN: return createPattern();
       case ArchitectureDSLPackage.PRIMITIVE_ROLE: return createPrimitiveRole();
       case ArchitectureDSLPackage.ROLE: return createRole();
+      case ArchitectureDSLPackage.EXTENSION_CONSTRAINT: return createExtensionConstraint();
+      case ArchitectureDSLPackage.CONSTRAINT: return createConstraint();
       case ArchitectureDSLPackage.RELATIONSHIP: return createRelationship();
       case ArchitectureDSLPackage.PARAMETER: return createParameter();
       case ArchitectureDSLPackage.FIELD: return createField();
@@ -88,6 +91,40 @@ public class ArchitectureDSLFactoryImpl extends EFactoryImpl implements Architec
       case ArchitectureDSLPackage.REFERENCED_TYPE: return createReferencedType();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object createFromString(EDataType eDataType, String initialValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case ArchitectureDSLPackage.METRIC_COMPARATOR:
+        return createMetricComparatorFromString(eDataType, initialValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+    }
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String convertToString(EDataType eDataType, Object instanceValue)
+  {
+    switch (eDataType.getClassifierID())
+    {
+      case ArchitectureDSLPackage.METRIC_COMPARATOR:
+        return convertMetricComparatorToString(eDataType, instanceValue);
+      default:
+        throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
   }
 
@@ -188,6 +225,28 @@ public class ArchitectureDSLFactoryImpl extends EFactoryImpl implements Architec
   {
     RoleImpl role = new RoleImpl();
     return role;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public ExtensionConstraint createExtensionConstraint()
+  {
+    ExtensionConstraintImpl extensionConstraint = new ExtensionConstraintImpl();
+    return extensionConstraint;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Constraint createConstraint()
+  {
+    ConstraintImpl constraint = new ConstraintImpl();
+    return constraint;
   }
 
   /**
@@ -331,6 +390,28 @@ public class ArchitectureDSLFactoryImpl extends EFactoryImpl implements Architec
   {
     ReferencedTypeImpl referencedType = new ReferencedTypeImpl();
     return referencedType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MetricComparator createMetricComparatorFromString(EDataType eDataType, String initialValue)
+  {
+    MetricComparator result = MetricComparator.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertMetricComparatorToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

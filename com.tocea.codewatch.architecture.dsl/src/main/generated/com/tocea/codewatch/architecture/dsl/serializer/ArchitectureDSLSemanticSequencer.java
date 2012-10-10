@@ -5,9 +5,11 @@ import com.google.inject.Provider;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureDSLPackage;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureExtension;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Arity;
+import com.tocea.codewatch.architecture.dsl.architectureDSL.Constraint;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Datatype;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Enumeration;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.EnumerationElement;
+import com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionConstraint;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Field;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Import;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Parameter;
@@ -88,6 +90,12 @@ public class ArchitectureDSLSemanticSequencer extends XbaseSemanticSequencer {
 					return; 
 				}
 				else break;
+			case ArchitectureDSLPackage.CONSTRAINT:
+				if(context == grammarAccess.getConstraintRule()) {
+					sequence_Constraint(context, (Constraint) semanticObject); 
+					return; 
+				}
+				else break;
 			case ArchitectureDSLPackage.DATATYPE:
 				if(context == grammarAccess.getDatatypeRule() ||
 				   context == grammarAccess.getExtensionEntityRule() ||
@@ -111,6 +119,12 @@ public class ArchitectureDSLSemanticSequencer extends XbaseSemanticSequencer {
 			case ArchitectureDSLPackage.ENUMERATION_ELEMENT:
 				if(context == grammarAccess.getEnumerationElementRule()) {
 					sequence_EnumerationElement(context, (EnumerationElement) semanticObject); 
+					return; 
+				}
+				else break;
+			case ArchitectureDSLPackage.EXTENSION_CONSTRAINT:
+				if(context == grammarAccess.getExtensionConstraintRule()) {
+					sequence_ExtensionConstraint(context, (ExtensionConstraint) semanticObject); 
 					return; 
 				}
 				else break;
@@ -1075,6 +1089,15 @@ public class ArchitectureDSLSemanticSequencer extends XbaseSemanticSequencer {
 	
 	/**
 	 * Constraint:
+	 *     (query=[Query|ID] (comparator=MetricComparator value=XExpression)?)
+	 */
+	protected void sequence_Constraint(EObject context, Constraint semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     (reference=JvmTypeReference name=ID)
 	 */
 	protected void sequence_Datatype(EObject context, Datatype semanticObject) {
@@ -1113,6 +1136,15 @@ public class ArchitectureDSLSemanticSequencer extends XbaseSemanticSequencer {
 	 *     (name=ID elements+=EnumerationElement*)
 	 */
 	protected void sequence_Enumeration(EObject context, Enumeration semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (constraint=Constraint explanation=STRING?)
+	 */
+	protected void sequence_ExtensionConstraint(EObject context, ExtensionConstraint semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1217,7 +1249,7 @@ public class ArchitectureDSLSemanticSequencer extends XbaseSemanticSequencer {
 	 *         name=ID 
 	 *         (parameters+=Parameter parameters+=Parameter*)? 
 	 *         (element=[Type|QualifiedName] | superRole=TypeReference)? 
-	 *         fields+=Field*
+	 *         (fields+=Field* constraints+=ExtensionConstraint*)?
 	 *     )
 	 */
 	protected void sequence_Role(EObject context, Role semanticObject) {

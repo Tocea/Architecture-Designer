@@ -3,17 +3,25 @@
 package com.tocea.codewatch.architecture.dsl.architectureDSL.impl;
 
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureDSLPackage;
+import com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionConstraint;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Role;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Type;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.TypeReference;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,6 +33,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.RoleImpl#isInherited <em>Inherited</em>}</li>
  *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.RoleImpl#getElement <em>Element</em>}</li>
  *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.RoleImpl#getSuperRole <em>Super Role</em>}</li>
+ *   <li>{@link com.tocea.codewatch.architecture.dsl.architectureDSL.impl.RoleImpl#getConstraints <em>Constraints</em>}</li>
  * </ul>
  * </p>
  *
@@ -71,6 +80,16 @@ public class RoleImpl extends ParametrizedTypeImpl implements Role
    * @ordered
    */
   protected TypeReference superRole;
+
+  /**
+   * The cached value of the '{@link #getConstraints() <em>Constraints</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConstraints()
+   * @generated
+   * @ordered
+   */
+  protected EList<ExtensionConstraint> constraints;
 
   /**
    * <!-- begin-user-doc -->
@@ -212,6 +231,20 @@ public class RoleImpl extends ParametrizedTypeImpl implements Role
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<ExtensionConstraint> getConstraints()
+  {
+    if (constraints == null)
+    {
+      constraints = new EObjectContainmentEList<ExtensionConstraint>(ExtensionConstraint.class, this, ArchitectureDSLPackage.ROLE__CONSTRAINTS);
+    }
+    return constraints;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -219,6 +252,8 @@ public class RoleImpl extends ParametrizedTypeImpl implements Role
     {
       case ArchitectureDSLPackage.ROLE__SUPER_ROLE:
         return basicSetSuperRole(null, msgs);
+      case ArchitectureDSLPackage.ROLE__CONSTRAINTS:
+        return ((InternalEList<?>)getConstraints()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -240,6 +275,8 @@ public class RoleImpl extends ParametrizedTypeImpl implements Role
         return basicGetElement();
       case ArchitectureDSLPackage.ROLE__SUPER_ROLE:
         return getSuperRole();
+      case ArchitectureDSLPackage.ROLE__CONSTRAINTS:
+        return getConstraints();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -249,6 +286,7 @@ public class RoleImpl extends ParametrizedTypeImpl implements Role
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -262,6 +300,10 @@ public class RoleImpl extends ParametrizedTypeImpl implements Role
         return;
       case ArchitectureDSLPackage.ROLE__SUPER_ROLE:
         setSuperRole((TypeReference)newValue);
+        return;
+      case ArchitectureDSLPackage.ROLE__CONSTRAINTS:
+        getConstraints().clear();
+        getConstraints().addAll((Collection<? extends ExtensionConstraint>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -286,6 +328,9 @@ public class RoleImpl extends ParametrizedTypeImpl implements Role
       case ArchitectureDSLPackage.ROLE__SUPER_ROLE:
         setSuperRole((TypeReference)null);
         return;
+      case ArchitectureDSLPackage.ROLE__CONSTRAINTS:
+        getConstraints().clear();
+        return;
     }
     super.eUnset(featureID);
   }
@@ -306,6 +351,8 @@ public class RoleImpl extends ParametrizedTypeImpl implements Role
         return element != null;
       case ArchitectureDSLPackage.ROLE__SUPER_ROLE:
         return superRole != null;
+      case ArchitectureDSLPackage.ROLE__CONSTRAINTS:
+        return constraints != null && !constraints.isEmpty();
     }
     return super.eIsSet(featureID);
   }

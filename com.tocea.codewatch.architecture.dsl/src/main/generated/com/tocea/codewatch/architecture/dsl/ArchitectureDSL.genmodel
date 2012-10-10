@@ -6,9 +6,17 @@
     updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="5.0" copyrightFields="false" editPluginID="com.tocea.codewatch.architecture.dsl.edit"
     editorPluginID="com.tocea.codewatch.architecture.dsl.editor" runtimeVersion="2.8"
-    usedGenPackages="../../../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types">
+    usedGenPackages="../../../../../../../../../com.tocea.codewatch.architecture.query.dsl/src-gen/com/tocea/codewatch/architecture/query/dsl/QueryDsl.genmodel#//queryDsl ../../../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../../../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
   <genPackages prefix="ArchitectureDSL" basePackage="com.tocea.codewatch.architecture.dsl"
       disposableProviderFactory="true" ecorePackage="ArchitectureDSL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ArchitectureDSL.ecore#//MetricComparator">
+      <genEnumLiterals ecoreEnumLiteral="ArchitectureDSL.ecore#//MetricComparator/ge"/>
+      <genEnumLiterals ecoreEnumLiteral="ArchitectureDSL.ecore#//MetricComparator/le"/>
+      <genEnumLiterals ecoreEnumLiteral="ArchitectureDSL.ecore#//MetricComparator/gt"/>
+      <genEnumLiterals ecoreEnumLiteral="ArchitectureDSL.ecore#//MetricComparator/lt"/>
+      <genEnumLiterals ecoreEnumLiteral="ArchitectureDSL.ecore#//MetricComparator/eq"/>
+      <genEnumLiterals ecoreEnumLiteral="ArchitectureDSL.ecore#//MetricComparator/ne"/>
+    </genEnums>
     <genClasses ecoreClass="ArchitectureDSL.ecore#//ArchitectureExtension">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//ArchitectureExtension/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//ArchitectureExtension/entities"/>
@@ -36,6 +44,16 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//Role/inherited"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Role/element"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Role/superRole"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Role/constraints"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//ExtensionConstraint">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//ExtensionConstraint/constraint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//ExtensionConstraint/explanation"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//Constraint">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Constraint/query"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//Constraint/comparator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Constraint/value"/>
     </genClasses>
     <genClasses ecoreClass="ArchitectureDSL.ecore#//Relationship">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//Relationship/abstract"/>

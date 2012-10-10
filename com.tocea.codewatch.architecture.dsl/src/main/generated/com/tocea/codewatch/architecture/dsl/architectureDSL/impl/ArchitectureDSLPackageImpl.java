@@ -6,12 +6,15 @@ import com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureDSLFacto
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureDSLPackage;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureExtension;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Arity;
+import com.tocea.codewatch.architecture.dsl.architectureDSL.Constraint;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Datatype;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Enumeration;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.EnumerationElement;
+import com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionConstraint;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ExtensionEntity;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Field;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Import;
+import com.tocea.codewatch.architecture.dsl.architectureDSL.MetricComparator;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.NamedEntity;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.Parameter;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.ParametrizedType;
@@ -27,14 +30,19 @@ import com.tocea.codewatch.architecture.dsl.architectureDSL.Type;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.TypeConstraint;
 import com.tocea.codewatch.architecture.dsl.architectureDSL.TypeReference;
 
+import com.tocea.codewatch.architecture.query.dsl.queryDsl.QueryDslPackage;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.xtext.common.types.TypesPackage;
+
+import org.eclipse.xtext.xbase.XbasePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -106,6 +114,20 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
    * @generated
    */
   private EClass roleEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass extensionConstraintEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass constraintEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -199,6 +221,13 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
   private EClass referencedTypeEClass = null;
 
   /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum metricComparatorEEnum = null;
+
+  /**
    * Creates an instance of the model <b>Package</b>, registered with
    * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
    * package URI value.
@@ -247,7 +276,7 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
     isInited = true;
 
     // Initialize simple dependencies
-    TypesPackage.eINSTANCE.eClass();
+    QueryDslPackage.eINSTANCE.eClass();
 
     // Create package meta-data objects
     theArchitectureDSLPackage.createPackageContents();
@@ -472,6 +501,86 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
   public EReference getRole_SuperRole()
   {
     return (EReference)roleEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRole_Constraints()
+  {
+    return (EReference)roleEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getExtensionConstraint()
+  {
+    return extensionConstraintEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getExtensionConstraint_Constraint()
+  {
+    return (EReference)extensionConstraintEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getExtensionConstraint_Explanation()
+  {
+    return (EAttribute)extensionConstraintEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getConstraint()
+  {
+    return constraintEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConstraint_Query()
+  {
+    return (EReference)constraintEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getConstraint_Comparator()
+  {
+    return (EAttribute)constraintEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getConstraint_Value()
+  {
+    return (EReference)constraintEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -809,6 +918,16 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
    * <!-- end-user-doc -->
    * @generated
    */
+  public EEnum getMetricComparator()
+  {
+    return metricComparatorEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public ArchitectureDSLFactory getArchitectureDSLFactory()
   {
     return (ArchitectureDSLFactory)getEFactoryInstance();
@@ -863,6 +982,16 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
     createEAttribute(roleEClass, ROLE__INHERITED);
     createEReference(roleEClass, ROLE__ELEMENT);
     createEReference(roleEClass, ROLE__SUPER_ROLE);
+    createEReference(roleEClass, ROLE__CONSTRAINTS);
+
+    extensionConstraintEClass = createEClass(EXTENSION_CONSTRAINT);
+    createEReference(extensionConstraintEClass, EXTENSION_CONSTRAINT__CONSTRAINT);
+    createEAttribute(extensionConstraintEClass, EXTENSION_CONSTRAINT__EXPLANATION);
+
+    constraintEClass = createEClass(CONSTRAINT);
+    createEReference(constraintEClass, CONSTRAINT__QUERY);
+    createEAttribute(constraintEClass, CONSTRAINT__COMPARATOR);
+    createEReference(constraintEClass, CONSTRAINT__VALUE);
 
     relationshipEClass = createEClass(RELATIONSHIP);
     createEAttribute(relationshipEClass, RELATIONSHIP__ABSTRACT);
@@ -909,6 +1038,9 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
     createEAttribute(namedEntityEClass, NAMED_ENTITY__NAME);
 
     referencedTypeEClass = createEClass(REFERENCED_TYPE);
+
+    // Create enums
+    metricComparatorEEnum = createEEnum(METRIC_COMPARATOR);
   }
 
   /**
@@ -937,6 +1069,8 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
 
     // Obtain other dependent packages
     TypesPackage theTypesPackage = (TypesPackage)EPackage.Registry.INSTANCE.getEPackage(TypesPackage.eNS_URI);
+    QueryDslPackage theQueryDslPackage = (QueryDslPackage)EPackage.Registry.INSTANCE.getEPackage(QueryDslPackage.eNS_URI);
+    XbasePackage theXbasePackage = (XbasePackage)EPackage.Registry.INSTANCE.getEPackage(XbasePackage.eNS_URI);
 
     // Create type parameters
 
@@ -989,6 +1123,16 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
     initEAttribute(getRole_Inherited(), ecorePackage.getEBoolean(), "inherited", null, 0, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRole_Element(), this.getType(), null, "element", null, 0, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getRole_SuperRole(), this.getTypeReference(), null, "superRole", null, 0, 1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRole_Constraints(), this.getExtensionConstraint(), null, "constraints", null, 0, -1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(extensionConstraintEClass, ExtensionConstraint.class, "ExtensionConstraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExtensionConstraint_Constraint(), this.getConstraint(), null, "constraint", null, 0, 1, ExtensionConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getExtensionConstraint_Explanation(), ecorePackage.getEString(), "explanation", null, 0, 1, ExtensionConstraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(constraintEClass, Constraint.class, "Constraint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getConstraint_Query(), theQueryDslPackage.getQuery(), null, "query", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getConstraint_Comparator(), this.getMetricComparator(), "comparator", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getConstraint_Value(), theXbasePackage.getXExpression(), null, "value", null, 0, 1, Constraint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(relationshipEClass, Relationship.class, "Relationship", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRelationship_Abstract(), ecorePackage.getEBoolean(), "abstract", null, 0, 1, Relationship.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1035,6 +1179,15 @@ public class ArchitectureDSLPackageImpl extends EPackageImpl implements Architec
     initEAttribute(getNamedEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, NamedEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(referencedTypeEClass, ReferencedType.class, "ReferencedType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    // Initialize enums and add enum literals
+    initEEnum(metricComparatorEEnum, MetricComparator.class, "MetricComparator");
+    addEEnumLiteral(metricComparatorEEnum, MetricComparator.GE);
+    addEEnumLiteral(metricComparatorEEnum, MetricComparator.LE);
+    addEEnumLiteral(metricComparatorEEnum, MetricComparator.GT);
+    addEEnumLiteral(metricComparatorEEnum, MetricComparator.LT);
+    addEEnumLiteral(metricComparatorEEnum, MetricComparator.EQ);
+    addEEnumLiteral(metricComparatorEEnum, MetricComparator.NE);
 
     // Create resource
     createResource(eNS_URI);
