@@ -30,3 +30,5 @@ com.tocea.codewatch.architecture/target
 */bin/*
 com.tocea.codewatch.architecture.dsl/.launch/Launch Runtime Eclipse.launch
 
+
+com.tocea.codewatch.architecture.dsl/.classpath
