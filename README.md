@@ -71,6 +71,7 @@ XADL Syntax
 XADL defines architectural patterns and roles between some elements from an architecture model, and associate constraints and metrics to them.  
 
 ### architecture model ###
+
 XADL relies on a very simple architectural model that consists in a set of Analysed Elements (Type, File, Library, Project, Method, Field...), and a set of relationships between those elements (ReturnType, Parameter, Call, Reference, Inheritence, Import, Injection, Field).  
 
 This model is built from an analysis of an actual architecture by some indexers.  Some generic indexers are provided with Scertify Architecture-Designer, e.g., for Java Source Code, Java Binary Code, or Cobol.   You can also define your own indexers, that will infer some aditionnal architectural informations that are specific to the products that you wish to analyse, e.g., on the basis of your specific conventions, frameworks, tags...
@@ -90,9 +91,9 @@ Usually, importing `com.tocea.scertify.architecture.primitives.*` is primordial 
 
 The core of the XADL file follows the header, and consists in a set of `patterns`, `roles` and `relationships`. 
 
-### primitive role ###
+### primitive role, datatypes and enumerations ###
 
-A *primitive role* corresponds to an element of the Architectural Model, and makes it available in the context of the XADL.   Primitive roles are defined in `com.tocea.scertify.architecture.primitives.*`, thereby there is no need users to add some.  
+A *primitive role* corresponds to an element of the Architectural Model, and makes it available in the context of the XADL.   Primitive roles are defined in `com.tocea.scertify.architecture.primitives.*`, thereby there should have no need for users to add some.  
 
     primitive AnalyzedElement for com.tocea.codewatch.architecture.core.api.IAnalysedElement;
     primitive Type for com.tocea.codewatch.architecture.core.api.IType;
@@ -100,11 +101,18 @@ A *primitive role* corresponds to an element of the Architectural Model, and mak
     primitive Field for com.tocea.codewatch.architecture.core.api.IField;
     ....
 
-### datatypes ###
+A *Datatype* corresponds to .... 
 
-Datatypes corresponds to .... 
+    datatype boolean : boolean;
+    datatype int : int;
+    datatype java.lang.String : String;
+    datatype java.io.File : File;
 
-### patterns ###
+An *enumeration* is a set of elements:  
+
+    enumeration Week {Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday}
+
+### patterns, roles and relationships ###
 
 A *pattern* is a reference to a set of Elements that have a specific architectural meaning.  For instance, a [Model-View-controller](http://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller) design pattern is implemented as follows.
 
@@ -114,25 +122,95 @@ A *pattern* is a reference to a set of Elements that have a specific architectur
     	controller : Controller;
     }
 
-### role ###
+A *role* is similar to a pattern, but it has a direct relation to an element of the architectural model.  For instance, Models, Views, and Controllers can be mapped to `Type` primitives. 
 
-A *role* is similar to a pattern, but it has a direct relation to an element of the architectural model.  For instance, Models, Views, and Controllers can be mapped to some `Type` primitives. 
-
-    role Model for Type {
-    	mandatory observable: Observable;
-    }
-    role View for Type {
-    	modelObserver: Observer;
-    }
+    role Model for Type;
+    role View for Type;
     role Controller for Type;
 
-### relationships ###
+A *relationship* is a relation between a source and a target element.  
 
-A *relationships* is ...
+Again, in the context of the MVC design pattern : 
 
-### enumeration ###
+    /**
+     * A view requests from the model the information that it needs to generate 
+     * an output representation.
+     */   
+    relationship accesses : View -> Model; 
+    
+    /**
+     * A controller can send commands to its associated view to change the view's
+     * presentation of the model (e.g., by scrolling through a document). 
+     */
+    relationship sendCommands : Controller -> View;
+      
+    /** 
+     * A controller can send commands to the model to update the model's state 
+     * (e.g., editing a document).
+     */
+    relationship update : Controller -> Model;
 
-An *enumeration* is ....
+Elements Patterns, roles and relationships can get fields to reference other elements.  Fields are optionnal by default, but can be marked as mandatory, e.g., `bar`.  Moreover, fields can reference sets of elements, e.g., elements `a`, `b`, `c` and `d`.
+
+    role hasReferences {
+        foo : Foo;
+        mandatory bar : Bar;
+        a : Foo[0..1];
+        b : Foo[1..*];
+        c : Foo*;
+        b : Foo[0..1];
+    }
+
+
+### Generics in XADL ###
+
+Roles and patterns can be parameterized with generic types.
+
+    pattern Collection<T>; {
+    	elements : T*;
+    } 
+
+    pattern Map<K, V> {
+    	keys : K*;
+    	values : V*;
+    }
+
+    role Foo extends Collection<Bar>;
+
+### Inheritance and abstract elements ###
+
+Some Relationships, Patterns and Roles can extend respectively super-relationships, super-patterns, and super-roles.   Those super elements provide some invariant functionnalities to inheriting elements.  
+
+Moreover, Relationships, Patterns and Roles can be abstract.  Abstract elements can not be instantiated on their own, but must be inherited first.  
+
+    extension toto
+    
+    datatype java.lang.String : String;
+    
+    abstract pattern StructuralDesignPattern {
+        mandatory id : String; 
+    }
+    
+    // all patterns that extend StructuralDesignPattern must get an id.
+    pattern Adapter extends StructuralDesignPattern;
+    pattern Composite extends StructuralDesignPattern;
+    pattern Decorator extends StructuralDesignPattern;
+    pattern Proxy extends StructuralDesignPattern;
+
+### Constraints ###
+
+A roles can get constraints, that define some assertions that must be verified. Constraints consists in an `enforce` keyword followed by a reference to an AQL method. If the result of the AQL method is not a boolean, it should be evaluated with an optional comparator (&gt;=, &lt;=, &gt;, &lt;, =, !=).  Optionally, an error message can be specified to inform the user of the nature of architectural incoherences and problems when detected.
+
+    role WebService for Type {
+    	configurations : File*;
+    	enforce this.countMethods() <= 15 ? "A web service should'nt have more than 15 methods.";
+    	enforce this.allMethodsAreWebmethods();
+    }
+    
+    role WebMethod for Method {
+     	enforce this.countArguments() <= 4 ? "Number of arguments of a web method should be lesser than 4";
+    	enforce this.countDTOReferences() = 0 ? "No DTO should be referenced by a web method";
+    } 
 
 
 
@@ -140,7 +218,7 @@ An *enumeration* is ....
 AQL Syntax
 ----------
 
-
+TODO
 
 
 
