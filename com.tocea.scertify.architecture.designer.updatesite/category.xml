@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.tocea.scertify.architecture.xadl.sdk_1.0.0.qualifier.jar" id="com.tocea.scertify.architecture.xadl.sdk" version="1.0.0.qualifier">
+      <category name="com.tocea.scertify.architecture"/>
+   </feature>
+   <feature url="features/com.tocea.scertify.architecture.aql.sdk_1.0.0.qualifier.jar" id="com.tocea.scertify.architecture.aql.sdk" version="1.0.0.qualifier">
+      <category name="com.tocea.scertify.architecture"/>
+   </feature>
+   <category-def name="com.tocea.scertify.architecture" label="Scertify Architecture"/>
+</site>
