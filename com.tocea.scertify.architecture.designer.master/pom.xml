@@ -61,7 +61,9 @@
 	</build>
 
 	<modules>
-
+		<module>../com.tocea.scertify.architecture.aql</module>
+		<module>../com.tocea.scertify.architecture.aql.sdk</module>
+		<module>../com.tocea.scertify.architecture.aql.ui</module>
 		<module>../com.tocea.scertify.architecture.xadl</module>
 		<module>../com.tocea.scertify.architecture.xadl.sdk</module>
 		<module>../com.tocea.scertify.architecture.xadl.tests</module>
@@ -69,8 +71,5 @@
 		<module>
 			../com.tocea.scertify.architecture.designer.updatesite
 		</module>
-		<module>../com.tocea.scertify.architecture.aql</module>
-		<module>../com.tocea.scertify.architecture.aql.sdk</module>
-		<module>../com.tocea.scertify.architecture.aql.ui</module>
 	</modules>
 </project>
