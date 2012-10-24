@@ -20,6 +20,13 @@
 		</repository>
 	</repositories>
 
+
+	<scm>
+		<connection>scm:git:git@github.com:Tocea/Architecture-Designer.git</connection>
+		<url>scm:git:git@github.com:Tocea/Architecture-Designer.git</url>
+		<developerConnection>scm:git:git@github.com:Tocea/Architecture-Designer.git</developerConnection>
+	</scm>
+
 	<build>
 		<plugins>
 			<plugin>
