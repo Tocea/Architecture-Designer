@@ -1,0 +1,126 @@
+grammar com.tocea.codewatch.architecture.dsl.ArchitectureDSL with org.eclipse.xtext.xbase.Xbase
+
+generate architectureDSL "http://www.tocea.com/codewatch/architecture/dsl/ArchitectureDSL"
+
+import "http://www.tocea.com/codewatch/architecture/query/dsl/QueryDsl" as query
+
+ArchitectureExtension:
+	'extension' name = QualifiedName
+	entities+=ExtensionEntity*
+;
+
+ExtensionEntity:
+	Type | Import | Relationship
+;
+
+Datatype :
+	'datatype' reference = JvmTypeReference ':' name = ID ';'
+;
+
+Import :
+	'import' importedNamespace = QualifiedNameWithWildcard ';'
+;
+
+Type :
+	ParametrizedType | Datatype | PrimitiveRole | Enumeration
+;
+
+ParametrizedType:
+	Pattern | Role
+;
+
+Pattern :
+	(abstract?='abstract')? 'pattern'  name = ID
+	('<' parameters += Parameter (',' parameters += Parameter)* '>')?
+	('extends' superPattern = TypeReference)?
+	('{' (fields+=Field ';')* '}' | ';' )
+;
+
+
+PrimitiveRole :
+	'primitive' name = ID 'for' type = JvmTypeReference ';'
+;
+
+Role :
+	(abstract?='abstract' | inherited?='inherited')*
+	'role' name = ID
+	('<' parameters += Parameter (',' parameters += Parameter)* '>')?
+	('for' element = [Type | QualifiedName] |
+	 'extends' superRole = TypeReference )?
+	('{' (fields+=Field ';')*(constraints+=ExtensionConstraint ';')* '}' | ';' )
+;
+
+ExtensionConstraint:
+	'enforce' constraint=Constraint ('?' explanation=STRING)?
+;
+
+Constraint:
+	'this''.'query=[query::Query] '()' (comparator=MetricComparator value=XExpression)? 
+;
+
+enum MetricComparator:
+	ge=">=" | le="<=" | gt=">" | lt="<" | eq="=" | ne="!="
+;
+
+
+Relationship :
+	(abstract?='abstract')?
+	'relationship' name = ID ('extends' superRelationship = [Relationship | QualifiedName])?
+	(':' constraints+=RelationshipConstraint ('||' constraints+=RelationshipConstraint)* )?
+	('{' (fields+=Field ';')* '}' | ';' )
+;
+
+Parameter :
+	name = ID
+;
+
+Field :
+	(mandatory?='mandatory')? name = ID ':' type = TypeReference (many?='*' | '['lb=Arity ('..'ub=Arity)?']')?
+;
+
+Arity:
+	value=INT | unbound?='*'
+;
+
+TypeReference :
+	reference = [ReferencedType | QualifiedName] ('<' parameters += TypeReference (',' parameters += TypeReference)* '>')?
+;
+
+RelationshipConstraint :
+	RelationshipConjunctionConstraint
+;
+
+RelationshipConjunctionConstraint:
+	constraints+=RelationshipPrimitiveConstraint ('&&' constraints+=RelationshipPrimitiveConstraint)*
+;
+
+RelationshipPrimitiveConstraint :
+	TypeConstraint
+;
+
+TypeConstraint :
+	{TypeConstraint}
+	(source = [Type | QualifiedName] | '*') '->' (target = [Type | QualifiedName] | '*')
+;
+
+Enumeration :
+	'enumeration' name = ID '{'
+		(elements += EnumerationElement ','?)*
+	'}'
+;
+
+EnumerationElement :
+	name = ID
+;
+
+NamedEntity :
+	ReferencedType | Relationship
+;
+
+ReferencedType :
+	Type | Parameter
+;
+
+QualifiedNameWithWildcard :
+	QualifiedName '.*'?
+;

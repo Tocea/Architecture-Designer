@@ -1,13 +1,14 @@
-module com.tocea.codewatch.architecture.query.dsl.GenerateQueryDsl
+module com.tocea.codewatch.architecture.dsl.GenerateArchitectureDSL
 
 import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
-var grammarURI = "classpath:/com/tocea/codewatch/architecture/query/dsl/QueryDsl.xtext"
-var file.extensions = "aql"
-var projectName = "com.tocea.scertify.architecture.aql"
+var grammarURI = "classpath:/com/tocea/codewatch/architecture/dsl/ArchitectureDSL.xtext"
+var file.extensions = "xadl"
+var projectName = "com.tocea.codewatch.architecture.dsl"
 var runtimeProject = "../${projectName}"
+var srcGen = "src/main/generated"
 
 Workflow {
     bean = StandaloneSetup {
@@ -16,24 +17,26 @@ Workflow {
             // The following two lines can be removed, if Xbase is not used.
             registerGeneratedEPackage = "org.eclipse.xtext.xbase.XbasePackage"
             registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel"
-//             registerGenModelFile = "platform:/resource/org.eclipse.xtext.xbase/model/XType.genmodel"
-            registerGenModelFile = "platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel"
+            registerGeneratedEPackage = "com.tocea.codewatch.architecture.query.dsl.queryDsl.QueryDslPackage"
+            registerGenModelFile = "platform:/resource/com.tocea.codewatch.architecture.query.dsl/src-gen/com/tocea/codewatch/architecture/query/dsl/QueryDsl.genmodel"
         }
     
         component = DirectoryCleaner {
-            directory = "${runtimeProject}/src-gen"
+            directory = "${runtimeProject}/${srcGen}"
         }
     
         component = DirectoryCleaner {
-            directory = "${runtimeProject}.ui/src-gen"
+            directory = "${runtimeProject}.ui/${srcGen}"
         }
     
         component = Generator {
             pathRtProject = runtimeProject
             pathUiProject = "${runtimeProject}.ui"
-            //pathTestProject = "${runtimeProject}.tests"
+            pathTestProject = "${runtimeProject}.tests"
             projectNameRt = projectName
             projectNameUi = "${projectName}.ui"
+            srcPath = "/src/main/java"
+            srcGenPath = "/${srcGen}"
             language = {
                 uri = grammarURI
                 fileExtensions = file.extensions
@@ -110,7 +113,7 @@ Workflow {
                 fragment = parser.antlr.XtextAntlrUiGeneratorFragment {}
     
                 // generates junit test support classes into Generator#pathTestProject
-//                fragment = junit.Junit4Fragment {}
+                fragment = junit.Junit4Fragment {}
     
                 // project wizard (optional)
                 // fragment = projectWizard.SimpleProjectWizardFragment {

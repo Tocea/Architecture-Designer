@@ -1,0 +1,47 @@
+grammar com.tocea.codewatch.architecture.query.dsl.QueryDsl with org.eclipse.xtext.xbase.Xbase
+
+generate queryDsl "http://www.tocea.com/codewatch/architecture/query/dsl/QueryDsl"
+
+import "http://www.eclipse.org/xtext/xbase/Xbase" 
+import "http://www.eclipse.org/xtext/xbase/Xtype" 
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
+
+
+Queries:
+	'package' name=QualifiedName ';'
+	('output' output=STRING ';')?
+	(imports+=Import)*
+	
+	
+	(queries+=Query)*
+;
+
+Query:
+	CustomQuery | MetricQuery
+;
+
+CustomQuery:
+
+	'query' name=ID '('(parameters+=FullJvmFormalParameter (','parameters+=FullJvmFormalParameter)*)? ')' 
+	body=XBlockExpression
+	
+;
+
+MetricQuery:
+
+	'metric' name=ID '('(parameters+=FullJvmFormalParameter (','parameters+=FullJvmFormalParameter)*)? ')' 
+	body=XBlockExpression
+	
+;
+
+
+Import:
+  'import'  importedNamespace = QID  ';'
+;
+
+
+
+
+QID:
+	QualifiedName('.''*')?
+;

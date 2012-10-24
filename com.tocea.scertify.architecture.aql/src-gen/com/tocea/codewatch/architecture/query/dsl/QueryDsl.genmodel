@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.tocea.scertify.architecture.aql/src-gen" editDirectory="/com.tocea.scertify.architecture.aql.edit/src"
+    editorDirectory="/com.tocea.scertify.architecture.aql.editor/src" modelPluginID="com.tocea.scertify.architecture.aql"
+    forceOverwrite="true" modelName="QueryDsl" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="com.tocea.scertify.architecture.aql.edit"
+    editorPluginID="com.tocea.scertify.architecture.aql.editor" runtimeVersion="2.8"
+    usedGenPackages="../../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
+  <genPackages prefix="QueryDsl" basePackage="com.tocea.codewatch.architecture.query.dsl"
+      disposableProviderFactory="true" ecorePackage="QueryDsl.ecore#/">
+    <genClasses ecoreClass="QueryDsl.ecore#//Queries">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute QueryDsl.ecore#//Queries/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute QueryDsl.ecore#//Queries/output"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference QueryDsl.ecore#//Queries/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference QueryDsl.ecore#//Queries/queries"/>
+    </genClasses>
+    <genClasses ecoreClass="QueryDsl.ecore#//Query">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute QueryDsl.ecore#//Query/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference QueryDsl.ecore#//Query/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference QueryDsl.ecore#//Query/body"/>
+    </genClasses>
+    <genClasses ecoreClass="QueryDsl.ecore#//CustomQuery"/>
+    <genClasses ecoreClass="QueryDsl.ecore#//MetricQuery"/>
+    <genClasses ecoreClass="QueryDsl.ecore#//Import">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute QueryDsl.ecore#//Import/importedNamespace"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
