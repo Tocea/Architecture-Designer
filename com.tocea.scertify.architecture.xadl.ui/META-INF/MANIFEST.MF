@@ -19,7 +19,7 @@ Require-Bundle: com.tocea.scertify.architecture.xadl;visibility:=reexport,
  org.eclipse.compare
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: com.tocea.codewatch.architecture.dsl.ui.contentassist,
- com.tocea.codewatch.architecture.dsl.ui.contentassist.antlr,
- com.tocea.codewatch.architecture.dsl.ui.internal
+Export-Package: com.tocea.scertify.architecture.xadl.ui.contentassist,
+ com.tocea.scertify.architecture.xadl.ui.contentassist.antlr,
+ com.tocea.scertify.architecture.xadl.ui.internal
 Bundle-Activator: com.tocea.codewatch.architecture.dsl.ui.internal.ArchitectureDSLActivator

@@ -19,7 +19,7 @@ Import-Package: org.apache.log4j,
  org.junit.runners.model;version="4.5.0",
  org.hamcrest.core
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: com.tocea.codewatch.architecture.dsl
+Export-Package: com.tocea.scertify.architecture.xadl
 Bundle-ClassPath: binding-bundle/target/dependency/easyCoverage4J-annotations-0.1.13.jar,
  binding-bundle/target/dependency/easyCoverage4J-framework-0.1.13.jar,
  binding-bundle/target/dependency/hamcrest-core-1.1.jar,

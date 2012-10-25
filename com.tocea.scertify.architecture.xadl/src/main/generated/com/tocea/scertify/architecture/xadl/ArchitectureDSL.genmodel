@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/com.tocea.scertify.architecture.xadl/src/main/generated"
+    editDirectory="/com.tocea.scertify.architecture.xadl.edit/src" editorDirectory="/com.tocea.scertify.architecture.xadl.editor/src"
+    modelPluginID="com.tocea.scertify.architecture.xadl" forceOverwrite="true" modelName="ArchitectureDSL"
+    updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    complianceLevel="5.0" copyrightFields="false" editPluginID="com.tocea.scertify.architecture.xadl.edit"
+    editorPluginID="com.tocea.scertify.architecture.xadl.editor" runtimeVersion="2.8"
+    usedGenPackages="../../../../../../../../../com.tocea.scertify.architecture.aql/src-gen/com/tocea/codewatch/architecture/query/dsl/QueryDsl.genmodel#//queryDsl ../../../../../../../../../org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types ../../../../../../../../../org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase">
+  <genPackages prefix="ArchitectureDSL" basePackage="com.tocea.scertify.architecture.xadl"
+      disposableProviderFactory="true" ecorePackage="ArchitectureDSL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="ArchitectureDSL.ecore#//MetricComparator">
+      <genEnumLiterals ecoreEnumLiteral="ArchitectureDSL.ecore#//MetricComparator/ge"/>
+      <genEnumLiterals ecoreEnumLiteral="ArchitectureDSL.ecore#//MetricComparator/le"/>
+      <genEnumLiterals ecoreEnumLiteral="ArchitectureDSL.ecore#//MetricComparator/gt"/>
+      <genEnumLiterals ecoreEnumLiteral="ArchitectureDSL.ecore#//MetricComparator/lt"/>
+      <genEnumLiterals ecoreEnumLiteral="ArchitectureDSL.ecore#//MetricComparator/eq"/>
+      <genEnumLiterals ecoreEnumLiteral="ArchitectureDSL.ecore#//MetricComparator/ne"/>
+    </genEnums>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//ArchitectureExtension">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//ArchitectureExtension/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//ArchitectureExtension/entities"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//ExtensionEntity"/>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//Datatype">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Datatype/reference"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//Import">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//Import/importedNamespace"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//Type"/>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//ParametrizedType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//ParametrizedType/abstract"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//ParametrizedType/parameters"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//ParametrizedType/fields"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//Pattern">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Pattern/superPattern"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//PrimitiveRole">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//PrimitiveRole/type"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//Role">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//Role/inherited"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Role/element"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Role/superRole"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Role/constraints"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//ExtensionConstraint">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//ExtensionConstraint/constraint"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//ExtensionConstraint/explanation"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//Constraint">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Constraint/query"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//Constraint/comparator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Constraint/value"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//Relationship">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//Relationship/abstract"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Relationship/superRelationship"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Relationship/constraints"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Relationship/fields"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//Parameter"/>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//Field">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//Field/mandatory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//Field/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Field/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//Field/many"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Field/lb"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Field/ub"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//Arity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//Arity/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//Arity/unbound"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//TypeReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//TypeReference/reference"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//TypeReference/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//RelationshipConstraint"/>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//RelationshipConjunctionConstraint">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//RelationshipConjunctionConstraint/constraints"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//RelationshipPrimitiveConstraint"/>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//TypeConstraint">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//TypeConstraint/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//TypeConstraint/target"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//Enumeration">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ArchitectureDSL.ecore#//Enumeration/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//EnumerationElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//EnumerationElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//NamedEntity">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ArchitectureDSL.ecore#//NamedEntity/name"/>
+    </genClasses>
+    <genClasses ecoreClass="ArchitectureDSL.ecore#//ReferencedType"/>
+  </genPackages>
+</genmodel:GenModel>
