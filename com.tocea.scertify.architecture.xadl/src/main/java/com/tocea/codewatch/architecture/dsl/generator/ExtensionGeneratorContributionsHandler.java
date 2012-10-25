@@ -10,28 +10,25 @@ import org.eclipse.xtext.generator.IGenerator;
 
 public class ExtensionGeneratorContributionsHandler {
 
-	private static final String GENERATOR_EXTENSION_ID = "com.tocea.codewatch.architecture.dsl.generator";
-	private IExtensionRegistry registry;
+	private static final String GENERATOR_EXTENSION_ID = "com.tocea.scertify.architecture.xadl.generator";
+	private final IExtensionRegistry registry;
 
-	public ExtensionGeneratorContributionsHandler(IExtensionRegistry registry) {
+	public ExtensionGeneratorContributionsHandler(final IExtensionRegistry registry) {
 		super();
 		this.registry = registry;
 	}
 
 	public List<IGenerator> getRegisteredGenerators() {
-		IConfigurationElement[] config = registry
-				.getConfigurationElementsFor(GENERATOR_EXTENSION_ID);
+		final IConfigurationElement[] config = this.registry.getConfigurationElementsFor(GENERATOR_EXTENSION_ID);
 
-		List<IGenerator> generators = new ArrayList<IGenerator>(
-				config.length);
+		final List<IGenerator> generators = new ArrayList<IGenerator>(config.length);
 		try {
-			for (IConfigurationElement e : config) {
-				final IGenerator o = (IGenerator) e
-						.createExecutableExtension("class");
+			for (final IConfigurationElement e : config) {
+				final IGenerator o = (IGenerator) e.createExecutableExtension("class");
 				generators.add(o);
 			}
 			return generators;
-		} catch (CoreException ex) {
+		} catch (final CoreException ex) {
 			throw new RuntimeException(ex);
 		}
 

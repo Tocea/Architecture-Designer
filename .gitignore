@@ -15,7 +15,7 @@
 */.settings/*
 
 # Maven
-#*/target/*
+*/target/*
 #*/*/target/*
 
 # com.tocea.codewatch.architecture
