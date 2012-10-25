@@ -12,11 +12,10 @@
 # Eclipse projects
 .project
 !*/.project
-*/.settings/*
+**/.settings/*
 
 # Maven
-*/target/*
-#*/*/target/*
+**/target/*
 
 # com.tocea.codewatch.architecture
 #com.tocea.codewatch.architecture/.classpath
@@ -24,13 +23,11 @@
 #com.tocea.codewatch.architecture/target
 
 # Generated sources are not included
-#*/src-gen/*
-#*/xtend-gen/*
 *_gen
 *._trace
 
 # Ignore anything in a bin folder
-*/bin/*
+**/bin/*
 com.tocea.scertify.architecture.aql/.launch/Launch Runtime Eclipse.launch
 
 
