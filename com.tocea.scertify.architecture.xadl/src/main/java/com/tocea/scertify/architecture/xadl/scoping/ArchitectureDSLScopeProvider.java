@@ -32,7 +32,6 @@ public class ArchitectureDSLScopeProvider extends XbaseScopeProvider {
 			final Type type = getNearestType(context);
 			return new FilteringScope(scope,
 					new Predicate<IEObjectDescription>() {
-						@Override
 						public boolean apply(IEObjectDescription input) {
 							EObject object = input.getEObjectOrProxy();
 							if (object instanceof Parameter) {
