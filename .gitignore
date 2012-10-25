@@ -13,6 +13,7 @@
 .project
 !*/.project
 **/.settings/*
+**/.classpath
 
 # Maven
 **/target/*

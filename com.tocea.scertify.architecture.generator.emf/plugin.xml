@@ -2,9 +2,9 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="com.tocea.codewatch.architecture.dsl.ArchitectureExtensionGenerator">
+         point="com.tocea.scertify.architecture.xadl.generator">
       <generator
-            class="com.tocea.codewatch.architecture.generator.emf.EmfExtensionGenerator">
+            class="com.tocea.scertify.architecture.generator.emf.EmfExtensionGenerator">
       </generator>
    </extension>
 

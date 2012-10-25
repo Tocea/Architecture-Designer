@@ -6,9 +6,9 @@
 
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
-       uri = "http://www.tocea.com/codewatch/architecture/dsl/ArchitectureDSL" 
-       class = "com.tocea.codewatch.architecture.dsl.architectureDSL.ArchitectureDSLPackage"
-       genModel = "com/tocea/codewatch/architecture/dsl/ArchitectureDSL.genmodel" /> 
+       uri = "http://www.tocea.com/scertify/architecture/xadl/ArchitectureDSL" 
+       class = "com.tocea.scertify.architecture.xadl.architectureDSL.ArchitectureDSLPackage"
+       genModel = "com/tocea/scertify/architecture/xadl/ArchitectureDSL.genmodel" /> 
 	
   </extension>
 
