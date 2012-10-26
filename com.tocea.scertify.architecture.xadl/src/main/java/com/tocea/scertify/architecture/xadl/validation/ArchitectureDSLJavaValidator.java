@@ -3,6 +3,9 @@ package com.tocea.scertify.architecture.xadl.validation;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.xtext.nodemodel.ICompositeNode;
+import org.eclipse.xtext.nodemodel.ILeafNode;
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils;
 import org.eclipse.xtext.validation.Check;
 
 import com.tocea.scertify.architecture.xadl.architectureDSL.ArchitectureDSLPackage;
@@ -111,6 +114,30 @@ public class ArchitectureDSLJavaValidator extends
 				&& field.getLb().getValue() >= field.getUb().getValue())
 			error("Lower bound must be lower than upper bound.",
 					ArchitectureDSLPackage.Literals.FIELD__LB);
+	}
+
+	@Check
+	public void checkModifiers(Role role) {
+		ICompositeNode node = NodeModelUtils.findActualNodeFor(role);
+		boolean inherited = false;
+		boolean _abstract = false;
+		for (ILeafNode leaf : node.getLeafNodes()) {
+			if (leaf.getText().equals("role"))
+				break;
+			if (leaf.getText().equals("inherited"))
+				if (inherited) {
+					warning("Duplicated modifier",
+							ArchitectureDSLPackage.Literals.ROLE__INHERITED);
+					break;
+				} else
+					inherited = true;
+			if (leaf.getText().equals("abstract"))
+				if (_abstract) {
+					warning("Duplicated modifier",
+							ArchitectureDSLPackage.Literals.PARAMETRIZED_TYPE__ABSTRACT);
+				} else
+					_abstract = true;
+		}
 	}
 
 	// Returns true if there is no cycle
