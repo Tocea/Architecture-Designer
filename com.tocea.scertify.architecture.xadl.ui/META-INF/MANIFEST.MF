@@ -22,4 +22,4 @@ Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: com.tocea.scertify.architecture.xadl.ui.contentassist,
  com.tocea.scertify.architecture.xadl.ui.contentassist.antlr,
  com.tocea.scertify.architecture.xadl.ui.internal
-Bundle-Activator: com.tocea.codewatch.architecture.dsl.ui.internal.ArchitectureDSLActivator
+Bundle-Activator: com.tocea.scertify.architecture.xadl.ui.internal.ArchitectureDSLActivator
